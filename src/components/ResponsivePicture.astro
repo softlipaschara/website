@@ -1,0 +1,47 @@
+---
+import { mediaUrl } from '../lib/media';
+
+interface Props {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  sizes?: string;
+  widths?: number[];
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  decoding?: 'async' | 'sync' | 'auto';
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  sizes = '100vw',
+  widths = [800, 2000],
+  class: className,
+  loading,
+  decoding = 'async',
+} = Astro.props;
+
+const base = mediaUrl(src);
+const webpSrcset = widths.map((size) => `${base}-${size}.webp ${size}w`).join(', ');
+const jpgSrcset = widths.map((size) => `${base}-${size}.jpg ${size}w`).join(', ');
+const fallback = `${base}-${Math.max(...widths)}.jpg`;
+---
+
+<picture class="responsivePicture">
+  <source type="image/webp" srcset={webpSrcset} sizes={sizes} />
+  <img
+    class={className}
+    src={fallback}
+    srcset={jpgSrcset}
+    sizes={sizes}
+    width={width}
+    height={height}
+    alt={alt}
+    loading={loading}
+    decoding={decoding}
+  />
+</picture>

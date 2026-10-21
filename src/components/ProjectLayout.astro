@@ -1,0 +1,37 @@
+---
+import BackButton from './BackButton.astro';
+import { mediaUrl } from '../lib/media';
+
+interface Cover {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  title?: string;
+  cover?: Cover;
+  backButtonVariant?: 'black' | 'white';
+}
+
+const { title, cover, backButtonVariant = 'black' } = Astro.props;
+---
+
+<BackButton variant={backButtonVariant} fallback="/" />
+
+{
+  cover && (
+    <div class="containerCenter">
+      <img class="insBorrow" src={mediaUrl(cover.src)} alt={cover.alt} />
+    </div>
+  )
+}
+
+{
+  title && (
+    <div class="containerCenter">
+      <div class="insBorrowTitle">{title}</div>
+    </div>
+  )
+}
+
+<slot />

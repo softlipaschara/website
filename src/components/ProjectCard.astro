@@ -1,0 +1,52 @@
+---
+import { mediaUrl } from '../lib/media';
+
+interface Thumbnail {
+  src: string;
+  alt: string;
+  type?: 'image' | 'video';
+  poster?: string;
+  class?: string;
+  id?: string;
+}
+
+interface Props {
+  href: string;
+  title: string;
+  thumbnail: Thumbnail;
+  id?: string;
+}
+
+const { href, title, thumbnail, id } = Astro.props;
+const thumbnailClass = thumbnail.class ?? 'breezeBlock';
+---
+
+<div class="center">
+  <div class="containerColumn">
+    <a id={id} href={href}>
+      {
+        thumbnail.type === 'video' ? (
+          <video
+            class={thumbnailClass}
+            id={thumbnail.id}
+            src={mediaUrl(thumbnail.src)}
+            poster={thumbnail.poster ? mediaUrl(thumbnail.poster) : undefined}
+            autoplay
+            muted
+            loop
+            playsinline
+            aria-label={thumbnail.alt}
+          />
+        ) : (
+          <img
+            class={thumbnailClass}
+            id={thumbnail.id}
+            src={mediaUrl(thumbnail.src)}
+            alt={thumbnail.alt}
+          />
+        )
+      }
+      <p class="smallTitle">{title}</p>
+    </a>
+  </div>
+</div>

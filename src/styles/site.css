@@ -1,0 +1,17 @@
+body {
+    font-family: "Abadi MT Condensed Light", Arial, sans-serif;
+    padding: 20px;
+}
+
+a:visited {
+    color: white;
+}
+
+a:hover {
+    color: white;
+    background-color: #00aced;
+}
+
+a:active {
+    color: white;
+}

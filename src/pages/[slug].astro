@@ -1,0 +1,33 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../components/BaseLayout.astro';
+import ProjectLayout from '../components/ProjectLayout.astro';
+import { RESERVED_SITE_ROUTES } from '../data/site';
+import '../styles/portfolio.css';
+
+export const getStaticPaths = (async () => {
+  const projects = await getCollection('projects', ({ data }) => !data.draft);
+  const reserved = new Set(RESERVED_SITE_ROUTES);
+
+  for (const project of projects) {
+    if (reserved.has(project.id)) {
+      throw new Error(`Project slug "${project.id}" conflicts with a reserved site route.`);
+    }
+  }
+
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}) satisfies GetStaticPaths;
+
+const { project } = Astro.props as { project: CollectionEntry<'projects'> };
+const { Content } = await render(project);
+---
+
+<BaseLayout title={project.data.title} description={project.data.summary}>
+  <ProjectLayout cover={project.data.cover} title={project.data.title}>
+    <Content />
+  </ProjectLayout>
+</BaseLayout>

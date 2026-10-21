@@ -1,0 +1,67 @@
+---
+import { mediaUrl } from '../lib/media';
+
+interface Props {
+  src: string;
+  poster?: string;
+  alt?: string;
+  caption?: string;
+  width?: number | string;
+  height?: number | string;
+  aspectRatio?: string;
+  controls?: boolean;
+  autoplay?: boolean;
+  loop?: boolean;
+  muted?: boolean;
+  playsinline?: boolean;
+  preload?: 'none' | 'metadata' | 'auto';
+  class?: string;
+}
+
+const {
+  src,
+  poster,
+  alt,
+  caption,
+  width,
+  height,
+  aspectRatio,
+  controls = false,
+  autoplay = false,
+  loop = false,
+  muted = false,
+  playsinline = true,
+  preload,
+  class: className,
+} = Astro.props;
+
+const base = mediaUrl(src);
+const src720 = `${base}-720.mp4`;
+const src480 = `${base}-480.mp4`;
+const posterUrl = poster ? mediaUrl(poster) : `${base}-poster.jpg`;
+---
+
+<video
+  class={className}
+  src={src720}
+  poster={posterUrl}
+  width={width}
+  height={height}
+  controls={controls}
+  autoplay={autoplay}
+  loop={loop}
+  muted={muted}
+  playsinline={playsinline}
+  preload={preload ?? (autoplay ? 'auto' : 'metadata')}
+  style={aspectRatio ? `aspect-ratio: ${aspectRatio};` : undefined}
+  aria-label={alt}
+  data-src-720={src720}
+  data-src-480={src480}
+>
+  <source src={src720} type="video/mp4" />
+</video>
+{caption && <p class="mediaCaption">{caption}</p>}
+
+<script>
+  import '../scripts/video-source';
+</script>

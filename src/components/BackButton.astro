@@ -1,0 +1,17 @@
+---
+interface Props {
+  variant?: 'black' | 'white';
+  fallback?: string;
+}
+
+const { variant = 'black', fallback = '/' } = Astro.props;
+const icon = variant === 'white' ? '/assets/ui/backButtonWhite.png' : '/assets/ui/backButton.png';
+---
+
+<a class="backButtonLink" href={fallback} data-back-button>
+  <img class="backButton" src={icon} alt="Back" />
+</a>
+
+<script>
+  import '../scripts/back';
+</script>

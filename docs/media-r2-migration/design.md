@@ -1,6 +1,6 @@
 # Portfolio Rebuild: Astro + Cloudflare R2
 
-Status: draft for adversarial review
+Status: revised after adversarial review (66 confirmed findings; see section 12)
 Date: 2026-10-21
 Branch: `astro-rebuild`
 Skills: `superpowers:brainstorming`, `workflow-authoring`
@@ -394,10 +394,9 @@ rclone sync media-out/ r2:portfolio-media/ \
 
 ### 4.7 Vimeo source availability
 
-Eleven of thirteen Vimeo videos have been downloaded at 720p. The remaining two
-(`217140436` Scales, `279840418` Visualisation of the Space Model) are public
-and owned by the same account; downloads fail intermittently because of Vimeo
-session and rate limiting. They are retried during implementation. If a video
+All thirteen Vimeo videos have been downloaded at 720p. The final two
+(`217140436` Scales, `279840418` Visualisation of the Space Model) required
+browser impersonation because Vimeo served a bot challenge. If a future source
 cannot be obtained, its page keeps the original Vimeo iframe temporarily and the
 gap is recorded in `media-audit.md`; the page is not blocked on it.
 
@@ -597,3 +596,113 @@ These are external inputs, not design gaps:
   and any failure.
 - `migration-checklist.md`: page-by-page migration and verification state.
 - `visual-suggestions.md`: non-implemented visual improvements for later review.
+- `review-findings.json`: raw confirmed findings from the adversarial review.
+
+## 12. Adversarial review corrections
+
+The design review produced 102 findings (9 blocking, 61 major, 32 minor); 66
+survived adversarial verification. The decisions below supersede any conflicting
+text above.
+
+### 12.1 Toolchain and build
+
+- Use Node 24 LTS locally and in CI. Add `.nvmrc` and `package.json#engines`,
+  and configure `actions/setup-node` with `node-version-file`.
+- Pin Astro and `@astrojs/mdx` to explicit versions and commit
+  `package-lock.json`.
+- Use npm >= 11.3 in CI. Add an `npm ci` smoke test on `ubuntu-latest` before
+  the first Pages deploy to catch platform-specific optional dependencies.
+
+### 12.2 Content and components
+
+- Author media inline in each MDX entry with imported `VideoPlayer` and
+  `ResponsivePicture` components. This preserves the interleaved text/media
+  order of the existing pages. The frontmatter `media[]` array is optional and
+  only for a trailing gallery.
+- Extend the schema with `controls`, `autoplay`, `loop`, `muted`, `playsinline`,
+  `width`, `height` or `aspectRatio`, `renditions` (720 and 480), `thumbnail`
+  for home cards, and `homeSection` or `featured`.
+- Model the home page sections (Selected Works, Prototype, What's More)
+  explicitly in `site.ts`. `cover` is optional.
+- Set `prerenderConflictBehavior: 'error'` and reserve the site routes
+  (`about`, `contact`, `design`, `paintings`, `poems`) so a project slug cannot
+  silently lose its page.
+- `ProjectLayout` is a minimal wrapper with optional cover and title blocks.
+  Pages that do not fit the standard structure compose their own MDX.
+
+### 12.3 Routing and redirects
+
+- Astro `redirects` do not emit flat legacy `.html` files when
+  `build.format` is `directory`. Generate exact flat stubs under `public/`
+  (for example `public/word-to-world.html`) containing a meta refresh and a
+  canonical link, or add a post-build copy step. Verify
+  `dist/word-to-world.html` exists after every build.
+
+### 12.4 Media pipeline and R2
+
+- Give every media item a stable id. Object keys use
+  `projects/<slug>/<media-id>/...`; never a fixed `video-720.mp4` per project.
+- Preserve curated posters and Vimeo thumbnails first. Frame extraction is only
+  a fallback.
+- Detect alpha before converting GIF or PNG assets. Keep WebP, APNG, or WebM for
+  transparent assets, or flatten onto an explicit page background color.
+- Generate and commit `media-manifest.json` with dimensions, hashes, and
+  variants. Validate every referenced key during the build.
+- Use content-hashed or versioned object keys with
+  `Cache-Control: public, max-age=31536000, immutable`. Document the purge path.
+- Upload with `rclone copy`. Never run `rclone sync` without a reviewed
+  `--dry-run`. Add `--s3-no-check-bucket` and exclude `.DS_Store`.
+- Use one variable, `PUBLIC_MEDIA_BASE`, defaulting to
+  `https://media.xinyue.de`. Local development uses `/media`.
+- Archive unreferenced assets before deletion. Upload masters to R2 under
+  `masters/` or back them up outside the repository.
+
+### 12.5 External media and dependencies
+
+- All seven `s3.eu-central-1.amazonaws.com/omzug.com` URLs return HTTP 403.
+  Phase 0 records recoverability and chooses per asset: owner credentials,
+  poster-only, or removal with a note.
+- Audit every external JS and CSS origin, including jsDelivr, code.jquery.com,
+  maxcdn, xiami, and Tumblr. Self-host or replace the slick and Bootstrap
+  carousels; do not delete `imgA/jquery-1.11.3.js` until its replacement is
+  verified.
+- Inventory missing assets: the paintings gallery, the poems image, the About
+  portrait, and the resume PDF. Decide owner-supplied, placeholder, or removal
+  for each.
+
+### 12.6 Responsive and parity
+
+- Freeze desktop layout at 1200 px and above, including the old 1280 and 1024
+  breakpoints, hero and full-bleed blocks, and 960 px media boxes. New fluid
+  rules apply below 1200 px only.
+- Split `base.css` from `portfolio.css`. Site hub pages keep their original
+  typography and padding.
+- Parity verification uses Playwright screenshots at 320, 375, 390, 414, 640,
+  768, 900, 1024, 1200, 1280, 1440, and 1920 px, at DPR 1 and 2, for every hash
+  state. Store `pre-astro` baselines and define a diff threshold. Never use
+  `overflow-x: hidden` to pass the overflow check.
+
+### 12.7 Deployment and rollback
+
+- Upload `dist/` explicitly: `actions/upload-pages-artifact` with
+  `path: ./dist`.
+- Gate the deploy job to `master` and add environment protection.
+- Switch Pages Source to GitHub Actions before the merge that triggers the first
+  Actions deploy. Verify the custom domain and HTTPS after the switch.
+- Create a `legacy-site` branch at `pre-astro` for rollback. A tag cannot be
+  selected as a Pages source.
+- Add `node_modules/`, `dist/`, `.astro/`, `.env*.local`, `media-src/`,
+  `media-out/`, and `public/media/` to `.gitignore` in Phase 1.
+- Before any history rewrite, create an off-machine mirror and `git bundle`,
+  archive the built old site, and recreate tags after the rewrite.
+
+### 12.8 Acceptance updates
+
+- Extend acceptance criterion 3 to every external origin, including jsDelivr,
+  jQuery, Bootstrap, xiami, and Tumblr.
+- Add an internal link checker and a full referenced-media HEAD or GET check.
+- The repository-size goal is met only by the required media removal and
+  history rewrite phase. State this explicitly instead of claiming the rebuild
+  alone achieves it.
+- The mainland reachability goal is scoped to media only. HTML remains on
+  GitHub Pages with a residual risk note.

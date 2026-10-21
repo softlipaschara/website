@@ -1,0 +1,922 @@
+{
+  "confirmed": [
+    {
+      "severity": "blocking",
+      "section": "§3.1 Stack / §6.2 GitHub Actions (Node version)",
+      "issue": "The stack cannot be built with the Node version available on the implementation machine: Astro 7.4.1 (current latest stable) requires Node >=22.22.0 and aborts on older 22.x, while the machine runs v22.14.0 and the design only says \"Node 22\".",
+      "evidence": "`node --version` returns v22.14.0 in the repo environment. `npm view astro version` returns 7.4.1 and its package.json declares `engines.node: \">=22.22.0\"`. Running the installed Astro 7.4.1 CLI prints `Node.js v22.14.0 is not supported by Astro! Please upgrade Node.js to a supported version: \">=22.22.0\"` and exits before build. design.md §6.2 specifies only `Node 22`.",
+      "suggestion": "Pin the Node floor (>=22.22.0, or Node 24 LTS) in `.nvmrc`, `package.json#engines`, and `actions/setup-node` via `node-version-file`; pin Astro and @astrojs/mdx versions with a committed lockfile.",
+      "dimension": "architecture",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "blocking",
+      "section": "§3.5 ProjectLayout / §3.3 media schema / §5.2 desktop parity",
+      "issue": "ProjectLayout's \"MDX body, media gallery\" composition cannot represent the existing pages' interleaved text and media; rendering the flat `media[]` array after the body reorders most content and violates the desktop parity contract.",
+      "evidence": "`/Users/xiaoxia/Development/portfolio/website/word-to-world.html` alternates headings/text with images and videos (lines 46-59, 62-81, 110-121); `coffee-composer.html` interleaves text, images and videos (lines 35-46, 57-64, 87-144). design.md §3.5 assigns ProjectLayout the responsibilities \"MDX body, media gallery\"; the §3.3 `media` array has no position relative to body blocks, and §5.2 requires identical desktop rendering.",
+      "suggestion": "Choose the model explicitly: import VideoPlayer/ResponsivePicture inline in each MDX entry and treat `media[]` as an optional end gallery, or add ordered content blocks/sections to the schema. Document which one ProjectLayout renders.",
+      "dimension": "architecture",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§3.4 Routing and redirects",
+      "issue": "With `build.format: 'directory'`, Astro does not emit redirect pages at the legacy `.html` paths; it emits `<legacy-path>/index.html`, so the old URL resolves only through host-level directory canonicalization.",
+      "evidence": "A build of the exact §6.1 config with Astro 7.4.1 produced `dist/about/about.html/index.html` and `dist/word-to-world.html/index.html` (build log: `/about/about.html/index.html`), while design.md §3.4 says Astro \"emits meta-refresh pages at the old paths\". GitHub Pages must 301 `/about/about.html` to `/about/about.html/` for the stub to be reached. In dev, Astro compiles the redirect route pattern with `trailingSlash: 'always'` (requiring a trailing slash), and the dev trailing-slash middleware exempts paths with a file extension, so the unslashed legacy URL does not match.",
+      "suggestion": "Emit exact stubs: generate them from the collection with a prerendered endpoint such as `src/pages/[...legacy].ts` (verified to produce `dist/word-to-world.html`), or place static files under `public/`. Otherwise document reliance on GitHub Pages' implicit 301 and change acceptance check 2 to request `<legacy>.html/`.",
+      "dimension": "architecture",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§3.3 Content schema / §3.5 Components / §4.2 Video pipeline",
+      "issue": "The media schema cannot express what the components are specified to render: no controls/autoplay/loop/muted flags, no width/height or aspect ratio, and no mechanism to select the 480p rendition.",
+      "evidence": "design.md §3.3 media objects contain only `type`, `src`, `poster`, `alt`, `caption`. §3.5 says VideoPlayer supports autoplay/loop/muted and ResponsivePicture emits \"explicit dimensions\"; §4.2 produces `video-720.mp4` and `video-480.mp4`. Existing pages need both playback modes: `word-to-world.html:81` uses `controls`, while `word-to-world.html:112` uses `autoplay loop muted`.",
+      "suggestion": "Add `controls`, `autoplay`, `loop`, `muted`, `playsinline`, and `width`/`height` (or `aspectRatio`) to the media schema, and define how VideoPlayer chooses between 480p and 720p, or drop the 480p output.",
+      "dimension": "architecture",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§3.4 Routing / §3.2 Directory layout (dynamic [slug] vs dedicated pages)",
+      "issue": "Project routes and dedicated site pages share the root namespace; when a project slug matches a site page route, Astro keeps the static page and drops the project page with only a warning.",
+      "evidence": "An Astro 7.4.1 build with `about.astro` and `[slug].astro` returning `slug: 'about'` logged `[WARN] [build] Could not render '/about' from route '/[slug]' as it conflicts with higher priority route '/about'` and emitted only about.astro. Astro 7's default `prerenderConflictBehavior` is `warn`. The current set has the near miss `/painting/` (painting.html) versus `/paintings/` (paintings/indexpainting.html).",
+      "suggestion": "Set `prerenderConflictBehavior: 'error'` in astro.config.mjs and add a reserved-site-route check or test (about, contact, design, paintings, poems) so a new MDX file cannot silently lose its page.",
+      "dimension": "architecture",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§3.6 Interaction preservation / §3.1 Stack / §2.2 Media inventory",
+      "issue": "The carousel and other third-party runtime dependencies cannot be preserved by \"small vanilla TypeScript modules\" as described, and several are missing from the interaction and external-reference audits.",
+      "evidence": "`photography.html:110-112`, `painting.html:98-100` and `printing.html:98-100` load jQuery 1.11.0 from code.jquery.com and slick 1.6.0 from cdn.jsdelivr.net before `carousel.js`; `carousel.js:6` calls `$('.slider').slick(...)`. `paintings/indexpainting.html:6-14,23` loads Bootstrap 3.3.6 from maxcdn and uses `data-ride=\"carousel\"`. `contact/contact.html:6` loads Font Awesome from maxcdn. `index.html:305,314,323` reference `78.media.tumblr.com` (not the audited `media.tumblr.com`), and `index.html:324-326` embeds a dead HTTP Xiami Flash player.",
+      "suggestion": "Vendor jQuery+slick and Bootstrap, or scope an explicit vanilla carousel rewrite with behavior tests; add every CDN/host to the media audit and to acceptance criterion 3.",
+      "dimension": "architecture",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§3.5 ProjectCard / §3.3 cover / §5.1 Layout rules / §5.2 Desktop parity",
+      "issue": "The single ProjectCard/cover/order model and the prescribed uniform auto-fit grid cannot reproduce the home page's three distinct project-link treatments or its fixed-width desktop layout.",
+      "evidence": "`index.html:61-146` renders 9 selected-work cards with per-project thumbnails including animated GIFs (`foxThumb.gif` line 62, `bird_above_sea.gif` line 78); `index.html:158-198` renders 8 round-masked prototype GIF links; `index.html:240-249` renders 3 more circular links. design.md §3.3 has one `cover` object and one `order`; §3.5 lists only ProjectCard. §5.1 prescribes `repeat(auto-fit, minmax(280px, 1fr))` and a 1200px container, while §2.3 records existing 378/768/960px fixed widths and §5.2 requires identical rendering at >=1200px.",
+      "suggestion": "Add home-presentation fields (section, thumbnail kind image/video, per-section order) and separate components for selected cards, prototype tiles and what's-more links; scope §5.1's grid/container rules below 1200px or renegotiate the parity contract.",
+      "dimension": "architecture",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§6.2 GitHub Actions",
+      "issue": "The deploy workflow leaves the Pages artifact path unspecified, but `actions/upload-pages-artifact` defaults to `_site/`, not Astro's `dist/`, so the deploy job fails.",
+      "evidence": "design.md §6.2 lists only `actions/upload-pages-artifact` then `actions/deploy-pages`, while §3.2/§6.1 build to `dist/`. The `actions/upload-pages-artifact` action.yml declares `path` with `default: \"_site/\"`.",
+      "suggestion": "Add `with: { path: dist }` to the upload step, include the `github-pages` environment on the deploy job, and verify Settings -> Pages -> Custom domain still shows xinyue.de after switching the source to GitHub Actions.",
+      "dimension": "architecture",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "blocking",
+      "section": "6.2 GitHub Actions",
+      "issue": "The publish step specifies no artifact path. actions/upload-pages-artifact defaults to `_site/`, while Astro emits `dist/`; implemented literally, the upload step fails. Copying the official starter workflow's `path: '.'` instead uploads the repository root, which at cutover still contains the old root index.html, so Pages would keep serving the old site instead of the Astro build.",
+      "evidence": "Design 6.2 says only \"Publish: `actions/upload-pages-artifact` then `actions/deploy-pages`\"; design 6.1 sets no `outDir`. `actions/upload-pages-artifact@v5.0.0/action.yml` declares `path` default `_site/`; Astro 7.4.1 `dist/core/config/schemas/defaults.js` has `outDir: './dist'`. The GitHub starter `pages/static.yml` uses `path: '.'` (entire repository).",
+      "suggestion": "Specify `with: path: ./dist` (or use `withastro/action`, which handles the Astro output) and assert the artifact contains `index.html` and `_astro/` before deploying.",
+      "dimension": "deployment",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "6.2 GitHub Actions (trigger)",
+      "issue": "`workflow_dispatch` has no ref guard and there is no environment protection, so selecting `astro-rebuild` in the Run workflow UI deploys unfinished work directly to the live custom domain. GitHub also only exposes `workflow_dispatch` once the workflow file exists on the default branch (`master`), so there is no safe pre-merge preview path.",
+      "evidence": "Design 6.2: \"Trigger: push to `master`, plus `workflow_dispatch`\"; design 6.3 says development happens on `astro-rebuild`. Repo: `git branch -a` shows `astro-rebuild` and `master` with `origin/HEAD -> origin/master`, and `astro-rebuild` has no upstream. GitHub docs: \"To trigger the workflow_dispatch event, your workflow must be in the default branch.\" The design defines no `github-pages` environment or protection rule.",
+      "suggestion": "Gate the deploy job with `if: github.ref == 'refs/heads/master'` and/or add a `github-pages` environment protection rule that only allows `master`; use a separate non-production target if previews are needed.",
+      "dimension": "deployment",
+      "votes": 2,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "7 Phase 5; 6.2; 8 criterion 8",
+      "issue": "The cutover order is wrong: Phase 5 merges to `master` first and then enables GitHub Actions as the Pages source. The merge push triggers the workflow while Pages is still \"Deploy from a branch\", so deploy-pages fails with \"Get Pages site failed\". During that window the same push is eligible for a Jekyll build of the Astro tree (no root index.html; `_astro/` is underscore-prefixed and excluded by Jekyll), which can take the live site down. Acceptance criterion 8 cannot be exercised before merge because `workflow_dispatch` requires the workflow on `master`.",
+      "evidence": "Design 6.2: \"Repository setting: Settings -> Pages -> Source = GitHub Actions. This is a one-time manual change.\" Phase 5: \"Merge to master, enable GitHub Actions as the Pages source, and confirm the production deploy.\" Criterion 8: \"The GitHub Actions workflow deploys successfully to Pages.\" GitHub docs: \"To start using custom workflows you must first enable them for your current repository\"; the deploy-pages first-run failure on an unconfigured Pages site is a known error. The live site is currently branch-published (`last-modified: Mon, 03 Jun 2024`, root `CNAME`).",
+      "suggestion": "Reorder: land the workflow on `master` without deleting old files, switch Settings > Pages to GitHub Actions, push/merge to run the first Actions deploy, verify, then delete old source/media in a follow-up commit. Never leave a branch-based build pointed at an Astro-only tree.",
+      "dimension": "deployment",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "3.1 Stack; 6.2",
+      "issue": "The Node version is not pinned to Astro 7's requirement. Astro latest (7.4.1) declares `node >=22.22.0`, but the local environment is Node 22.14.0/npm 10.9.2, below the floor, and the design only says \"Node 22\" with no `.nvmrc`, `engines`, or setup-node step.",
+      "evidence": "Astro 7.4.1 `package.json` engines `{node: '>=22.22.0'}`; `node -v` returns v22.14.0 and `npm -v` returns 10.9.2. Design 3.1 says \"Astro (latest stable)\" and design 6.2 says \"Node 22\"; actions/setup-node is not mentioned in 6.2.",
+      "suggestion": "Pin one supported Node line for local and CI (Node 24 LTS, or Node 22.23.x with npm 11.3+), add `.nvmrc` and `engines`, and use actions/setup-node with `node-version-file: .nvmrc`.",
+      "dimension": "deployment",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "6.2 GitHub Actions (npm)",
+      "issue": "Even with a lockfile, `npm ci` on the Ubuntu runner can fail because Node 22 ships npm 10.9.x, whose optional-dependency resolution bug can omit Linux native packages from a macOS-generated lockfile. Astro 7 pulls Vite 8/rolldown and lightningcss (per-platform optional dependencies) plus optional sharp.",
+      "evidence": "Node v22.23.4 bundles npm 10.9.9; Node v24.10.0 bundles npm 11.6.1 (nodejs/node tags). Astro 7.4.1 depends on `vite ^8.3.4`; `rolldown@1.2.12` lists `@rolldown/binding-linux-x64-gnu` as an optional dependency, `lightningcss@1.33.0` lists `lightningcss-linux-x64-gnu`, and `sharp@0.35.4` lists `@img/sharp-linux-x64`. The npm bug is reported fixed in npm 11.3.0 (npm/cli#8184); the local npm is 10.9.2.",
+      "suggestion": "Use Node 24 with npm >=11.3 in CI, or regenerate the lockfile in a Linux container; add a CI smoke test that runs `npm ci` on `ubuntu-latest` before the first Pages deploy.",
+      "dimension": "deployment",
+      "votes": 2,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "6.3 Branch and release; 9 Risks and rollback",
+      "issue": "Custom-domain/CNAME behavior across the source switch and rollback is unaddressed. GitHub ignores a repository CNAME for Actions deployments and uses Settings > Pages; the design never verifies the domain survives the switch. The rollback is not executable as written: `pre-astro` is a tag, and Pages branch publishing accepts a branch, not a tag; after the merge `master` contains the Astro tree, so \"set Pages back to the previous source\" would publish the new tree. If the custom domain is lost, Pages serves at `softlipaschara.github.io/website/`, while Astro emits root-absolute `/_astro/...` assets (base `/`), breaking the site.",
+      "evidence": "Design 6.3: \"tag `pre-astro` at the current master commit\"; Section 9: \"set Pages back to the previous source and force-push nothing\". Repo: `git ls-files` shows a tracked root `CNAME`; design 3.2 `public/` lists only `assets/ui/`, with no CNAME; default branch is `master`. GitHub docs: for a custom Actions workflow \"no CNAME file is created, and any existing CNAME file is ignored and is not required\"; the custom domain is configured in settings.",
+      "suggestion": "Record the current custom domain and Enforce HTTPS state before switching and verify both after; create and push a `pre-astro` branch at the tag, and document rollback as switching Pages to that branch (root) or reverting the merge on `master`. Keep `CNAME` on the rollback branch.",
+      "dimension": "deployment",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "3.4 Routing and redirects; 8 criterion 2",
+      "issue": "Astro 7 with `build.format: 'directory'` emits redirect stubs as directories: `/about/about.html` becomes `dist/about/about.html/index.html`, not `dist/about/about.html`. GitHub Pages serves exact `.html` files directly and normalizes directories with a 301 (`/folder` -> `/folder/`), but the design never verifies that an extension-bearing path backed by a directory resolves. Local `dist`/`astro preview` checks do not reproduce Pages routing, so acceptance criterion 2 (all legacy `.html` URLs) can ship broken or with an extra redirect hop. The extensionless forms GitHub Pages also served via its `.html` rule (`/about/about`, `/breathing-surface`) are not in the redirect map.",
+      "evidence": "Astro 7.4.1 `dist/core/build/common.js`: for `buildFormat: 'directory'`, `getOutFolder` returns `dist/<pathname>/` and `getOutFile` returns `index.html`. Simon Willison's GitHub Pages manual: `/foo.html` serves the file, `/folder` 301s to `/folder/`, and custom redirects are not supported. Live `curl -I https://xinyue.de/paintings` returns `301 location: https://xinyue.de/paintings/`. Design Phase 5 only says \"Serve `dist/` locally and run link, redirect, and media checks.\"",
+      "suggestion": "Validate every legacy URL (both `.html` and extensionless forms) on a real Pages deployment before cutover, or generate flat `dist/<legacy>.html` stubs with a post-build copy and remove the corresponding Astro redirect entries (a file and a directory with the same name cannot coexist).",
+      "dimension": "deployment",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "4.2 Video pipeline; 4.5 Local development",
+      "issue": "The design relies on `media-src/`, `media-out/`, and `public/media/` being gitignored but never updates `.gitignore`, which currently contains only `.idea/` and `.DS_Store`; `node_modules/`, `dist/`, `.astro/`, and `.env.local` are also missing. The repository pack is already 514.77 MiB; committing node_modules or media directories would push it toward/over GitHub's 1 GB recommended Pages source limit and bloat every Actions checkout. A committed `public/media/` would also be copied into `dist/`, inflating the Pages artifact toward the 1 GB published-site limit and 10-minute deployment timeout.",
+      "evidence": "`.gitignore` contains only `.idea/` and `.DS_Store`. `git count-objects -vH` reports `size-pack: 514.77 MiB`; the GitHub API reports repo `size: 527050` KB. Design 4.2 says media-src/media-out are \"(gitignored)\"; design 4.5 says `public/media/` is \"(gitignored)\"; no phase lists a `.gitignore` change. GitHub Pages limits: published site <=1 GB and deployment timeout 10 minutes.",
+      "suggestion": "Add `node_modules/`, `dist/`, `.astro/`, `.env.local`, `media-src/`, `media-out/`, and `public/media/` to `.gitignore` in Phase 1, verify before the first push, and add a pre-merge check that `dist/` stays small.",
+      "dimension": "deployment",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "blocking",
+      "section": "§4.1 R2 layout / §4.2 Video pipeline",
+      "issue": "The per-project object scheme uses one fixed video name, one fixed poster name, and one fixed GIF output name, but the schema and the real content have many media items per project, so a literal implementation overwrites every video and poster with the last one processed.",
+      "evidence": "design.md §4.1 (lines 302-310) defines exactly projects/<slug>/video-720.mp4, video-480.mp4, and poster.jpg; §4.2 (lines 331-347) writes those fixed names plus loop.mp4 for GIFs. §3.3 (lines 216-225) defines media as an array. In the repo, /Users/xiaoxia/Development/portfolio/website/word-to-world.html has 27 unique media sources, scribbling-speech.html 18, ink-animation.html 8 GIFs, jie.html 5, omzug.html 5, and breeze.html 5. ink-animation.html alone would map 8 different GIFs to the same loop.mp4.",
+      "suggestion": "Give every media item a stable id in frontmatter and key every output by it, for example projects/<slug>/<media-id>/<media-id>-720.mp4, <media-id>-480.mp4, <media-id>-poster.jpg, <media-id>-800.webp; define the mapping in the schema and in optimize.sh, and update §4.1/§4.2 accordingly.",
+      "dimension": "media",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§3.3 Content schema / §4.2 Video pipeline",
+      "issue": "The pipeline generates and uploads two renditions, but the schema exposes only one src and no component selects between 720p and 480p, leaving the 480p files unreferenced.",
+      "evidence": "design.md §3.3 (lines 216-225) has media[].src as a single string; §4.1 (lines 303-304) lists both video-720.mp4 and video-480.mp4; §4.2 (lines 331-337) generates both; §3.5 (line 274) describes VideoPlayer without any source-selection behavior. The HTML <source media> attribute is ignored for <video> in browsers, so a naive <source media=...> would not solve it.",
+      "suggestion": "Either drop the 480p rendition or add explicit src720/src480 (or a renditions object) to the schema and select in VideoPlayer with matchMedia/navigator.connection; document the chosen policy.",
+      "dimension": "media",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§4.2 Video pipeline",
+      "issue": "The reference poster command fails for videos shorter than one second, and the pipeline defines no failure behavior.",
+      "evidence": "design.md §4.2 (line 339) uses ffmpeg -ss 1 -i input.mp4 -frames:v 1 -q:v 2 poster.jpg. /Users/xiaoxia/Development/portfolio/website/imgA/speechdetection.mp4 is 0.40 s; running that exact command exits 234 with 'Nothing was written into output file' and produces no poster. If the script uses set -e the whole run stops; if not, a stale poster.jpg from a previous item can be reused. imgA/cloudy.mp4 is 1.03 s and succeeds.",
+      "suggestion": "Compute min(1, duration*0.5) with ffprobe and pass it to -ss (or use -ss 0), check exit status and output existence, fall back to a placeholder or the first frame, and generate posters per media item (see the naming finding).",
+      "dimension": "media",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§4.2 Video pipeline / §5.2 Desktop parity",
+      "issue": "The first-frame-at-1s poster rule discards the 13 existing curated posters and the 13 Vimeo thumbnails, changing rendered pages and violating the desktop-parity contract.",
+      "evidence": "design.md §4.2 (lines 326 and 339) generates poster.jpg for every video. Current HTML has 13 poster= attributes: imgA/bearPoster.png, box_view_poster.png, breezeVideoBackground.png, cowboyPoster.png, elephantPoster.png, mushroomPoster.png, poster_cat_story.png, poster_chinese.png, poster_chinese_video.png, poster_visualisation_video.png, transcript_poster.png, user_interaction_poster.png, videoPoster.jpg. /Users/xiaoxia/Development/portfolio/media-src/ also contains 13 Vimeo thumbnail JPGs. §5.2 (lines 417-427) permits only anti-aliasing, removed comments, and already-broken images as differences.",
+      "suggestion": "Prefer an explicit poster from frontmatter, then the source's existing poster/Vimeo thumbnail, and only fall back to frame extraction; add a poster column to media-audit.md and migration-checklist.md.",
+      "dimension": "media",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§3.3 Content schema / §3.5 Components / §5.1 Layout",
+      "issue": "There is no source for intrinsic image and video dimensions, so ResponsivePicture's explicit dimensions and §5.1's aspect-ratio wrappers cannot be generated in the CI build.",
+      "evidence": "design.md §3.3 (lines 212-225) has only src, poster, alt, and caption; §3.5 (line 275) promises explicit dimensions; §5.1 (line 413) promises aspect-ratio wrappers. The media files live in gitignored media-out/ (§4.2 line 318), and the GitHub Actions build (§6.2 lines 471-474) only runs npm ci and npm run build, so it cannot probe the files. Without dimensions, images and videos render without width/height and cause layout shift.",
+      "suggestion": "Generate a committed media-manifest.json (key, width, height, bytes, variants, hash) in the media pipeline and consume it in the schema/components, or add width/height to frontmatter with zod validation.",
+      "dimension": "media",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§3.2 Directory layout / §7 Phase 3 / §8 Acceptance criteria",
+      "issue": "No build-time or post-deploy check verifies that every frontmatter media reference exists, so broken media can ship while npm run build and the no-broken-internal-links criterion still pass.",
+      "evidence": "design.md §3.2 (lines 181-185) lists scripts/media/audit.mjs without a contract; §7 Phase 3 (line 518) says 'Audit every media reference' and line 523 says 'verify a sample of objects'; §8 criterion 7 (line 560) only checks internal links. Because media URLs are external, Astro's build cannot detect a 404. The repo already has 19 local refs that are absent (see the next finding).",
+      "suggestion": "Make audit.mjs mandatory and deterministic: parse every MDX cover.src, media[].src, and poster, assert each key exists in media-out/ or the manifest, and run a post-upload HEAD/GET spot-check (or full key listing) before deploying; fail the workflow on any miss.",
+      "dimension": "media",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§2.4 Known broken or stale items / §10 Dependencies and open inputs",
+      "issue": "The known-broken list omits 19 missing local media references across 8 pages, including an entire paintings gallery.",
+      "evidence": "Cross-checking all src/poster attributes against the filesystem in /Users/xiaoxia/Development/portfolio/website found 19 missing refs on 8 pages: paintings/indexpainting.html (6), scribbling-speech.html (5: bouncing.gif, jumping.gif, running.gif, size.png, poetry.jpg), jie.html (2: papercut.png, face.png), word-to-world.html (2: imgA/bigbuckbunny.mp4, imgA/catWalking.mp4), and one each in about/about.html, coffee-composer.html, painting.html, poems/indexpoem.html. Sampled live URLs (https://xinyue.de/imgA/hanwen.jpg, /imgA/bigbuckbunny.mp4, /imgA/bouncing.gif, /imgA/papercut.png, /imgA/media_photo_coffee.jpg, /imgA/self.jpg) all return 404. §2.4 (lines 123-131) and §10 (lines 590-591) mention only self.jpg and Instagram.",
+      "suggestion": "Add the full per-page missing-asset inventory to §2.4/media-audit.md and choose an explicit outcome for each: owner supplies, omit with an editorial note, or a documented placeholder. Do not let the migration silently drop them.",
+      "dimension": "media",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§2.2 Media inventory / §4.7 Vimeo source availability / §7 Phase 3",
+      "issue": "External media recovery assumptions are wrong and the design has no policy or schema state for unrecoverable source media.",
+      "evidence": "design.md §2.2 (lines 94-101) and §7 (line 519) assume S3/Tumblr media can be downloaded; §4.7 provides a fallback only for Vimeo. HTTP checks: all 7 s3.eu-central-1.amazonaws.com/omzug.com URLs return 403 AccessDenied (the bucket root is also 403), and all Tumblr/Instagram URLs (78.media.tumblr.com, vt.media.tumblr.com, scontent.cdninstagram.com) return 000 in this environment. These are video/image content on index.html, breeze.html, scribbling-speech.html, and sensing-armband.html. The schema's type enum is only video|image (§3.3 line 219), so a Vimeo iframe fallback or an unavailable item has no representation. §2.2 also says 3 Tumblr pages; the repo has 2.",
+      "suggestion": "Audit all external URLs before Phase 2, record unrecoverable ones in media-audit.md, and define the fallback (remove with a note, placeholder, or owner-supplied replacement). If iframe fallbacks must remain, add an embed type or intentionally allow raw MDX HTML.",
+      "dimension": "media",
+      "votes": 2,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§4.6 Upload and credentials",
+      "issue": "rclone sync is the only bulk-upload command, and it deletes destination-only objects, so uploading a partial media-out/ wipes previously uploaded project media.",
+      "evidence": "design.md §4.6 (lines 389-393) shows only rclone sync media-out/ r2:portfolio-media/. rclone sync --help on this machine states: 'Destination is updated to match source, including deleting files if necessary.' The bucket will hold roughly 450 MB and 300+ objects, and the design has no dry-run, prune step, versioning, or backup.",
+      "suggestion": "Use rclone copy for routine uploads and a separate, explicitly reviewed rclone sync --dry-run/delete step for pruning; enable R2 object versioning or use --backup-dir; require a complete media-out generation before any sync.",
+      "dimension": "media",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§4.6 Upload and credentials",
+      "issue": "The rclone R2 remote is neither configured nor documented, and the stated bucket-scoped token cannot pass rclone's default bucket check unless no_check_bucket is set.",
+      "evidence": "design.md §4.6 (lines 384-393) says the token is scoped to portfolio-media (Object Read and Write) but shows only rclone sync media-out/ r2:portfolio-media/. On this machine rclone listremotes prints only gcs: (no r2:), and rclone config providers shows the S3 no_check_bucket default is False. Cloudflare's rclone documentation requires provider = Cloudflare, endpoint = https://<account_id>.r2.cloudflarestorage.com, region = auto, acl = private, and no_check_bucket = true for object-scoped tokens.",
+      "suggestion": "Document the exact rclone.conf block without secrets and add --s3-no-check-bucket; verify with rclone lsd r2:portfolio-media, and add --exclude .DS_Store to avoid uploading Finder junk.",
+      "dimension": "media",
+      "votes": 2,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§4.4 Caching",
+      "issue": "Stable generic object keys plus a 7-day max-age mean that re-uploading a changed poster, video, or image serves stale content from Cloudflare's edge and from users' browsers; a dashboard purge is not a reliable invalidation path.",
+      "evidence": "design.md §4.1 (lines 302-310) uses fixed keys such as video-720.mp4, poster.jpg, and cover-2000.webp; §4.4 (lines 363-364) says 'Updates are rare and can be purged from the Cloudflare dashboard'; §9 (line 577) repeats the 7-day TTL/purge mitigation. Cloudflare's R2 custom-domain cache honors Cache-Control and does not invalidate warmed entries when an object key is overwritten; browser caches are outside any Cloudflare purge. rclone sync also does not re-upload unchanged objects, so a changed Cache-Control policy will not be applied to existing objects.",
+      "suggestion": "Version keys with a content hash (for example video-720.<hash>.mp4, or ?v=<hash> from the manifest) and use Cache-Control: public, max-age=31536000, immutable; otherwise shorten the TTL and purge changed URLs via the Cloudflare API from the upload script.",
+      "dimension": "media",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§4.1 R2 layout / §4.6 Upload and credentials / §7 Phase 0",
+      "issue": "The R2 custom-domain prerequisites are incomplete: the bucket and the xinyue.de zone must be in the same Cloudflare account, and wrangler r2 bucket domain add requires a zone ID, neither of which the design pins.",
+      "evidence": "design.md §4.1 (lines 295-298) connects media.xinyue.de; §4.6 (line 382) says wrangler is 'already authenticated as xinyue@wordtoworld.io'; §7 Phase 0 (lines 494-497) still lists the nameserver migration as pending, but dig NS xinyue.de already returns sonia.ns.cloudflare.com and trevor.ns.cloudflare.com, and media.xinyue.de has no record. Cloudflare's command is wrangler r2 bucket domain add <BUCKET> --domain <domain> --zone-id <zone-id>, and the zone must be in the same account as the bucket. The design also says GitHub Pages records stay DNS-only without noting that the auto-created media record is proxied.",
+      "suggestion": "Record the Cloudflare account ID and zone ID, verify wrangler whoami points at the account that owns xinyue.de, use the --zone-id form, and document that media is proxied while the GitHub Pages records remain grey-cloud.",
+      "dimension": "media",
+      "votes": 2,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§3.3 Content schema / §3.5 Components / §4.2 GIF replacement",
+      "issue": "The GIF-to-video policy affects 43 img elements, but the schema and components only support image covers and a media gallery; a converted GIF cover cannot be represented and the conversion changes img semantics.",
+      "evidence": "design.md §4.2 (GIF replacement, lines 342-351) says decorative looping GIFs become autoplay videos; §3.3 (lines 212-225) defines cover as {src, alt} and media as video|image; §3.5 (line 273) describes ProjectCard as the home page tile. In the repo, all 43 GIF references are img tags and zero GIFs are inside video; index.html line 62 uses imgA/foxThumb.gif and line 78 imgA/bird_above_sea.gif as project-card covers, and lines 168-201 use eight GIFs as .roundMasks thumbnails.",
+      "suggestion": "Decide per GIF: keep it as an img (static WebP/AVIF or animated WebP) where the card or mask layout depends on an image, or add cover.type/cover.poster and a video path in ProjectCard; add a GifVideo/VideoPlayer component with explicit sizing and list the decisions in media-audit.md.",
+      "dimension": "media",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§3.3 Content schema / §4.5 Local development",
+      "issue": "The media-origin variable is named two different ways, and the local fallback is dev-only, so a production build cannot use it; the risk-table mitigation and Phase 5 dist verification do not work as described.",
+      "evidence": "design.md §3.3 (lines 236-237) says components prepend MEDIA_BASE_URL; §4.5 (lines 371-377) defines PUBLIC_MEDIA_BASE and .env.development with /media. Astro exposes only PUBLIC_-prefixed vars and loads .env.development only in dev mode; astro build/preview (§6.2 lines 471-474) use production mode. The §9 (line 572) mitigation ('PUBLIC_MEDIA_BASE switch and local public/media fallback') therefore does not apply to the built site, and public/media would be copied into dist if present. §4.5 (line 377) also claims videos show their poster when local media is absent, but the poster lives in the same absent folder.",
+      "suggestion": "Pick PUBLIC_MEDIA_BASE with a code default of https://media.xinyue.de, document how to build with /media (for example PUBLIC_MEDIA_BASE=/media npm run build or .env.production.local), add a guard against shipping public/media in production, and correct the poster claim.",
+      "dimension": "media",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "blocking",
+      "section": "§4.7 Vimeo source availability / §2.2 Media inventory / §9 Risks",
+      "issue": "外部媒体可用性只评估了 Vimeo；全部 7 个 S3 引用都返回 HTTP 403，仓库里没有本地副本，首页 hero 本身就是其中之一，但设计没有为 S3 定义任何 fallback。",
+      "evidence": "curl 对 https://s3.eu-central-1.amazonaws.com/omzug.com/gif/ 下的 armbandprototype.mp4、breezeLamp.mp4、cat_story.mov、moon_table_chinese.mov、user_play_with_it.mp4、talk_to_me_no_text.mp4 全部返回 403（bucket 的 ?list-type=2 也是 403）；引用位置为 /Users/xiaoxia/Development/portfolio/website/index.html:42、breeze.html:117、sensing-armband.html:23、scribbling-speech.html:216/229/246/262；全仓库 find 未找到这些文件的本地副本。设计 §4.7 只讨论 13 个 Vimeo 的下载情况，§9 风险表也只有 Vimeo downloads fail。",
+      "suggestion": "在 Phase 0 增加外部源可用性 gate：逐条记录可下载/不可下载，并确认 owner 是否有该 S3 bucket 的凭据；为不可恢复的 S3 资源定义与 Vimeo 同级的 fallback（保留原 URL 并记入 media-audit exception、仅保留 poster、或移除该区块），并把首页、breeze、sensing-armband、scribbling-speech 的对应验收项写入 migration-checklist。",
+      "dimension": "completeness",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§2.4 Known broken or stale items / §10 Dependencies and open inputs",
+      "issue": "缺图清单不完整：设计只记录 about 的 self.jpg，实际有 9 个可见的缺失本地引用，其中 /paintings/ 的 6 张轮播图全部缺失、/poems/ 的唯一内容图缺失。",
+      "evidence": "可见（非注释）引用与缺失文件：/Users/xiaoxia/Development/portfolio/website/paintings/indexpainting.html:27,31,35,39,43,49 引用 tuzi1.jpg、sun.jpg、xiaobing.jpg、hanwen.jpg、qingchengshan.jpg、tongtong.jpg；poems/indexpoem.html:14 引用 tuzi.jpg；coffee-composer.html:160 引用 media_photo_coffee.jpg；about/about.html:14 引用 self.jpg。git 历史中 tuzi、tuzi1、xiaobing、tongtong 在 cc4449b 加入、在 25f21a9 删除，可用 git show cc4449b:imgA/<name> 恢复；sun、hanwen、qingchengshan、media_photo_coffee、self 从未被 git 跟踪。",
+      "suggestion": "在 media-audit.md 增加“缺失本地资源”表；先从 cc4449b 恢复 4 张可恢复图片；对 5 张不可恢复图明确 placeholder 或移除；把 visual-suggestions.md 的缺图项从 1 条扩展为完整列表。",
+      "dimension": "completeness",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§4.1 R2 layout / §3.2 Directory layout / §3.3 Content schema",
+      "issue": "首页和站点页的媒体没有 R2 或 public 路径：R2 只定义 projects/<slug>/，public/assets/ui/ 只列 favicon、back button、logos、fonts，但首页引用的 21 个媒体资源和 resume PDF 都没有目标路径，站点页还引用 8 个图片和 imgA 里的 jQuery。",
+      "evidence": "/Users/xiaoxia/Development/portfolio/website/index.html 引用 foxThumb.gif、composerThumb_.jpg、bird_above_sea.gif、breezeThumb.png、jieThumb.png、inkThumb.png、grids.png、8 个 prototype 圆图、rain.jpg、photography.jpg、chinesePainting.jpg、raining.jpg、water.jpg、videoPoster.jpg、favicon.png、resume_xinyue_2020.pdf（共 23 个 imgA 资源，其中 favicon 和 PDF 不是媒体）；poems/indexpoem.html:14、paintings/indexpainting.html:6,27-49、about/about.html:14 另有引用。设计 §4.1 的 object paths 只有 projects/<slug>/...，§3.3 也只说明组件会 prepend /projects/<slug>/。",
+      "suggestion": "为 site/home 媒体增加 R2 前缀（如 site/ 或 home/）和命名规则；PDF 等非媒体文件放 public/assets/files/ 或单独 R2 前缀；明确 ResponsivePicture、ProjectCard 和首页页面如何引用这些非 project-scoped URL；若要保留旧 PDF 直链，可同时保留 /imgA/resume_xinyue_2020.pdf 的 redirect。",
+      "dimension": "completeness",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§3.3 Content schema / §3.5 Components / §2.1 Page inventory",
+      "issue": "单一 project collection 加单一 cover 字段无法表达现有首页结构（6 个 Selected Works、8 个 Prototype、3 个隐藏的 What's More），也无法同时表达首页卡片缩略图和项目页 hero；4 个项目页目前没有任何可见入口。",
+      "evidence": "/Users/xiaoxia/Development/portfolio/website/index.html:60-152 是 6 张 selected-works 卡片，:167-203 是 8 个 prototype 链接，:240-249 是隐藏 besidesPart 的 3 个链接；:117-141 的 web、omzug、throw-it 卡片在注释里，the-body-languages-of-machine.html 没有任何 inbound link。首页缩略图与项目页 hero 不是同一张图：foxThumb.gif vs word_to_world_titel_.gif、composerThumb_.jpg vs espresso_in_hand.jpg、bird_above_sea.gif vs main_movie_bird_sea.mp4、breezeThumb.png vs breezeImage.png、jieThumb.png vs insBorrow.jpg、inkThumb.png vs inkImage.png。§3.3 schema 只有 cover、order、draft；若用 draft 隐藏项目，getStaticPaths 通常会丢掉 legacy route（设计未定义 draft 语义）。scale、responsive-lighting、sensing-armband 没有本地内容图，required cover 无法满足。",
+      "suggestion": "schema 增加 thumbnail（首页卡片图）和 homeSection/featured（或在 site.ts 维护显式的首页映射）；明确 21 个项目中哪些出现在首页、哪些只保留 legacy 直达；cover 改为 optional 或允许从 video poster 生成。",
+      "dimension": "completeness",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§3.3 Content schema / §3.5 VideoPlayer",
+      "issue": "media schema 没有播放语义，无法表达现有视频的 controls、autoplay、loop、muted、playsinline 差异；VideoPlayer 组件声称支持这些选项，但 frontmatter 的 media 项只有 type、src、poster、alt、caption。",
+      "evidence": "/Users/xiaoxia/Development/portfolio/website/breeze.html:116 使用 controls preload=auto；scribbling-speech.html:138/152/215/228/245/261 使用 controls；word-to-world.html:81/121/153/205 使用 controls 加 poster；其余大量视频使用 autoplay、loop、muted，部分带 playsinline（word-to-world.html:24/77/112/150/202 等）。设计 §3.3 的 media object 没有这些字段，§3.5 的 VideoPlayer 选项无法从内容中传入。",
+      "suggestion": "在 schema 增加 autoplay、loop、muted、controls、playsinline（并考虑 480/720 两个 source）；或明确 media array 只用于简单 gallery，复杂页面必须在 MDX body 里逐条使用 VideoPlayer，并在 migration-checklist 逐页核对播放行为。",
+      "dimension": "completeness",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§4.2 Video pipeline / §4.3 Image pipeline / §5.2 Desktop parity contract",
+      "issue": "GIF 转 H.264 的 yuv420p 和 PNG 转 JPEG fallback 都会丢失透明通道，与 §5.2“桌面视觉完全一致”冲突；首页的圆形 prototype mask 和多张缩略图依赖透明。",
+      "evidence": "设计 §4.2 的 ffmpeg 命令使用 -pix_fmt yuv420p；sips -g hasAlpha 显示 /Users/xiaoxia/Development/portfolio/website/imgA/bird_above_sea.gif、breezeThumb.png、jieThumb.png、saodi_round.gif、streetLighting_round.gif、tactilePrototype_round.gif、adaptiveSurface_round.gif、color.gif、feather.gif、soft2_mask.gif、canny_round.gif 全部 hasAlpha=yes；index.css:856-860 的 .roundMasks 没有背景色，body 默认白底。转成 MP4 后透明区会变成实色（通常黑色）。",
+      "suggestion": "pipeline 先检测 alpha；对需要透明的 GIF/PNG 保留 GIF/APNG/WebP，或改用支持 alpha 的 WebM/VP9；若必须转 H.264，按页面背景色 flatten，并在 parity 截图检查中加入这些 tile。",
+      "dimension": "completeness",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§3.6 Interaction preservation / §5.3 Code cleanup / §2.2 Media inventory",
+      "issue": "外部 JS/CSS 渲染依赖没有进入迁移清单：/paintings/ 使用的是 Bootstrap carousel（不是设计里唯一提到的 carousel.js/slick），它的 jQuery 就放在将被删除的 imgA 里；painting、photography、printing 依赖 CDN 的 jQuery 加 slick。",
+      "evidence": "/Users/xiaoxia/Development/portfolio/website/paintings/indexpainting.html:6 加载 ../imgA/jquery-1.11.3.js，:8-14 从 maxcdn.bootstrapcdn.com 加载 bootstrap.min.css、bootstrap-theme.min.css、bootstrap.min.js，:17 使用 carousel slide data-ride=carousel；painting.html:98-100、photography.html:110-112、printing.html:98-100 从 code.jquery.com 和 cdn.jsdelivr.net 加载 jQuery/slick 并调用 carousel.js；contact/contact.html:6 从 maxcdn 加载 font-awesome，并依赖 contact/hover.css 的 hvr-float。index.html:345-346 也加载 jQuery/slick 但页面没有 .slider，属于可删除的 dead dependency。设计 §3.6 只列 carousel.js，§5.3 只讨论未被任何页面引用的本地 js/bootstrap.js 和 npm.js。",
+      "suggestion": "在依赖审计中列出全部 CDN JS/CSS；为 /paintings/ 的 Bootstrap carousel 和三个 slick 页面分别定义替代实现（vanilla carousel 或自托管库），把 slick.css/slick-theme.css 和 Bootstrap 的箭头/布局样式纳入 parity 检查；删除 imgA 前确认 jquery-1.11.3.js 的替代方案。",
+      "dimension": "completeness",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§4.2 Media pipeline / §7 Phase 6 Optional history cleanup",
+      "issue": "65 个、约 88.8 MB 的 imgA 文件没有被任何页面引用（包括设计 media inventory 里的全部 4 个 .mov），设计没有定义这些未引用资产的保留/归档策略；imgA 会从工作树删除，Phase 6 的 history rewrite 会让它们永久消失。",
+      "evidence": "对 /Users/xiaoxia/Development/portfolio/website/imgA 的 304 个文件按 src/href/poster 解析后，258 个被引用、65 个未被引用；其中 giraffe_penguin_demo.mov、saodi1.mov、speech_chinese.mov、termochromic.mov 正好是 §2.2 的 mov 4 全部；未被引用的 1080p 源/备用视频还包括 videoForIndex.mp4（1920x1080，5.5s）、webRecord.mp4（2560x1432）、screen_word_to_world.mp4、onASunnyDay.mp4、bubbleUI.mp4、nfc_prototype.mp4、speech_demo.mp4、omzugScreenshot.mp4。",
+      "suggestion": "删除 imgA 前生成未引用资产清单，把 source/master 及可能有价值的文件上传到 R2 的 masters/ 前缀或做仓库外备份；把归档步骤写成 Phase 6 的前置条件，并要求 owner 明确哪些文件可以丢弃。",
+      "dimension": "completeness",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§2.2 Media inventory / §8 Acceptance criteria #3",
+      "issue": "外部媒体清单漏掉 index.html 博客里的 xiami Flash 音频和 78.media.tumblr.com 图片，并且 Tumblr 页面数写错（写 3 页，实际 2 页）；这些 Tumblr URL 和 xiami SWF 都已经不可用。",
+      "evidence": "/Users/xiaoxia/Development/portfolio/website/index.html:324-326 的 embed 指向 http://www.xiami.com/widget/45231_2163233/singlePlayer.swf（curl 返回 200 但重定向到 conch.xiami.com，SWF 已不存在）；index.html:305/314/323 的 3 个 78.media.tumblr.com 图片（curl DNS 失败）；scribbling-speech.html:139/153 的 2 个 vt.media.tumblr.com 视频（DNS 失败）。设计 §2.2 只写 media.tumblr.com / vt.media.tumblr.com 共 3 pages，AC3 只列 media.tumblr.com，未提 xiami。",
+      "suggestion": "把这些 URL 加入 media-audit 并标注不可恢复；Blog 区块需要明确音频和 3 张图片的替代或删除方案；AC3 的 host 列表加入 xiami.com 和 78.media.tumblr.com。",
+      "dimension": "completeness",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "blocking",
+      "section": "§5.1 Layout rules / §5.2 Desktop parity contract",
+      "issue": "按 §5.1 的全局内容容器与首页网格规则实现，会在 1200/1440/1920px 改变旧站桌面布局，§5.2 的 parity 验收必然失败；hero 与 full-bleed 区块必须显式豁免。",
+      "evidence": "本地 Playwright+Chrome 实测旧站 1440px：首页 hero <video> 为 1440×810 全宽（/Users/xiaoxia/Development/portfolio/website/index.html:40-44），.center 卡片 475px、每行 3 个（/Users/xiaoxia/Development/portfolio/website/index.css:324-338），.flexSpaceAround 宽 1440；1200px 时卡片 396px。新规则 min(100% - 48px, 1200px)（design.md:410）把 1440 内容压到 1200，repeat(auto-fit, minmax(280px,1fr)) 在 0–24px gap 下于 1200 容器产生 4 列（约 282–288px/张），与旧站 3 列 475px 不符；1920px 旧站继续随视口放大，新容器封顶。项目页同样：word-to-world .insBorrow 在 1440 实测 1440px 宽（index.css:752-757）。首页导航还依赖 #mask 高度 84px、ul margin-top:-51px、a padding:33px 20px 的叠放（index.css:190-231,242-248），SiteHeader 规格（design.md:270）没有覆盖，普通 flow header 会改变首屏。",
+      "suggestion": "明确 ≥1200 桌面布局冻结：hero、full-bleed 封面、首页卡片保持旧尺寸/列数（33% 三列、475px@1440），新容器与 auto-fit 网格只用于 <1200；或把 parity 合同改为允许这些变化并逐页列出。SiteHeader 需保留 #mask、负 margin 和 active 状态的规格。",
+      "dimension": "responsive",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "blocking",
+      "section": "§5.1 Layout rules / §5.2 Desktop parity contract / §3.5 VideoPlayer",
+      "issue": "Media: width:100% 与移除固定宽度会放大旧站的 960px Vimeo 框及按百分比排版的媒体，且 VideoPlayer 没有源宽高比数据，桌面盒尺寸与旧站不一致。",
+      "evidence": "12 个 live Vimeo iframe 使用 width=960 height=540（canny-edge-detection.html:42-44 为 896×504；scribbling-speech.html:266-270 的 iframe 在注释里，故 design.md:96 的“13 project pages”不准确）。实测 1440px：word-to-world iframe 960×540、正文 864px（word-to-world.html:708）；index.css:989-995 .breezeVideo{width:960px}；index.css:856-860 .roundMasks{width:233px}（实测含 padding 255px）。旧 Vimeo 框把任意源比例 letterbox 进 960×540；新 <video> 若按固有比例 + 100% 宽，盒高和留白都会变。本地视频比例也不统一（ffprobe：main_movie_bird_sea.mp4 1200×800、throw_it_resize.mp4 674×1198、webRecord.mp4 2560×1432）。",
+      "suggestion": "把桌面媒体尺寸作为项目数据保留（960×540/896×504/百分比/固定 px），width:100% 仅用于窄屏；VideoPlayer 接收 width/height/aspectRatio，桌面复刻旧盒子尺寸（必要时仍 letterbox），窄屏再流体化。并修正 §2.2 的 iframe 数量。",
+      "dimension": "responsive",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§5.1 Breakpoints / §5.2 Desktop parity contract / §7 Phase 4",
+      "issue": "640/900/1200 断点丢掉了旧站的 1280 和 1024 断点，1200–1280 区间无法用一套 ≥1200 规则同时匹配两个 parity 采样宽度。",
+      "evidence": "index.css:1093-1106 的 @media(max-width:1280px) 修改 .prototypeGifs margin-top、#video、.indiaText、#omzugVideo；实测首页 .prototypeGifs margin-top 在 1200px = -387px，在 1440px = -465px，正好跨过 1280；1024px 还有 .roundMasks 233→180px（index.css:1107-1114）。设计只在 1200/1440 两点验 parity（design.md:525-530）且断点列表只有 640/900/1200（design.md:409）。",
+      "suggestion": "增加 1280 断点（若要覆盖 1024 笔记本再加 1024），或在 ≥1200 原样移植旧 CSS 的 1280/1024 媒体查询；在文档中给出旧断点→新断点映射与每个断点的验证宽度。",
+      "dimension": "responsive",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§5.2 Desktop parity contract / §8 criteria 5-6 / §7 Phase 4",
+      "issue": "parity 验证方法不可执行也不充分：只有 1200/1440 两张截图、没有工具/阈值/基线/DPR 定义；390px 检查只测默认 hash 状态，且 scrollWidth 指标可被 overflow-x:hidden 掩盖。",
+      "evidence": "设计只写 Compare desktop screenshots at 1440 px and 1200 px（design.md:525-530）与 documentElement.scrollWidth <= innerWidth + 1（design.md:557）。实测：首页 #blog 状态在 390px 时 scrollWidth=410（#blogBlock 390px 宽，L=20，R=410），默认 #selectedWorks 状态为 390；word-to-world 在 390px 为 390/390（与 §2.3 的 body copy cut off 不符）。动画 GIF/视频（首页 8 个原型 GIF、各页 autoplay 视频）使两张静态截图天然不同；没有 pre-astro 基线、diff 阈值、DPR（2000px 图片在 DPR2 下的表现）、hover/focus 状态说明。",
+      "suggestion": "提供可执行的 CI 脚本：Playwright 在 320/375/390/414/640/768/900/1024/1200/1280/1440/1920、DPR1/2 下逐页截图，并逐个 hash 状态测 scrollWidth；对动态媒体区域加 mask；保存 pre-astro 基线并定义像素/几何阈值；禁止用 overflow-x:hidden 通过验收。",
+      "dimension": "responsive",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§3.3 Content schema / §3.5 ResponsivePicture / §5.1",
+      "issue": "schema 缺少 width/height/aspectRatio/sizes/layout 字段，ResponsivePicture 承诺的 explicit dimensions、aspect-ratio 包装和每页不同媒体宽度都无法实现；CI 也没有媒体文件可推导尺寸。",
+      "evidence": "schema（design.md:205-230）的 media 只有 type/src/poster/alt/caption，cover 只有 src/alt；组件表却要求 explicit dimensions（design.md:275）。media-out/ 与 media-src/ 均 gitignored（design.md:316-318），§4.5 说本地可缺失，因此 GitHub Actions 构建时无法读取文件计算尺寸。实际布局包括 word-to-world 20 个 live .twoVideos（45% 宽）、.videos_scribbling_speech 60%、omzug .omzugImage 80% 等。本地视频比例见上（3:2、竖屏、16:9）。§4.5 还声称无本地媒体时视频会显示 poster，但 poster 同样走 MEDIA_BASE_URL，media-out 缺失时 poster 也 404。",
+      "suggestion": "给 media/cover 增加 width/height（或 aspectRatio）与 layout/size/fullBleed/sizes 字段；在 Phase 3 生成并提交尺寸 manifest（或把尺寸写进 MDX），避免构建期读媒体；修正 §4.5 关于 poster 的描述。",
+      "dimension": "responsive",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§5.1 Layout rules / §5.4 Fonts / §3.5 BaseLayout",
+      "issue": "单一 global.css + BaseLayout 会把 index.css 的 body 字体、padding 和全局 a:link/a:hover 样式泄漏到目前只用 common.css 的 5 个 site 页面，桌面视觉会变。",
+      "evidence": "about/about.css:1 只 import ../common.css；common.css body 是 \"Abadi MT Condensed Light\", Arial、padding:20px，a:hover 背景 #00aced；实测 about/contact 在 1440px computed body font 为 Abadi、padding 20px。index.css:5-10 body 是 Signika、padding/margin 0，index.css:242-256 a:link{color:white;padding:33px 20px}。§5.4 自托管字体列表没有 Abadi（系统字体，无法自托管），而 BaseLayout（design.md:269）对所有路由注入 global CSS。",
+      "suggestion": "拆分 base.css（reset/字体）与 portfolio.css（仅项目页/首页引入），site 页面保留 common.css 等价字体与 padding；把 /about/ /contact/ /design/ /paintings/ /poems/ 加入 parity 截图矩阵，并覆盖 hover 状态。",
+      "dimension": "responsive",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§5.1 Layout rules / §8 criterion 5",
+      "issue": "新的通用响应式规则没有覆盖旧页面自己的横向 flex 布局和移动端媒体切换；加上 viewport meta 后 /poems/、/about/ 和首页 #blog 会新增横向溢出。",
+      "evidence": "poems/indexpoem.css:9-14 p.content{width:230px;padding:50px}，.container{display:flex;flex-direction:row}，poem1/2 各 margin:0 65px；注入 viewport meta 后 Playwright 390px 实测 scrollWidth=630（截图宽 1890px @DPR3），列被裁切/重叠。about/about.css .container{display:flex} + .introduction{margin-left:70px}；把缺失的 self.jpg 换成现有图片后 390px 实测 scrollWidth=741。首页 #blog 状态 390px 实测 410。另有 omzug.html/web.html 在 ≤414px 用 #omzugVideo/.webVideo 与 .roomGif/.webGif 做视频↔GIF 切换（index.css:1601-1643），新 VideoPlayer/ResponsivePicture 方案未提及保留。",
+      "suggestion": "在 Phase 4 明确逐页重排：poems 单列、去掉固定 230/50px；about 图文上下堆叠；blog 区块限制宽度；保留或明确替代 omzug/web 的移动端媒体切换；把 hash 状态和 320/375px 纳入验收。",
+      "dimension": "responsive",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§2.2 Media inventory / §2.4 Known broken items / §4.1 R2 layout / §10",
+      "issue": "媒体审计与 R2 布局不完整：多处 live 缺失文件未记录，且首页/site 页面的图片和 PDF 不在 projects/<slug>/ 路径约定内，没有上传目标。",
+      "evidence": "paintings/indexpainting.html:27-49 引用 ../imgA/tuzi1.jpg、sun.jpg、xiaobing.jpg、hanwen.jpg、qingchengshan.jpg、tongtong.jpg，repo 中均不存在（find 无结果）；poems/indexpoem.html:13 的 ../imgA/tuzi.jpg 不存在；coffee-composer.html:160 的 imgA/media_photo_coffee.jpg 不存在（非注释）。design.md:123-131 与 §10 只记录 about 的 self.jpg。R2 路径只定义 projects/<slug>/...（design.md:302-310），public/assets/ui 只收 favicon/back button 等小图（design.md:312-313）；但首页使用 imgA 缩略图、hero poster、8 个原型 GIF 和 imgA/resume_xinyue_2020.pdf（index.html:41,62-201,230），site 页使用 self.jpg、6 张 paintings、tuzi.jpg，均无对应 R2 前缀。",
+      "suggestion": "先完成全量引用审计（区分 live/commented）并写入 media-audit.md；在 R2 布局中增加 site/<page>/ 或 home/ 前缀并覆盖 PDF；对 /paintings/ 等不可恢复素材明确占位/删除策略，并在 parity 基线中排除这些区域。",
+      "dimension": "responsive",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§3.5 Components / §5.3 Code cleanup / §2.2 External media",
+      "issue": "轮播方案缺失：3 个项目页依赖 slick(jQuery) 的 CDN CSS/JS，/paintings/ 依赖 Bootstrap 3 carousel；设计只列了 carousel.ts，且说 bootstrap 脚本“若未使用可删”，但它们实际在用，CDN 依赖也未进入外部引用审计。",
+      "evidence": "photography.html:6-7,110-112、painting.html:6-7,98-100、printing.html:6-8,98-99 加载 cdn.jsdelivr.net 的 slick 1.6.0 CSS/JS 和 code.jquery.com；paintings/indexpainting.html:6-16,23-61 加载 maxcdn 的 Bootstrap 3.3.6 并使用 .carousel/data-ride=\"carousel\" 和本地 jQuery。三个项目页还固定 .s-container{height:600px}、.slider{width:55%}（各自 <style> 块）。§2.2 的外部引用清单没有这些 CDN。",
+      "suggestion": "定义唯一的 carousel 组件规格（桌面箭头/尺寸/自动播放/循环、移动端行为、44px 触控区），自托管所需 CSS，替换 slick 与 Bootstrap 两种实现；把 jQuery/slick/Bootstrap/Font Awesome/xiami Flash 纳入外部依赖审计与验收。",
+      "dimension": "responsive",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§3.5 ProjectLayout / §3.3 Content schema",
+      "issue": "统一 ProjectLayout（cover/title/tools/MDX body/gallery）假设所有项目都有封面和标题，但至少 3 个项目页没有这些结构，多列媒体也无法用 schema 表达。",
+      "evidence": "painting.html、photography.html、printing.html 的 insBorrowTitle/insBorrow/projectTitle 计数均为 0（grep 统计），页面只有 Back 按钮 + carousel/正文；schema 的 cover 为必填（design.md:212-215）。word-to-world 有 20 个 live .twoVideos 并排块（45% 宽），jie/coffee-composer 使用 textRight/textLeft/tokenColumn 多列结构。",
+      "suggestion": "把 ProjectLayout 降为最小 wrapper + 可选 cover/title 区块，允许每个项目用自己的 MDX 组合；或在 schema 加 layout 变体（standard/bare/carousel/multi-column）并逐页标注。",
+      "dimension": "responsive",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "§5.1 Layout rules (Project body text max-width:72ch) / §5.2",
+      "issue": "72ch 正文宽度会在桌面把旧站 60%/15% margin 的文本块显著收窄，长文本和手工 <br> 的换行位置随之改变。",
+      "evidence": "实测 1440px 下 word-to-world .projectTextInsBorrow 宽 864px（60%，font-size 16px；word-to-world.html 有 102 个 <br>，index.css:766-772）；72ch 在 16px Signika 下约 630px（约窄 27%）。scribbling-speech 有 90 个 <br>，poems 有 65 个 <br> 且 p.content 固定 230px（poems/indexpoem.css:9-13）。",
+      "suggestion": "≥1200 保留旧项目的 60%/margin 15% 文本宽度（或按项目记录宽度），72ch 仅用于窄屏；对 <br> 驱动的文案先建立换行基线再迁移。",
+      "dimension": "responsive",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "blocking",
+      "section": "3.4 Routing and redirects / 8 Acceptance criterion 2",
+      "issue": "Astro's `redirects` config does not put the meta-refresh stub at the legacy `.html` path; it puts it at `dist/<legacy-path>/index.html`, so the design's stated redirect artifact and AC2 cannot be verified against the build.",
+      "evidence": "Reproduced with the exact 6.1 config (`site`, `build.format: 'directory'`, `trailingSlash: 'always'`, `redirects: {'/about/about.html': '/about/', '/breathing-surface.html': '/breathing-surface/'}`) on astro@5.18.2 and astro@7.4.1. The build reports `/about/about.html/index.html` and `/breathing-surface.html/index.html`; `dist/` contains `dist/about/about.html/index.html` and `dist/breathing-surface.html/index.html` but no `dist/about/about.html` and no `dist/breathing-surface.html`. The generated stub says `Redirecting from /about/about.html/`. Adding `public/about/about.html` to force the correct path collides with the redirect route and fails the build with `ENOTDIR: not a directory, mkdir '.../dist/about/about.html/'`.",
+      "suggestion": "Remove the `.html` entries from `astro.config.mjs` and emit each legacy stub from `public/` (verified: with only public stubs, the build produces `dist/about/about.html` and `dist/breathing-surface.html` alongside `dist/about/index.html`), including the canonical link manually. Alternatively add a post-build script. Add a build assertion that every legacy path exists as a file in `dist/`, and test legacy URLs against GitHub Pages, not only a local server.",
+      "dimension": "operations",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "blocking",
+      "section": "6.2 GitHub Actions / 7 Phase 1",
+      "issue": "The toolchain versions are unpinned and the local Node version cannot run the current latest Astro, so Phase 1 fails on this machine.",
+      "evidence": "`node --version` is v22.14.0. `npm view astro version` returns 7.4.1, and running it aborts with `Node.js v22.14.0 is not supported by Astro! Please upgrade Node.js to a supported version: >=22.22.0` (npm EBADENGINE reports >=22.19.0). The design says `Astro (latest stable)` and `Build: Node 22`.",
+      "suggestion": "Pin Astro to a major and commit `package-lock.json`; add Node >= 22.22 (or an LTS) to Phase 0, set `engines`, and use the same version in `actions/setup-node`.",
+      "dimension": "operations",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "9 Risks and rollback / 6.3 Branch and release",
+      "issue": "The documented rollback is not executable: a tag cannot be selected as a GitHub Pages source, and after merge `master` no longer contains the old site.",
+      "evidence": "Section 9 says `keep master untouched and tagged pre-astro ... set Pages back to the previous source and force-push nothing`; 6.3 creates the tag before merge; 3.2 says old source files are removed after verification. GitHub Pages' branch source selects a branch, not a tag. After merge, switching the source back to `master` publishes the new Astro site, and reverting the merge also removes `.github/workflows/deploy.yml`, so Actions will not redeploy.",
+      "suggestion": "Create a `legacy-site` (or `gh-pages`) branch at the `pre-astro` commit and document exact rollback steps: switch Pages source to that branch, verify the old site, then fix forward. Keep this branch outside the history rewrite or archive it outside git.",
+      "dimension": "operations",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "7 Phase 6 / 9 Risks and rollback",
+      "issue": "The optional history rewrite invalidates the `pre-astro` tag that the rollback depends on.",
+      "evidence": "Phase 6 specifies `git filter-repo or BFG, a mirror backup, and a force push`; filter-repo rewrites every ref, so `pre-astro` would point to a commit whose media blobs have been stripped. The design does not say where the mirror backup lives or how restore is tested. GitHub reports `size: 527050` KB, 217 commits, 0 forks (`api.github.com/repos/softlipaschara/website`).",
+      "suggestion": "Before rewriting, create and verify an off-machine `git bundle`/mirror and archive the built old site; recreate tags after the rewrite and record backup location plus a restore test in `migration-checklist.md`.",
+      "dimension": "operations",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "3.3 Content schema / 3.5 Components",
+      "issue": "The schema cannot supply the dimensions/aspect ratio or the 480p rendition that `ResponsivePicture` and `VideoPlayer` are specified to use.",
+      "evidence": "`media: { type, src, poster?, alt?, caption? }` and `cover: { src, alt }` (3.3) have no width/height/aspect ratio. 3.5 requires `ResponsivePicture` to emit `srcset` and `explicit dimensions`; 4.1/4.2 produce both `video-720.mp4` and `video-480.mp4`, but a media item has a single `src`. CI builds from a clean checkout and `media-out/` is gitignored (4.2), so the build cannot read the image files to derive dimensions.",
+      "suggestion": "Add width/height (or aspect ratio) to the schema and a generated build-time manifest, and add an explicit `sources` array or a documented naming convention for 480p/720p.",
+      "dimension": "operations",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "3.3 / 3.5 / 4.7",
+      "issue": "The Vimeo fallback and the old pages' interleaved text/media cannot be represented by the schema and `ProjectLayout` as specified.",
+      "evidence": "4.7 says a video that cannot be obtained `keeps the original Vimeo iframe temporarily`, but the schema only allows `type: 'video' | 'image'` and `VideoPlayer` renders `<video>`. Old pages interleave text and media (`coffee-composer.html:42-47`; `word-to-world.html:59-124,145-211`), while 3.5 defines `ProjectLayout` as cover + title + tools + MDX body + media gallery. The design does not say whether the `media` array or the MDX body is authoritative or how MDX embeds get the R2 path/component treatment.",
+      "suggestion": "Define an `embed` media type or an explicit MDX escape hatch, and state whether project media live in frontmatter or as MDX-imported components; reconcile AC3's exception clause with the fallback.",
+      "dimension": "operations",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "2.2 Media inventory / 3.1 Stack / 3.6 Interaction preservation / 8 AC3",
+      "issue": "The external-reference audit and AC3 omit live third-party dependencies, and the carousel rewrite path is unspecified.",
+      "evidence": "`index.html:345-346`, `painting.html:6-7,98-99`, `photography.html:6-7,110-111`, and `printing.html:6-8,98-99` load jQuery and slick from `code.jquery.com`/`cdn.jsdelivr.net`; `contact/contact.html:6` loads font-awesome from `maxcdn.bootstrapcdn.com`; `paintings/indexpainting.html:7,10,12` loads Bootstrap from maxcdn; `index.html:324` embeds a Flash `.swf` from xiami.com. Section 2.2 lists only Vimeo/S3/Tumblr/Instagram/Google Fonts, and AC3 greps only those four domains. `carousel.js` is `$('.slider').slick({...})`, while 3.1 says `No client framework` and 3.6 promises exact carousel behavior.",
+      "suggestion": "Extend the audit and AC3 to every external origin, decide self-host vs vanilla rewrite for slick, and add a carousel acceptance case (arrows, dots, infinite, breakpoints, unslick at 300 px).",
+      "dimension": "operations",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "5.1 Layout rules vs 5.2 Desktop parity / 8 AC6",
+      "issue": "The responsive rules contradict desktop parity, and AC6 has no objective measurement protocol.",
+      "evidence": "5.1 mandates `width: min(100% - 48px, 1200px)` and `repeat(auto-fit, minmax(280px, 1fr))`; the old home is a full-width flex-wrap layout with `.center { width: 33% }` (`index.css:324-336`) and a full-bleed hero (`index.html:41-43`). Old breakpoints are 1280/1024/768/414/375/320 (`index.css:1093,1107,1115,1375,1659,1692`) vs new 640/900/1200; at exactly 1200 px the old site is in its `max-width: 1280px` branch while the new site is at its `min-width: 1200px` boundary. AC6 says `match` with no diff tool, threshold, page list, or protocol for animations/fonts/videos, and the migration intentionally repairs broken S3/Tumblr media, so screenshots will differ.",
+      "suggestion": "Express desktop rules as explicit per-page overrides, and define AC6 as a specific tool plus per-page diff ratio, stored baselines, and font/animation/video freeze rules; list intentionally repaired media as allowed differences.",
+      "dimension": "operations",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "4.2 Video pipeline / 4.3 Image pipeline",
+      "issue": "Transparent GIFs and PNGs are flattened without a background/compositing rule, causing a visible parity regression.",
+      "evidence": "19 of 50 GIFs contain fully transparent pixels (ffmpeg `alphaextract` min alpha 0; e.g. `imgA/cat.gif`, `imgA/grass.gif`), and 90 of 95 PNGs decode with an alpha channel. The GIF command `ffmpeg -i input.gif -vf 'scale=...' -c:v libx264 -pix_fmt yuv420p ...` (4.2) has no composite step; H.264/`yuv420p` cannot carry alpha. The image pipeline (4.3) generates JPEG fallbacks with no stated flatten color. Page backgrounds are white (e.g. `index.css:309,564`), so transparent areas will render dark.",
+      "suggestion": "Composite onto the page background (for example a white `color`/`overlay` filter) before H.264 encoding, and either keep an alpha-capable fallback for transparent images or document the flatten color; add a visual check for the 19 affected GIFs.",
+      "dimension": "operations",
+      "votes": 2,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "4.4 Caching",
+      "issue": "Stable media filenames with a 7-day TTL have no way to invalidate browser caches.",
+      "evidence": "4.1/4.4 use stable names (`video-720.mp4`, `cover-2000.webp`) with `Cache-Control: public, max-age=604800`; 4.4 says `Updates are rare and can be purged from the Cloudflare dashboard`. A Cloudflare purge does not clear browser caches, and `rclone sync` does not purge Cloudflare. There is no purge script or changed-object list.",
+      "suggestion": "Use content-hashed filenames or a version query in frontmatter, and add an automated purge step (Cloudflare API token) or a documented per-object purge list to the upload script.",
+      "dimension": "operations",
+      "votes": 2,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "4.6 Upload and credentials / 7 Phase 3",
+      "issue": "`rclone sync` can delete live objects, and `verify a sample` cannot prove upload completeness.",
+      "evidence": "The command is `rclone sync media-out/ r2:portfolio-media/ ...`, which deletes remote objects absent locally; `media-out/` is gitignored and regenerated, so a partial transcode run deletes production objects. Phase 3's only check is `verify a sample of objects over HTTPS`.",
+      "suggestion": "Use `rclone copy` plus an explicit prune (or run `--dry-run` first), enable R2 object versioning, and replace the sample check with an automated HEAD/GET of every media URL referenced by `dist/`.",
+      "dimension": "operations",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "8 AC7 / 2.2 Media inventory",
+      "issue": "AC7 assumes the build checks internal links, but no link checker is specified; the resume PDF is missing from the asset inventory and would 404.",
+      "evidence": "`astro build` does not validate `<a href>` targets, and the design lists no link-checker dependency or CI step. `index.html:230` links `imgA/resume_xinyue_2020.pdf`; 2.2's table covers only mp4/gif/jpg/png/mov, and 4.1 has no PDF slot. Also tracked but unaddressed: `font/HiraKakuInterface-W1.otf` (3.5 MB, no references), `font/HelveticaNeue.dfont` (6.4 MB, no references), and four `.DS_Store` files.",
+      "suggestion": "Add a link checker (lychee/linkinator or a Playwright crawl) against the served `dist/`, scoped to internal links; add the resume PDF and the unused/tracked files to `media-audit.md` and decide keep/remove.",
+      "dimension": "operations",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "6.2 GitHub Actions / 7 Phase 5",
+      "issue": "The Pages source is switched after the merge, so the first Actions deploy cannot succeed.",
+      "evidence": "6.2 says the workflow triggers on `push to master` and that Settings -> Pages -> Source = GitHub Actions is a one-time manual change; Phase 5 says `Merge to master, enable GitHub Actions as the Pages source, and confirm the production deploy`. `actions/deploy-pages` requires the Pages site to use the Actions build type, so the push-triggered run happens before the source change.",
+      "suggestion": "Switch the Pages source to GitHub Actions before the merge (or before pushing the workflow commit), then merge; use `workflow_dispatch` for re-runs and make AC8 `the first post-switch run deploys successfully`.",
+      "dimension": "operations",
+      "votes": 3,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "1 Background and goals / 9 Risks and rollback",
+      "issue": "The stated mainland-China reachability motivation is undermined by keeping the HTML site on GitHub Pages.",
+      "evidence": "Section 1 says Vimeo is `unreachable from mainland China`; 4.1/9 keep GitHub Pages records DNS-only and make R2 the only media origin. GitHub Pages is itself frequently unreachable in mainland China, and Cloudflare's free plan for `media.xinyue.de` routes to overseas points of presence. Section 5.4 self-hosts fonts for this reason, but 1/9 never acknowledge that the page itself may not load.",
+      "suggestion": "Add this residual risk to the table and define the success test (a request from a mainland network), or explicitly scope the goal to media only; consider a Cloudflare-proxied HTML origin or mirror if reachability is required.",
+      "dimension": "operations",
+      "votes": 2,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "1 Background and goals / 7 Phase 6",
+      "issue": "The repo-size goal is not met by the migration; it depends on the optional Phase 6.",
+      "evidence": "Goal 1 cites the 460 MB working tree and 528 MB `.git`; Phase 6 is `Optional history cleanup ... After the new site is live and stable`. Removing `imgA/` from HEAD does not shrink `.git`; GitHub reports `size: 527050` KB (API). No acceptance criterion measures repo size.",
+      "suggestion": "Add a hard AC (for example `.git` size and `no tracked file > 10 MB` after the rewrite), commit the old-media deletion in the rebuild PR, and either make Phase 6 required or stop claiming goal 1 is achieved.",
+      "dimension": "operations",
+      "votes": 2,
+      "total": 3
+    },
+    {
+      "severity": "major",
+      "section": "4.5 Local development / 6.2 GitHub Actions",
+      "issue": "`.gitignore` does not cover the new build/media directories, and the actual `media-src` path differs from the design.",
+      "evidence": "`.gitignore` contains only `.idea/` and `.DS_Store`; `media-src/`, `media-out/`, `public/media/` (4.5), `node_modules/`, and `dist/` are not ignored. `localize.sh` copies roughly 350 MB into `public/media/`. The downloaded sources are at `/Users/xiaoxia/Development/portfolio/media-src`, outside the repo, not `website/media-src` as 2.2/4.2 imply.",
+      "suggestion": "Add `node_modules/`, `dist/`, `public/media/`, `media-out/`, and `.env*` to `.gitignore` in Phase 1, and correct the `media-src` location in the design and scripts.",
+      "dimension": "operations",
+      "votes": 3,
+      "total": 3
+    }
+  ],
+  "minor": [
+    {
+      "severity": "minor",
+      "section": "§3.3 Content schema / §3.4 Routing",
+      "issue": "`legacyPath` is required for every project but consumed nowhere, while legacy routes are hand-maintained in astro.config.mjs; the two can drift, and `draft` is likewise never filtered.",
+      "evidence": "design.md §3.3 declares `legacyPath: z.string()` and `draft: z.boolean().default(false)`; §3.4 hardcodes legacy redirects in astro.config.mjs (\"one entry per project page\"); neither §3.5 nor the getStaticPaths description reads either field. Astro config is evaluated before content collections load, so redirects cannot be derived from the collection there.",
+      "suggestion": "Either remove both fields, or generate redirects from the collection with a prerendered endpoint/integration (the verified `src/pages/[...legacy].ts` pattern emits exact `dist/<legacy>.html` files), and filter drafts in getStaticPaths.",
+      "dimension": "architecture"
+    },
+    {
+      "severity": "minor",
+      "section": "§4.4 Caching / §4.1 R2 layout",
+      "issue": "UI assets placed in `public/` are not fingerprinted by Astro, so the caching claim is false.",
+      "evidence": "design.md §4.1 keeps favicon/back button/logos/fonts in `public/assets/ui/`; §4.4 says \"Astro fingerprints filenames\". An Astro 7.4.1 build with `public/assets/ui/test.css` emitted `dist/assets/ui/test.css` unchanged, since public files are copied verbatim.",
+      "suggestion": "Move hashable assets to `src/assets/` and import them, or state that public URLs are stable and set cache policy accordingly.",
+      "dimension": "architecture"
+    },
+    {
+      "severity": "minor",
+      "section": "§7 Phase 2 / §3.1 MDX",
+      "issue": "Phase 2 is not a mechanical HTML-to-MDX conversion: several legacy attributes are invalid JSX and fail the MDX compiler.",
+      "evidence": "`coffee-composer.html:64` has `<video ... width=100%; >`; `scribbling-speech.html:102` has `poster=\"...\"autoplay=...` with no separating space; `word-to-world.html:59` has a stray `\"` before `src`; `painting.html` has a duplicated `</head>` and a `<style>` block after it. Compiling the coffee-composer video line as MDX produced `Unexpected character after '<', expected a valid JSX tag (mdx-jsx:unexpected-character)`.",
+      "suggestion": "Add an HTML normalization/tidy step before MDX conversion and require a per-page build in the migration checklist.",
+      "dimension": "architecture"
+    },
+    {
+      "severity": "minor",
+      "section": "§3.1 Stack / §3.3 Content schema",
+      "issue": "The design says \"Astro (latest stable)\" without pinning, and imports `z` from `astro:content`, which Astro 7.4.1 marks as a compatibility re-export scheduled for removal in Astro 8.",
+      "evidence": "`npm view astro version` returns 7.4.1 and `@astrojs/mdx` returns 8.1.0. Astro 7.4.1's content virtual module template contains `// TODO: remove in Astro 8` immediately above `export { z } from 'astro/zod'`; design.md §3.3 uses `import { defineCollection, z } from 'astro:content'`.",
+      "suggestion": "Pin exact Astro and @astrojs/mdx versions and commit the lockfile; import `z` from `astro/zod`.",
+      "dimension": "architecture"
+    },
+    {
+      "severity": "minor",
+      "section": "§3.1 Stack / §3.2 Directory layout / §6.2",
+      "issue": "TypeScript setup is unspecified and unverified, and the \"TypeScript for scripts\" claim does not match the media scripts.",
+      "evidence": "design.md §3.2 lists `tsconfig.json` with no preset and includes `scripts/media/audit.mjs` plus shell scripts; §3.1 says \"TypeScript for scripts and content schema\"; §6.2 runs only `npm ci` and `npm run build`, which do not type-check, and `astro check` is absent from §8.",
+      "suggestion": "Extend `astro/tsconfigs/strict`, add `astro check` to CI, and either convert the media scripts or narrow the TypeScript claim.",
+      "dimension": "architecture"
+    },
+    {
+      "severity": "minor",
+      "section": "4.4 Caching",
+      "issue": "The statement that long-lived caching of UI assets \"is handled by GitHub Pages defaults\" is false. GitHub Pages serves CSS, JS, and images with `Cache-Control: max-age=600` (10 minutes), including fingerprinted files.",
+      "evidence": "Live checks: `curl -I https://xinyue.de/index.css`, `/hideContent.js`, and `/imgA/favicon.png` all return `cache-control: max-age=600` with `expires` 10 minutes later. The design configures no Pages caching.",
+      "suggestion": "Correct the caching claim and decide whether 10-minute caching is acceptable; long-lived immutable caching would require serving `public/assets` through Cloudflare/R2 or proxying Pages, which conflicts with the DNS-only setup in 4.1.",
+      "dimension": "deployment"
+    },
+    {
+      "severity": "minor",
+      "section": "6.2 GitHub Actions (concurrency)",
+      "issue": "The design specifies \"Concurrency group `pages`, cancel in progress\". GitHub's official Pages starter uses `cancel-in-progress: false` specifically so an in-flight production deployment can complete; cancelling can leave the live site on the previous version.",
+      "evidence": "`actions/starter-workflows/pages/static.yml` uses `concurrency: {group: 'pages', cancel-in-progress: false}` with the comment \"do NOT cancel in-progress runs as we want to allow these production deployments to complete.\" Design 6.2 says \"cancel in progress\" and does not specify whether concurrency is workflow- or job-level.",
+      "suggestion": "Use `cancel-in-progress: false` at the workflow level (matching the official starter) and document that the newest push waits for the active deployment.",
+      "dimension": "deployment"
+    },
+    {
+      "severity": "minor",
+      "section": "6.2; 4.1; Phase 0",
+      "issue": "The launch checklist omits two custom-domain checks: \"Enforce HTTPS\" is currently off (`http://xinyue.de` returns 200 with no redirect), and there is no post-switch verification that the custom domain survived the Pages source change. Phase 0 also still lists the Cloudflare nameserver migration as pending even though the zone is already on Cloudflare NS.",
+      "evidence": "`curl -sI http://xinyue.de` returns `HTTP/1.1 200 OK` with no `Location`. `dig NS xinyue.de` returns `trevor.ns.cloudflare.com` and `sonia.ns.cloudflare.com`; apex A records are 185.199.108-111.153 and `www` is a CNAME to `softlipaschara.github.io`; `media.xinyue.de` does not resolve. Design 4.1 says the zone is hosted on Cloudflare, while Phase 0 says \"Complete the xinyue.de nameserver migration to Cloudflare.\"",
+      "suggestion": "After switching to Actions, verify Settings > Pages still shows `xinyue.de` and enable Enforce HTTPS; update Phase 0 to a DNS verification item and keep only `media.xinyue.de` as pending.",
+      "dimension": "deployment"
+    },
+    {
+      "severity": "minor",
+      "section": "4.1 R2 layout; 2.2 Media inventory",
+      "issue": "Moving media to `projects/<slug>/...` breaks all old media and asset URLs (`https://xinyue.de/imgA/...`, root `index.css`, `js/*`). The \"keep existing URLs working\" goal and acceptance criterion 2 cover only the 27 page routes; after old files are removed, indexed or hotlinked media URLs return 404. Cloudflare redirect rules cannot fix this while the apex is DNS-only.",
+      "evidence": "Design 4.1 object paths are `projects/<slug>/video-720.mp4`, etc.; design 2.2 counts 60 mp4, 50 gif, 93 jpg, 95 png and says `imgA/` is 449 MB. Existing pages reference `imgA/...` (for example `index.html` lines 62-281), and `https://xinyue.de/imgA/favicon.png` is live today. Design 4.1 says GitHub Pages records remain DNS-only.",
+      "suggestion": "Decide explicitly: accept and document media-URL breakage, or keep the old files for the most-linked assets; arbitrary legacy media redirects are only possible by proxying the apex through Cloudflare or keeping the files on Pages.",
+      "dimension": "deployment"
+    },
+    {
+      "severity": "minor",
+      "section": "§4.2 Video pipeline",
+      "issue": "The reference ffmpeg commands omit -y, so rerunning the pipeline with existing outputs silently keeps the old media.",
+      "evidence": "design.md §4.2 (lines 331-347) shows ffmpeg without -y. Running the transcode command twice locally prints 'File ... already exists. Overwrite? [y/N] Not overwriting - exiting' and returns exit code 0 while leaving the first output in place; rclone sync then uploads the stale file.",
+      "suggestion": "Add -y to every ffmpeg command and clean or atomically replace media-out before each run.",
+      "dimension": "media"
+    },
+    {
+      "severity": "minor",
+      "section": "§4.2 Video pipeline / §4.3 Image pipeline",
+      "issue": "The transcode and image pipelines upscale low-resolution sources and do not enforce the stated 48 kHz audio format.",
+      "evidence": "design.md §4.2 (lines 322-337) uses scale=-2:720 unconditionally (for example 1128x488 to about 1664x720, 1938x498 to about 2800x720, and 360x640 to about 405x720; /Users/xiaoxia/Development/portfolio/media-src/217140436_Scales.mp4 is 360x640) and -c:a aac -b:a 128k without -ar 48000; 21 of 64 local videos have no audio, and imgA/cloudy.mp4 is 44100 Hz. §4.3 (lines 355-359) generates 2000/800 variants unconditionally; 35 of 186 probed images have a long edge below 800 and 87 more are below 2000, so the 2000 variant is an upscale with a misleading 2000w descriptor.",
+      "suggestion": "Cap scaling at the source resolution (for example scale=-2:'trunc(min(720,ih)/2)*2'), skip renditions larger than the source, add -ar 48000 or drop the 48 kHz claim, and generate image variants only up to the source width.",
+      "dimension": "media"
+    },
+    {
+      "severity": "minor",
+      "section": "§4.4 Caching",
+      "issue": "The claim that GitHub Pages provides long-lived caching for fingerprinted UI assets is wrong; Astro does not fingerprint files under public/, and GitHub Pages sends a 10-minute TTL.",
+      "evidence": "design.md §4.4 (lines 365-366) says 'Astro fingerprints filenames; long-lived caching is handled by GitHub Pages defaults', and §3.2 (lines 148-152) puts UI assets under public/assets/ui/. curl -I https://xinyue.de/index.css returns cache-control: max-age=600 (same for the HTML); files in public/ are copied verbatim and are not hashed by Astro.",
+      "suggestion": "Either move UI media into Astro's asset pipeline so it gets hashed names, or state the 10-minute TTL and version public/ filenames manually (for example back-button.<hash>.png).",
+      "dimension": "media"
+    },
+    {
+      "severity": "minor",
+      "section": "§4.7 Vimeo source availability / §4.2 Video pipeline / §10 Dependencies",
+      "issue": "The Vimeo status and source-location/naming details are stale or undefined.",
+      "evidence": "design.md §4.7 (lines 397-402) says 11 of 13 Vimeo videos were downloaded at 720p and two remain; §10 (line 589) repeats the two gaps; §1 (line 37) makes 1080p recovery a non-goal. /Users/xiaoxia/Development/portfolio/media-src/ currently contains 13 valid MP4s: 6 at 1280x720, 6 at 1920x1080, and 1 at 360x640. That directory is one level above /Users/xiaoxia/Development/portfolio/website (not the repo-root media-src/ implied by §4.2 line 317), and its filenames contain spaces and a full-width colon (414940484_Word to World Demo: Story of a Fox.mp4). The design does not define a slug or normalization rule for R2 keys.",
+      "suggestion": "Update §4.7/§10 to the actual 13/13 status and per-source resolutions, state whether a 1080p rendition is wanted now that 1080p sources exist, and define MEDIA_SRC/MEDIA_OUT roots plus an ASCII slug convention for every R2 key and frontmatter src.",
+      "dimension": "media"
+    },
+    {
+      "severity": "minor",
+      "section": "§2.2 Media inventory / §4.7 Vimeo source availability",
+      "issue": "Vimeo 统计不准确：13 个文件包含 iframe，但只有 11 个真正渲染；emotional-tail 和 scribbling-speech 的 iframe 都在注释里，§4.7 列的 279840418（scribbling）就是隐藏的那个。",
+      "evidence": "/Users/xiaoxia/Development/portfolio/website/emotional-tail.html:48-60 的注释包住 player.vimeo.com/video/164829665；scribbling-speech.html:266-270 的注释包住 player.vimeo.com/video/279840418；其余 11 个页面为可见 iframe。§2.2 写 13 project pages embed Vimeo iframes，§4.7 说 remaining two 是 217140436（scale，可见）和 279840418（scribbling，注释）。",
+      "suggestion": "修正页面/视频数；确认 279840418 是否根本不需要下载；如果按 §4.7 恢复原始 Vimeo iframe，不要把已注释的 iframe 重新变成可见内容（会破坏 parity）。",
+      "dimension": "completeness"
+    },
+    {
+      "severity": "minor",
+      "section": "§2.4 Known broken or stale items / §5.3 Code cleanup",
+      "issue": "注释内容只列了 magpuzz 一处，但仓库里还有多处含独有内容的注释块；§5.2 又允许移除所有非渲染注释，实施时可能静默丢掉这些内容。",
+      "evidence": "/Users/xiaoxia/Development/portfolio/website/poems/indexpoem.html:62-77 有两首完整中文诗（意/艾）；scribbling-speech.html:277-348 有 Applying Motion、Arrange Position、Adding Color、Changing Size 整节和多个 GIF 引用；word-to-world.html:170-195 有 Big Buck Bunny 和 catWalking 视频；breeze.html:29-33 有 Designboom 报道链接；index.html:117-149 有 web、omzug、throw-it 卡片，:24-25 有 paintings、poems 导航。设计 §2.4 只提 magpuzz。",
+      "suggestion": "在 migration-checklist 中列出所有注释块及其内容归属，交由 owner 确认删除；至少把两首诗和 Designboom 链接记录到 visual-suggestions.md。",
+      "dimension": "completeness"
+    },
+    {
+      "severity": "minor",
+      "section": "§7 Phase 3 Audit every media reference",
+      "issue": "23 个 src/href 值带尾部空格；浏览器会 trim，但复制到 MDX 或组件 props 后会变成带 %20 的 URL 或找不到文件。",
+      "evidence": "/Users/xiaoxia/Development/portfolio/website/word-to-world.html 有 13 处（例如 :150 的 src 值 imgA/cowboy_waving.mp4 带尾部空格）；coffee-composer.html 有 10 处（例如 :64 的 src 值 imgA/stopmotion2.mp4 带尾部空格）。",
+      "suggestion": "audit.mjs 读取引用时做 trim 并输出 warning；生成 MDX 时统一 normalize；coffee-composer 的 media_photo_coffee.jpg 同时按缺失资源处理。",
+      "dimension": "completeness"
+    },
+    {
+      "severity": "minor",
+      "section": "§3.2 Directory layout / §6.2 GitHub Actions",
+      "issue": "现有 CNAME（xinyue.de）没有出现在新目录布局或部署步骤里；改用 GitHub Actions 发布时 custom domain 由 Settings → Pages 决定，设计没有验证步骤。",
+      "evidence": "/Users/xiaoxia/Development/portfolio/website/CNAME 内容为 xinyue.de；设计 §3.2 的 public/ 只有 assets/ui/，没有 CNAME；§6.2 只写 Settings → Pages → Source = GitHub Actions。",
+      "suggestion": "在 §6.2 增加“确认 Settings → Pages → Custom domain = xinyue.de”的验收步骤；如果保留 CNAME 文件，放到 public/CNAME，并在部署后验证 https://xinyue.de 和 media 子域。",
+      "dimension": "completeness"
+    },
+    {
+      "severity": "minor",
+      "section": "§4.2 Video pipeline / §4.3 Image pipeline",
+      "issue": "GIF→H.264 yuv420p 与 PNG→JPEG fallback 会丢失 alpha；抽查的透明像素都是白色（白底上基本无损），但 H.264 会把纯白压到约 253，且任何非白透明调色板会直接露底。",
+      "evidence": "ffmpeg RGBA 扫描：saodi_round/color/feather/canny_round/soft2_mask 的透明像素均为 (255,255,255,0)，bird_above_sea 无透明像素；按 design.md:345-347 命令转出的 MP4 角像素为 (253,253,253)，在 #fff 页面上可能出现淡矩形。透明 PNG：breezeThumb.png、jieThumb.png、grids.png、pattern.png、word_to_world_titel_2.png hasAlpha=yes，而 §4.3 生成 JPEG fallback。",
+      "suggestion": "在流水线中加入 alpha 检测与白底 matte，或对小型 UI/原型 GIF 保留 GIF/APNG；JPEG fallback 对透明 PNG 改为白底合成并抽查；在 DPR2/不同显示器上对比。",
+      "dimension": "responsive"
+    },
+    {
+      "severity": "minor",
+      "section": "§3.5 BackButton / §3.6 Interaction preservation",
+      "issue": "一个 BackButton 同时覆盖项目页的 history.back() 和 site 页的固定返回首页链接，会改变 site 页导航行为；fallback href 未定义。",
+      "evidence": "项目页如 word-to-world.html:15-19 使用 onclick=goBack()/history.back()；site 页 about/about.html:10、contact/contact.html:12、design/indexdesign.html:12 是 <a href=\"../index.html\">Back</a>。design.md:271 只说 provided fallback href，没有指定目标。",
+      "suggestion": "site 页继续使用固定 home link；项目页 BackButton 明确 fallback=\"/\" 或 \"/#selectedWorks\"，并测试直接访问/无历史记录场景。",
+      "dimension": "responsive"
+    },
+    {
+      "severity": "minor",
+      "section": "§5.1 Touch targets",
+      "issue": "44×44 触控规则与旧控件的视觉尺寸冲突（返回按钮 22px、slick 箭头 20px），设计没有区分命中区与视觉尺寸，直接放大图标会破坏桌面 parity。",
+      "evidence": "index.css:685-691 .backButton{width:22px}；photography/painting/printing 的 slick 箭头来自 CDN slick-theme（20×20）；旧导航链接 padding:33px 20px（index.css:242-248）。",
+      "suggestion": "用透明 padding/伪元素扩展命中区到 44×44，保持图标视觉尺寸；为 carousel 箭头明确 44px 命中区。",
+      "dimension": "responsive"
+    },
+    {
+      "severity": "minor",
+      "section": "§2.2 Media inventory / §2.3 Mobile defects / §2.4",
+      "issue": "响应式审计中的若干事实不准确，导致修复目标可能错位。",
+      "evidence": "§2.3 把 378px cards 列为根因，但 index.css:400-430 的 378px 全部是注释，live 规则是 .center{width:33%}；§2.2 说 13 个 project pages embed Vimeo，但 scribbling-speech.html:266-270 的 iframe 在注释里（12 个 live）；canny-edge-detection.html:43 是 896×504 而非 960×540；word-to-world 是 130 个 live inline style（148 含注释）而非 118；Playwright iPhone 13 390px 下 index.html 与 word-to-world.html 的 scrollWidth 均为 390（首页卡片在 ≤768px 已 100% 堆叠），与 §2.3 的三条首页缺陷/正文裁切描述不符。",
+      "suggestion": "用可复现的脚本和截图重做审计并归档，区分 live/commented；把实测溢出的 /poems/（630px）与首页 #blog（410px）等纳入修复清单。",
+      "dimension": "responsive"
+    },
+    {
+      "severity": "minor",
+      "section": "9 Risks and rollback / 4.6 Upload and credentials",
+      "issue": "The R2 readiness fallback is local-only, and the credential/account preconditions are not recorded.",
+      "evidence": "The risk table says R2 or DNS not ready -> `PUBLIC_MEDIA_BASE switch and local public/media fallback; site still renders`, but `public/media/` is gitignored and not built in CI, so production has no fallback. 4.6/10 never record the Cloudflare account ID or verify that the `xinyue.de` zone and `portfolio-media` bucket are in the same account, which R2 custom domains require. `wrangler` is not on PATH (auth state exists under `~/.config/.wrangler`).",
+      "suggestion": "Add `wrangler whoami`, record account/zone IDs, and gate launch on a full media-URL check; state that R2 readiness blocks launch rather than implying a production fallback.",
+      "dimension": "operations"
+    },
+    {
+      "severity": "minor",
+      "section": "2.2 Media inventory / 2.3 Mobile defects / 4.7 Vimeo source availability",
+      "issue": "Several audit numbers and claims are stale or wrong, and `media-audit.md` will be derived from them.",
+      "evidence": "Tumblr is on 2 pages (`index.html`, `scribbling-speech.html`), not 3. S3 has 6 unique URLs across 7 references, not 7 URLs. The `378px` card width is commented out (`index.css:400-430`); the live home card is `.center { width: 33% }` (`index.css:331-336`). `word-to-world.html` has 148 `style=` occurrences, not 118. Section 4.7 says 11/13 Vimeo videos were downloaded at 720p, but all 13 are in `/Users/xiaoxia/Development/portfolio/media-src` and 6 are 1920x1080 (195434826, 202025192, 222038876, 279840418, 329613216, 414940484); `217140436_Scales.mp4` is 360x640.",
+      "suggestion": "Regenerate the audit from grep/ffprobe output before Phase 3; do not copy the design's numbers into `media-audit.md`.",
+      "dimension": "operations"
+    },
+    {
+      "severity": "minor",
+      "section": "5.2 Desktop parity contract",
+      "issue": "The parity contract forbids fixing existing defects and does not account for media the migration repairs.",
+      "evidence": "`contact/contact.html:10` renders a stray `>`; the home hero (`index.html:41-43`) and `sensing-armband.html:22-23` load the 403 S3 video and show only posters. 5.2 permits `broken images that were already broken` but says `All other differences are regressions`, so fixing the videos or the stray `>` would be flagged as a regression.",
+      "suggestion": "Add an explicit allowed-differences list for repaired media and obvious markup defects, with owner approval.",
+      "dimension": "operations"
+    },
+    {
+      "severity": "minor",
+      "section": "8 AC9",
+      "issue": "The Chinese-character rule has no file scope and conflicts with the site's content.",
+      "evidence": "Chinese text exists in `about/about.html`, `breeze.html`, `index.html`, `jie.html`, and `poems/indexpoem.html` (for example `宽阔的针叶林在眼前`). If poems are migrated to `src/content/*.mdx` or `.astro`, a naive `grep '[一-龥]'` over the source will fail.",
+      "suggestion": "Scope AC9 to code files (`.ts/.js/.css/.astro`) and exclude content, or define a content allowlist; state the exact command.",
+      "dimension": "operations"
+    },
+    {
+      "severity": "minor",
+      "section": "4.4 Caching / 4.1 R2 layout",
+      "issue": "The fingerprinting/caching claim is wrong for `public/` assets and GitHub Pages.",
+      "evidence": "`public/assets/ui/` files are copied verbatim by Astro (no hash), and the live site returns `cache-control: max-age=600` for both HTML and PNG (`curl -I https://xinyue.de/` and `.../imgA/backButton.png`), not `long-lived caching`.",
+      "suggestion": "Move UI assets into `src/assets/` for Vite hashing or amend 4.4 to state the 10-minute GitHub Pages cache.",
+      "dimension": "operations"
+    },
+    {
+      "severity": "minor",
+      "section": "4.2 Video pipeline",
+      "issue": "The ffmpeg rules upscale small sources and do not handle short clips.",
+      "evidence": "`217140436_Scales.mp4` is 360x640; `scale=-2:720` produces 405x720 (upscaled). `ffmpeg -ss 1 ... poster.jpg` produces no frame for clips shorter than 1 s; the GIF command has no poster or frame-rate handling.",
+      "suggestion": "Use `scale='min(iw,1280)':-2` or a conditional, and add a 0 s poster fallback plus fps normalization for GIFs.",
+      "dimension": "operations"
+    },
+    {
+      "severity": "minor",
+      "section": "8 Acceptance criteria",
+      "issue": "The verification tooling for AC1/AC5/AC6 is unspecified.",
+      "evidence": "AC1 (`return HTTP 200`), AC5's JavaScript expression, and AC6's screenshots require a server plus browser automation, but the design lists no Playwright/link-checker/screenshot dependency or script; 2.3 mentions `390 px wide headless Chrome screenshots` but no such tool exists in the repo.",
+      "suggestion": "Add `scripts/verify.mjs` that serves `dist/`, crawls routes and legacy URLs, runs the overflow check at 320/390/414 px, and captures baselines; wire it into CI or the checklist.",
+      "dimension": "operations"
+    },
+    {
+      "severity": "minor",
+      "section": "8 AC4 / 3.3 Content schema",
+      "issue": "`captions where available` is not testable and the schema has no subtitle support.",
+      "evidence": "3.3 defines `caption?: z.string()` (a text caption), 3.5's `VideoPlayer` has no `<track>`/WebVTT support, and 4.7's fallback is an iframe.",
+      "suggestion": "Define captions as visible text captions and remove `captions` from AC4, or add WebVTT track support and files.",
+      "dimension": "operations"
+    },
+    {
+      "severity": "minor",
+      "section": "3.3 Content schema",
+      "issue": "`legacyPath` is required but unused, and `draft` has no defined behavior.",
+      "evidence": "3.3 requires `legacyPath: z.string()`, but 3.4 hardcodes redirects in `astro.config.mjs`; a new project has no legacy URL. `draft` is in the schema but `getStaticPaths`/index filtering is not specified.",
+      "suggestion": "Make `legacyPath` optional or derive redirects from it; define draft filtering for `getStaticPaths` and the home list.",
+      "dimension": "operations"
+    },
+    {
+      "severity": "minor",
+      "section": "4.1 R2 layout / 3.4 Routing and redirects",
+      "issue": "No 404 page or legacy-asset handling is specified.",
+      "evidence": "The directory layout (3.2) has no `404.html`; 3.4 covers only page URLs, so old asset URLs (`/imgA/*`, `/css/*`, `/js/*`) will 404 after the rebuild.",
+      "suggestion": "Add a branded `404.html` and decide whether to keep or redirect old asset paths.",
+      "dimension": "operations"
+    },
+    {
+      "severity": "minor",
+      "section": "6.2 GitHub Actions / 8 Acceptance criteria",
+      "issue": "HTTPS is not enforced and the Pages/IPv6 DNS records are incomplete.",
+      "evidence": "`curl -I http://xinyue.de/` returns 200 (no HTTPS redirect); the apex has four A records but no AAAA records; no `_github-pages-challenge-softlipaschara.xinyue.de` TXT record exists. The design never mentions `Enforce HTTPS` or custom-domain verification. The nameservers are already `sonia.ns.cloudflare.com`/`trevor.ns.cloudflare.com`, so Phase 0's `complete the nameserver migration` is stale.",
+      "suggestion": "Add `Enforce HTTPS`, AAAA records, and the domain-verification TXT to the launch checklist, and update Phase 0 to verify the already-completed NS migration with `dig NS xinyue.de`.",
+      "dimension": "operations"
+    }
+  ]
+}

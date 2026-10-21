@@ -54,3 +54,13 @@
         display: none;
     }
 }
+
+@media (max-width: 414px) {
+    [data-carousel] .carousel-prev {
+        left: 0;
+    }
+
+    [data-carousel] .carousel-next {
+        right: 0;
+    }
+}

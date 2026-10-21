@@ -9,9 +9,17 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/media/check-references.mjs",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "media:audit": "node scripts/media/audit.mjs",
+    "media:build": "node scripts/media/build.mjs",
+    "media:localize": "bash scripts/media/localize.sh",
+    "media:upload": "bash scripts/media/upload.sh",
+    "media:check": "node scripts/media/check-remote.mjs",
+    "media:validate": "node scripts/media/check-references.mjs",
+    "verify": "node scripts/verify.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "8.1.1",
@@ -19,6 +27,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.12",
+    "playwright-core": "1.64.1",
     "typescript": "5.9.3"
   }
 }

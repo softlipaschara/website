@@ -1794,3 +1794,62 @@ a:active {
 .homeCardImage {
     height: auto;
 }
+
+@media all and (max-width: 768px) {
+    #navigation {
+        flex-wrap: wrap;
+    }
+
+    ul {
+        margin-top: 0;
+        margin-bottom: 16px;
+    }
+
+    #blogBlock {
+        width: auto;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .breezeVideo {
+        width: 100%;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .homeCard:link {
+        padding: 0 10px;
+    }
+
+    .prototypeImage:link {
+        padding: 0;
+    }
+}
+
+@media all and (max-width: 1199px) {
+    .vimeoInk {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .breezeVideo {
+        width: 100%;
+    }
+
+    .visualisation_video {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.projectContent > p:not([class]):not([style]),
+.projectTextInsBorrow > p:not([class]):not([style]),
+.breezeText > p:not([class]):not([style]),
+.projectText > p:not([class]):not([style]) {
+    margin: 0;
+}
+
+img {
+    height: auto;
+}

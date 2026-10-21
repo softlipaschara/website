@@ -33,3 +33,56 @@ div.header {
 .container0 {
     margin-top: 65px;
 }
+
+.poem1,
+.poem2,
+.poem6,
+.poem7 {
+    margin-left: clamp(0px, calc((100vw - 660px) / 4), 65px);
+    margin-right: clamp(0px, calc((100vw - 660px) / 4), 65px);
+}
+
+@media (max-width: 768px) {
+    .container0,
+    .container,
+    .container3 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .poem0,
+    .poem1,
+    .poem2,
+    .poem6,
+    .poem7 {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    p.content {
+        width: min(230px, calc(100vw - 80px));
+        padding: 20px;
+        margin: 10px auto;
+        box-sizing: border-box;
+    }
+
+    .bilderleft img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 1199px) {
+    .container0 {
+        flex-wrap: wrap;
+    }
+
+    .bilderleft {
+        max-width: 100%;
+    }
+
+    .bilderleft img {
+        max-width: 100%;
+        height: auto;
+    }
+}

@@ -40,6 +40,10 @@ Ask the owner before reintroducing any of these.
 
 - Slick and Bootstrap carousels were replaced by `Carousel` with 44 px arrow hit
   areas. Arrow rendering is not pixel-identical to the old CDN themes.
+- Carousel slides are centered instead of left-aligned. The legacy photography,
+  printing, and painting pages were left-aligned because the page-level `.slider`
+  rule collided with the toggle-switch `.slider` rule in `index.css`. The new
+  component avoids that collision.
 - The blog's dead Tumblr images and Xiami Flash player were removed.
 - The home hero and the Sensing Armband hero use poster images because their S3
   sources are unavailable.

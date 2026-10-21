@@ -1,6 +1,7 @@
 # Migration checklist
 
-Status: Phase 2 complete on 2026-10-22. Phase 3 media generation and upload are pending.
+Status: Phase 2 and local Phase 3/4 work complete on 2026-10-22. R2 upload and
+Pages cutover are pending.
 
 ## Routes
 
@@ -51,9 +52,60 @@ directories. Each stub has a meta refresh, a canonical link, and `noindex`.
 - No `imgA/` references in the built HTML.
 - Home page renders 6 selected-work cards, 8 prototype tiles, and 3 What's More links.
 
+## Media build
+
+- `npm run media:audit` builds `media-plan.json`: 235 references, 230 ready,
+  5 allowed-missing, 0 unexpected.
+- `npm run media:build` produced 395 files (362.6 MiB) in `media-out/` and
+  `media-manifest.json`. `npm run media:validate` confirms every referenced key
+  is in the manifest.
+- `npm run media:localize` copies `media-out/` to `public/media/` for local
+  preview. `public/media/` is gitignored and the prebuild guard blocks a
+  production build while it exists.
+- `npm run media:upload` performs an rclone copy dry run. No upload has been
+  performed because the R2 bucket and API token do not exist yet.
+
+## Responsive and parity verification
+
+- `npm run verify` checked all 27 routes and all five home hash states at 320,
+  375, 390, 414, 640, 768, 900, 1024, 1200, 1280, 1440, and 1920 px.
+- Result: 0 horizontal overflows, 0 page errors.
+- Screenshots at 1200 and 1440 were captured to `/tmp/portfolio-screenshots`
+  and compared with the legacy local site.
+- The home page matches the legacy layout. Project text blocks, images, videos,
+  and captions match after fixing MDX paragraph wrappers and image height
+  scaling. The `word-to-world` Demo heading differs by 1 px and the full page
+  height by 72 px.
+- Accepted differences: the missing About portrait keeps alt text and shifts
+  the introduction; recovered poems/paintings images change those layouts; the
+  carousel slides are centered instead of the legacy left-aligned layout; dead
+  external media is poster-only or removed.
+
 ## Remaining work
 
-- Phase 3: generate media variants, transcode videos, write `media-manifest.json`, upload to R2.
-- Phase 4: responsive fixes and desktop parity screenshots.
+- Upload `media-out/` to R2 after the bucket and API token exist.
+- Verify `media.xinyue.de` over HTTPS.
 - Phase 5: GitHub Actions deploy and cutover.
-- The R2 bucket, API token, and `media.xinyue.de` custom domain are not created yet.
+
+## Cutover order
+
+Do not merge before the Pages source and custom domain are checked.
+
+1. Tag `pre-astro` at the current `master` commit.
+2. Create and push a `legacy-site` branch at that commit. A tag cannot be selected
+   as a Pages source.
+3. Record the current custom domain (`xinyue.de`) and Enforce HTTPS state.
+4. Switch Settings -> Pages -> Source to GitHub Actions before the merge that
+   triggers the first deploy.
+5. Merge `astro-rebuild` into `master` and let the workflow deploy `dist/`.
+6. Verify `https://xinyue.de/`, all 27 routes, and the legacy `.html` stubs.
+7. Verify Settings -> Pages still shows `xinyue.de` and enable Enforce HTTPS.
+8. Delete the old root HTML, CSS, JS, and `imgA/` in a follow-up commit, after the
+   new site is live.
+
+Rollback: switch the Pages source to the `legacy-site` branch and verify the old
+site. Do not force-push.
+
+The workflow is in `.github/workflows/deploy.yml`. It builds on every branch it is
+dispatched for, but the deploy job is gated to `master` and uses the
+`github-pages` environment.

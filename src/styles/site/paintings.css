@@ -18,3 +18,15 @@
     max-width: 100%;
     height: auto;
 }
+
+.projectSlider {
+    width: 90%;
+}
+
+.container [data-carousel] .carousel-prev {
+    left: 0;
+}
+
+.container [data-carousel] .carousel-next {
+    right: 0;
+}

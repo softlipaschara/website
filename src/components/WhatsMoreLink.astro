@@ -1,0 +1,15 @@
+---
+import { mediaUrl } from '../lib/media';
+
+interface Props {
+  href: string;
+  src: string;
+  alt: string;
+}
+
+const { href, src, alt } = Astro.props;
+---
+
+<a class="prototypeImage" href={href}>
+  <img class="roundMasks" src={mediaUrl(src)} alt={alt} />
+</a>

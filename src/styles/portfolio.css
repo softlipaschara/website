@@ -1778,3 +1778,19 @@ a:active {
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
 }
+
+.homeCard:link,
+.homeCard:visited {
+    color: black;
+}
+
+.homeCard:hover,
+.homeCard:active {
+    color: black;
+    background-color: white;
+    opacity: 1;
+}
+
+.homeCardImage {
+    height: auto;
+}

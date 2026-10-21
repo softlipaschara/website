@@ -1,0 +1,194 @@
+---
+title: Jie 借
+order: 5
+summary: A neighbourhood help app designed around discreet, moment-based requests.
+tools:
+  - Ionic Framework
+  - HTML
+  - CSS
+  - AngularJS
+cover:
+  src: projects/jie/hero/hero.jpg
+  alt: Jie app cover
+thumbnail:
+  src: site/home/jie-thumb/jie-thumb.png
+  alt: Jie app thumbnail
+  type: image
+  class: breezeBlock homeCardImage
+homeSection: selectedWorks
+featured: true
+backButton: black
+---
+
+import ResponsivePicture from '../../components/ResponsivePicture.astro';
+import VideoPlayer from '../../components/VideoPlayer.astro';
+import { mediaUrl } from '../../lib/media';
+
+<div class="containerCenter">
+  <div class="insBorrowTitle">
+    Jie App 借
+  </div>
+</div>
+
+<div class=" containerCenter">
+
+  <div class=" projectContent projectTextInsBorrow" >
+    Supervised by Prof. Carola Zwick<br/>
+    Semester 4<br/><br/>
+    Tools: <br/>
+      Ionicframework, html, css, angular Js<br/>
+      <br/>
+    <b>Teamwork:</b><br/> Xinyue Yang, Hanwen Cheng<br/><br/>
+    <b>Idea:</b><br/>
+    To organize and get impromptu help discreetly within your neighborhood.<br/><br/>
+    <b>Motivation</b><br/>
+    I had the embarrassing problem to ask somebody for sanitary napkins when my period came,
+    because I didn‘t have them with me. So I was thinking, how could I get help from my
+    direct surroundings as quickly as possible and at the same time discreetly?<br/>
+  </div>
+  <div class="containerCenter ideation">
+    <ResponsivePicture
+      src="projects/jie/situation-borrow/situation-borrow"
+      alt="A neighbour asking for help"
+      width={753}
+      height={706}
+      class="storyImage"
+    />
+  </div>
+  <div class="ideation">
+    <ResponsivePicture
+      src="projects/jie/need-help/need-help"
+      alt="Storyboard showing a person who needs help"
+      width={1600}
+      height={1129}
+      class="storyImage"
+    />
+  </div>
+  <div class="insBorrowTitle paperPrototype containerCenter" >
+    Paper Prototype
+  </div>
+  <div class="containerCenter" style="margin-bottom:60px; ">
+    <div class="containerColumn">
+      <div class="projectTextInsBorrow containerCenter" style=" width:100%;">
+        <h3>The one who needs help</h3>
+      </div>
+      <div class="containerCenter">
+        <img
+          class="paperFlow"
+          src={mediaUrl('projects/jie/jimmy/jimmy.gif')}
+          alt="Paper prototype flow for the person asking for help"
+        />
+      </div>
+    </div>
+    <div class="containerColumn">
+      <div class="projectTextInsBorrow containerCenter" style="width:100%;">
+        <h3> The one who offers help</h3>
+      </div>
+      <div class="containerCenter">
+        <img
+          class="paperFlow"
+          src={mediaUrl('projects/jie/david/david.gif')}
+          alt="Paper prototype flow for the person offering help"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="containerCenter">
+    <div class="projectTextInsBorrow projectContent">
+      <h3>App Flow</h3>
+    </div>
+    <div class="containerCenter">
+      <img
+        class="appFlow"
+        src={mediaUrl('projects/jie/app-flow/app-flow.png')}
+        alt="Jie app flow"
+      />
+    </div>
+  </div>
+  <div class="projectTextInsBorrow projectContent description" >
+    The app has no customer account, it protects users' privacy and make everything happen only in the moment.
+    The location and photo datas will disappear automatically after the action ended.
+    The app has no customer account, it protects users' privacy and make everything happen only in the moment.
+    The location and photo datas will disappear automatically after the action ended.<br/>
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="appGif"
+    src={mediaUrl('projects/jie/asker-request/asker-request.gif')}
+    alt="Asking for help flow"
+  />
+  <div class="textRight">
+    <h3>Ask for help</h3>
+    To send a request, an asker will<br/>
+    1\. post what his/her need <br/>
+    2\. choose a searching diameter <br/>
+    3\. take a photo of a visual cue to be recognized by the helper.
+  </div>
+</div>
+<div class="containerCenter" style="margin-top: 50px">
+  <div class="textLeft">
+    <h3>Offer help</h3>
+    To help the asker, a helper will<br/>
+    1\. accept the request <br/>
+    2\. pin his/her location <br/>
+    3\. take a photo of a visual cue to be recognized by the asker.
+    Then he/she will receive the visual cue of the asker.
+  </div>
+  <img
+    class="appGif"
+    src={mediaUrl('projects/jie/helper-confirm/helper-confirm.gif')}
+    alt="Offering help flow"
+  />
+</div>
+<div class="containerCenter" style="margin-top: 50px">
+  <img
+    class="appGif"
+    src={mediaUrl('projects/jie/asker-navigation/asker-navigation.gif')}
+    alt="Navigation to meet the helper"
+  />
+  <div class="textRight">
+    <h3>Meet helper</h3>
+    The asker receives the  visual cue of the helper, and is navigated to meet him/her.
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow description">
+    <h3>Use Case</h3>
+    It is Sunday Juli in Berlin, Lisa is sick at home and needs aspirin,
+    but she doesn‘t have it. She wants to ask for help with Jie. She sents a request for aspirin,
+    and she will go with a rose in her hand as her meeting signal.<br/>
+    David is working in the office closing to Lisa‘s house. He received a push notification which says ‚
+    a lovely neighbor in 150m needs aspirin‘, he does have aspirin with him and confirmed to help.
+    He takes a photo of his sneakers to help the asker recognize him. In 10 min he sees a girl with a rose and
+    gives her his aspirin. Lisa thanks him and walks back home.
+
+  </div>
+</div>
+<div class="centerInk" style="margin-top: 30px">
+  <VideoPlayer
+    src="projects/jie/demo/demo"
+    class="vimeoInk"
+    width={960}
+    height={540}
+    controls
+    preload="auto"
+  />
+</div>
+<div class="containerCenter">
+  <div class="insBorrowTitle omzugTitle">
+    What I Learned
+  </div>
+</div>
+<div class="containerCenter whatILearned">
+  <div  class=" projectTextInsBorrow projectContent" >
+    Through this project I had the basic understand of how an app was built. I attended a workshop building a prototype
+    with sketch and invision. But in the semester project I decided to try Ionic Framework, which is a tool for building
+    mobile apps with html css and angular Js. Because I can write Html and css, so it's a pretty good tool for me,
+    I think I already have the ability to build a static app by myself.<br/><br/>
+    What's more, motion design is more and more popular, in this project I wrote several CSS animations, like the rotating
+    request to convey an urgen feeling that someone needs help, or an appearing heart to thank the helper for offering help.
+    And a graphic demonstration of showing the location of the users who are around you in the moment. The motions in my app
+    are not just for fun, but for their semantic meanings.
+  </div>
+</div>

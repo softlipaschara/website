@@ -1,0 +1,61 @@
+---
+title: My Personal Website
+order: 31
+summary: The hand-coded predecessor of this portfolio.
+tools:
+  - GitHub
+  - HTML
+  - CSS
+  - JavaScript
+backButton: white
+---
+
+import { mediaUrl } from '../../lib/media';
+import ResponsivePicture from '../../components/ResponsivePicture.astro';
+import VideoPlayer from '../../components/VideoPlayer.astro';
+
+<div  class="armbandGif" style="z-index: 1">
+  <div id="video">
+    <VideoPlayer
+      src="projects/web/hero/hero"
+      class="webVideo"
+      autoplay
+      loop
+      muted
+      playsinline
+      width="100%"
+    />
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="webGif"
+    src={mediaUrl('projects/web/how-i-work/how-i-work.gif')}
+    alt="How I work animation"
+  />
+</div>
+<div class="containerCenter">
+  <div class="insBorrowTitle">
+    My Personal Website
+  </div>
+</div>
+<div class="containerCenter">
+  <div class=" projectContent projectTextInsBorrow" >
+    <b>Tools: <br/></b>
+      Github, Html, CSS, Javascript<br/>
+    <br/>
+    This website was written by myself using html, css and javascript, I didn't use Wordpress or bootstrap,
+    just want to see how far I could go and it's good to put anything anywhere the way you liked. I spent quite a time
+    on it. This is again a heavy experience for me to get along with web and code. Though
+    it's not perfectly done, I am still quite happy with the result and it's responsive(hopefully)!
+  </div>
+</div>
+<div class="containerCenter">
+  <ResponsivePicture
+    src="projects/web/my-web/my-web"
+    alt="Screenshot of the original portfolio website"
+    width={1800}
+    height={1200}
+    class="myWeb"
+  />
+</div>

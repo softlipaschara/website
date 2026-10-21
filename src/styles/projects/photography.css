@@ -1,0 +1,47 @@
+.printImageStyle {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: -40px;
+    margin-bottom: 30px;
+}
+
+.projectSlider {
+    width: 55%;
+}
+
+.s-container {
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.indiaText {
+    margin-top: 20px;
+}
+
+@media all and (max-width: 414px) {
+    .container {
+        margin-top: -150px;
+    }
+
+    .indiaText {
+        margin-top: 15px;
+    }
+
+    .projectSlider {
+        width: 80%;
+    }
+}
+
+@media all and (max-width: 320px) {
+    .container {
+        margin-top: -170px;
+    }
+}

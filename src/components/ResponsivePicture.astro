@@ -4,11 +4,13 @@ import { mediaUrl } from '../lib/media';
 interface Props {
   src: string;
   alt: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   sizes?: string;
   widths?: number[];
   class?: string;
+  id?: string;
+  style?: string;
   loading?: 'lazy' | 'eager';
   decoding?: 'async' | 'sync' | 'auto';
 }
@@ -19,22 +21,28 @@ const {
   width,
   height,
   sizes = '100vw',
-  widths = [800, 2000],
+  widths,
   class: className,
+  id,
+  style,
   loading,
   decoding = 'async',
 } = Astro.props;
 
+const longEdge = Math.max(width ?? 2000, height ?? 2000);
+const resolvedWidths = widths ?? (longEdge >= 2000 ? [800, 2000] : longEdge >= 800 ? [800, longEdge] : [longEdge]);
 const base = mediaUrl(src);
-const webpSrcset = widths.map((size) => `${base}-${size}.webp ${size}w`).join(', ');
-const jpgSrcset = widths.map((size) => `${base}-${size}.jpg ${size}w`).join(', ');
-const fallback = `${base}-${Math.max(...widths)}.jpg`;
+const webpSrcset = resolvedWidths.map((size) => `${base}-${size}.webp ${size}w`).join(', ');
+const jpgSrcset = resolvedWidths.map((size) => `${base}-${size}.jpg ${size}w`).join(', ');
+const fallback = `${base}-${Math.max(...resolvedWidths)}.jpg`;
 ---
 
 <picture class="responsivePicture">
   <source type="image/webp" srcset={webpSrcset} sizes={sizes} />
   <img
     class={className}
+    id={id}
+    style={style}
     src={fallback}
     srcset={jpgSrcset}
     sizes={sizes}

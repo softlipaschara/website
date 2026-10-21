@@ -16,6 +16,8 @@ interface Props {
   playsinline?: boolean;
   preload?: 'none' | 'metadata' | 'auto';
   class?: string;
+  id?: string;
+  style?: string;
 }
 
 const {
@@ -33,16 +35,22 @@ const {
   playsinline = true,
   preload,
   class: className,
+  id,
+  style,
 } = Astro.props;
 
 const base = mediaUrl(src);
 const src720 = `${base}-720.mp4`;
 const src480 = `${base}-480.mp4`;
 const posterUrl = poster ? mediaUrl(poster) : `${base}-poster.jpg`;
+const videoStyle = [style, aspectRatio ? `aspect-ratio: ${aspectRatio};` : undefined]
+  .filter(Boolean)
+  .join(' ');
 ---
 
 <video
   class={className}
+  id={id}
   src={src720}
   poster={posterUrl}
   width={width}
@@ -53,7 +61,7 @@ const posterUrl = poster ? mediaUrl(poster) : `${base}-poster.jpg`;
   muted={muted}
   playsinline={playsinline}
   preload={preload ?? (autoplay ? 'auto' : 'metadata')}
-  style={aspectRatio ? `aspect-ratio: ${aspectRatio};` : undefined}
+  style={videoStyle || undefined}
   aria-label={alt}
   data-src-720={src720}
   data-src-480={src480}

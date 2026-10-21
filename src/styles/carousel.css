@@ -1,0 +1,56 @@
+[data-carousel] {
+    position: relative;
+    touch-action: pan-y;
+}
+
+[data-carousel] [data-carousel-slide] {
+    display: none;
+}
+
+[data-carousel] [data-carousel-slide].is-active {
+    display: flex;
+}
+
+[data-carousel] .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: cadetblue;
+    font-size: 44px;
+    line-height: 1;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+[data-carousel] .carousel-prev {
+    left: -50px;
+}
+
+[data-carousel] .carousel-next {
+    right: -50px;
+}
+
+@media (max-width: 768px) {
+    [data-carousel] .carousel-prev {
+        left: -34px;
+    }
+
+    [data-carousel] .carousel-next {
+        right: -34px;
+    }
+}
+
+@media (max-width: 300px) {
+    [data-carousel] [data-carousel-slide] {
+        display: flex;
+    }
+
+    [data-carousel] .carousel-arrow {
+        display: none;
+    }
+}

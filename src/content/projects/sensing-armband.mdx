@@ -1,0 +1,57 @@
+---
+title: Sensing Armband
+order: 12
+summary: A cloud-connected armband for tactile long-distance communication.
+tools:
+  - Photon
+  - Vibration Motor
+  - Pressure Sensor
+thumbnail:
+  src: site/home/tactile-prototype-round/tactile-prototype-round.gif
+  alt: Sensing Armband prototype
+  type: image
+  class: roundMasks
+homeSection: prototype
+backButton: white
+---
+
+import { mediaUrl } from '../../lib/media';
+import VideoPlayer from '../../components/VideoPlayer.astro';
+
+<div  class="armbandGif" style="z-index: 1">
+  <div id="video">
+    <img
+      src={mediaUrl('projects/sensing-armband/prototype/prototype-poster.jpg')}
+      alt="Sensing Armband prototype"
+      style="width: 100%"
+    />
+  </div>
+</div>
+{/* Source unavailable: the original S3 hero video returned HTTP 403. */}
+<div class="containerCenter">
+  <div class="insBorrowTitle">
+    Sensing Armband
+  </div>
+</div>
+<div class="containerCenter">
+  <div class=" projectContent projectTextInsBorrow" >
+    <b>Tools: <br/>
+      Photon, Vibration Motor, Pressure Sensor<br/></b><br/>
+    <b>Teamwork:</b><br/> Xinyue Yang, Ying Li<br/><br/>
+    <b>Technology:</b><br/>
+    # IoT <br/><br/>
+
+    Sensing armband enables us to communicate in a sensual way. This prototype is cloud connected,
+    ask your best friend to wear it. If you miss him/her, anywhere, anytime, just give it a naughty touch!
+  </div>
+</div>
+<div class="centerInk" style="margin-top: 30px; text-align: center" >
+  <VideoPlayer
+    src="projects/sensing-armband/prototype/prototype"
+    class="vimeoInk"
+    width={960}
+    height={540}
+    controls
+    preload="auto"
+  />
+</div>

@@ -19,3 +19,10 @@ export const homeNavigation: NavItem[] = [
 ];
 
 export const RESERVED_SITE_ROUTES = ['about', 'contact', 'design', 'paintings', 'poems'];
+
+export const prototypeTitlePlaceholders = [
+  '#Thermochromic Print',
+  '#Moving Scale',
+  '#Sensing Armband',
+  '#Breathing Surface',
+];

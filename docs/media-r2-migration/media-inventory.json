@@ -1,0 +1,4369 @@
+{
+  "generatedAt": "2026-10-21T17:07:57.652Z",
+  "pages": {
+    "breathing-surface.html": [
+      {
+        "ref": "imgA/backButton.png",
+        "file": "imgA/backButton.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      },
+      {
+        "ref": "imgA/ronResch.jpg",
+        "file": "imgA/ronResch.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1578,
+        "height": 799
+      }
+    ],
+    "breeze.html": [
+      {
+        "ref": "imgA/backButton.png",
+        "file": "imgA/backButton.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      },
+      {
+        "ref": "imgA/breezeImage.png",
+        "file": "imgA/breezeImage.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 1800,
+        "height": 1014
+      },
+      {
+        "ref": "imgA/setFire.jpg",
+        "file": "imgA/setFire.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 403,
+        "height": 337
+      },
+      {
+        "ref": "imgA/blowOut.jpg",
+        "file": "imgA/blowOut.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 403,
+        "height": 337
+      },
+      {
+        "ref": "imgA/passingFlame.png",
+        "file": "imgA/passingFlame.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 403,
+        "height": 337
+      },
+      {
+        "ref": "imgA/blowOn.gif",
+        "file": "imgA/blowOn.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 900,
+        "height": 691
+      },
+      {
+        "ref": "imgA/blowOutLoop.gif",
+        "file": "imgA/blowOutLoop.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 900,
+        "height": 691
+      },
+      {
+        "ref": "imgA/lightUp.jpg",
+        "file": "imgA/lightUp.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 690
+      },
+      {
+        "ref": "imgA/technicalLayout.gif",
+        "file": "imgA/technicalLayout.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 664,
+        "height": 500
+      },
+      {
+        "ref": "imgA/components.png",
+        "file": "imgA/components.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 800,
+        "height": 534
+      },
+      {
+        "ref": "imgA/assembledBreeze.jpg",
+        "file": "imgA/assembledBreeze.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 800,
+        "height": 534
+      },
+      {
+        "ref": "imgA/breeze_touching_1200.jpg",
+        "file": "imgA/breeze_touching_1200.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1200,
+        "height": 675
+      },
+      {
+        "ref": "imgA/breezeVideoBackground.png",
+        "file": "imgA/breezeVideoBackground.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2560,
+        "height": 1442
+      }
+    ],
+    "canny-edge-detection.html": [
+      {
+        "ref": "imgA/backButtonWhite.png",
+        "file": "imgA/backButtonWhite.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      },
+      {
+        "ref": "imgA/canny.png",
+        "file": "imgA/canny.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "ref": "imgA/canny_640.gif",
+        "file": "imgA/canny_640.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 640,
+        "height": 360
+      }
+    ],
+    "coffee-composer.html": [
+      {
+        "ref": "imgA/backButton.png",
+        "file": "imgA/backButton.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      },
+      {
+        "ref": "imgA/espresso_in_hand.jpg",
+        "file": "imgA/espresso_in_hand.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 2000,
+        "height": 1205
+      },
+      {
+        "ref": "imgA/queue.jpg",
+        "file": "imgA/queue.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1400,
+        "height": 737
+      },
+      {
+        "ref": "imgA/coffee_menu.jpg",
+        "file": "imgA/coffee_menu.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1400,
+        "height": 737
+      },
+      {
+        "ref": "imgA/coffee_machine_interface.jpg",
+        "file": "imgA/coffee_machine_interface.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1400,
+        "height": 737
+      },
+      {
+        "ref": "imgA/stopmotion2.mp4",
+        "file": "imgA/stopmotion2.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 27.6
+      },
+      {
+        "ref": "imgA/stone_cafe.png",
+        "file": "imgA/stone_cafe.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2560,
+        "height": 1438
+      },
+      {
+        "ref": "imgA/user_flow_coffee_composer.png",
+        "file": "imgA/user_flow_coffee_composer.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 4062,
+        "height": 3118
+      },
+      {
+        "ref": "imgA/milk.png",
+        "file": "imgA/milk.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 258,
+        "height": 256
+      },
+      {
+        "ref": "imgA/almond_drink.png",
+        "file": "imgA/almond_drink.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 258,
+        "height": 256
+      },
+      {
+        "ref": "imgA/soy_drink.png",
+        "file": "imgA/soy_drink.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 258,
+        "height": 256
+      },
+      {
+        "ref": "imgA/white_sugar.png",
+        "file": "imgA/white_sugar.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 258,
+        "height": 256
+      },
+      {
+        "ref": "imgA/brown_sugar.png",
+        "file": "imgA/brown_sugar.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 258,
+        "height": 256
+      },
+      {
+        "ref": "imgA/espresso.png",
+        "file": "imgA/espresso.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 258,
+        "height": 258
+      },
+      {
+        "ref": "imgA/foam.png",
+        "file": "imgA/foam.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 256,
+        "height": 258
+      },
+      {
+        "ref": "imgA/hot_water.png",
+        "file": "imgA/hot_water.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 258,
+        "height": 258
+      },
+      {
+        "ref": "imgA/oat_drink.png",
+        "file": "imgA/oat_drink.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 258,
+        "height": 258
+      },
+      {
+        "ref": "imgA/etc.png",
+        "file": "imgA/etc.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 256,
+        "height": 256
+      },
+      {
+        "ref": "imgA/coffee_chart.png",
+        "file": "imgA/coffee_chart.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 5213,
+        "height": 1131
+      },
+      {
+        "ref": "imgA/tokens_with_hands.jpg",
+        "file": "imgA/tokens_with_hands.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 2000,
+        "height": 1335
+      },
+      {
+        "ref": "imgA/media_photo_coffee.jpg",
+        "file": "imgA/media_photo_coffee.jpg",
+        "exists": false,
+        "type": "image",
+        "ext": ".jpg"
+      },
+      {
+        "ref": "imgA/corresponding_layers.jpg",
+        "file": "imgA/corresponding_layers.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1698,
+        "height": 974
+      },
+      {
+        "ref": "imgA/choosing.mp4",
+        "file": "imgA/choosing.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 7.48
+      },
+      {
+        "ref": "imgA/mechanism.mp4",
+        "file": "imgA/mechanism.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 13.980633
+      },
+      {
+        "ref": "imgA/embed_nfc.jpg",
+        "file": "imgA/embed_nfc.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 2000,
+        "height": 1334
+      },
+      {
+        "ref": "imgA/serial_communication_prototype.mp4",
+        "file": "imgA/serial_communication_prototype.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 12.045367
+      },
+      {
+        "ref": "imgA/interact_with_machine.mp4",
+        "file": "imgA/interact_with_machine.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 7.34972
+      },
+      {
+        "ref": "imgA/exhibition_in_milan.jpg",
+        "file": "imgA/exhibition_in_milan.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1200,
+        "height": 900
+      }
+    ],
+    "emotional-tail.html": [
+      {
+        "ref": "imgA/backButtonWhite.png",
+        "file": "imgA/backButtonWhite.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      },
+      {
+        "ref": "imgA/tailMaterial.JPG",
+        "file": "imgA/tailMaterial.JPG",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1129,
+        "height": 525
+      },
+      {
+        "ref": "imgA/lilypad.JPG",
+        "file": "imgA/lilypad.JPG",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 3120,
+        "height": 4160
+      }
+    ],
+    "index.html": [
+      {
+        "ref": "imgA/videoPoster.jpg",
+        "file": "imgA/videoPoster.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "ref": "imgA/foxThumb.gif",
+        "file": "imgA/foxThumb.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 700,
+        "height": 537
+      },
+      {
+        "ref": "imgA/composerThumb_.jpg",
+        "file": "imgA/composerThumb_.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 742,
+        "height": 568
+      },
+      {
+        "ref": "imgA/bird_above_sea.gif",
+        "file": "imgA/bird_above_sea.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 600,
+        "height": 460
+      },
+      {
+        "ref": "imgA/breezeThumb.png",
+        "file": "imgA/breezeThumb.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 600,
+        "height": 460
+      },
+      {
+        "ref": "imgA/jieThumb.png",
+        "file": "imgA/jieThumb.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 1134,
+        "height": 870
+      },
+      {
+        "ref": "imgA/inkThumb.png",
+        "file": "imgA/inkThumb.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 670,
+        "height": 514
+      },
+      {
+        "ref": "imgA/grids.png",
+        "file": "imgA/grids.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2475,
+        "height": 789
+      },
+      {
+        "ref": "imgA/saodi_round.gif",
+        "file": "imgA/saodi_round.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 334,
+        "height": 338
+      },
+      {
+        "ref": "imgA/streetLighting_round.gif",
+        "file": "imgA/streetLighting_round.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 338,
+        "height": 338
+      },
+      {
+        "ref": "imgA/tactilePrototype_round.gif",
+        "file": "imgA/tactilePrototype_round.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 334,
+        "height": 338
+      },
+      {
+        "ref": "imgA/adaptiveSurface_round.gif",
+        "file": "imgA/adaptiveSurface_round.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 336,
+        "height": 338
+      },
+      {
+        "ref": "imgA/color.gif",
+        "file": "imgA/color.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 334,
+        "height": 338
+      },
+      {
+        "ref": "imgA/feather.gif",
+        "file": "imgA/feather.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 334,
+        "height": 338
+      },
+      {
+        "ref": "imgA/soft2_mask.gif",
+        "file": "imgA/soft2_mask.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 334,
+        "height": 338
+      },
+      {
+        "ref": "imgA/canny_round.gif",
+        "file": "imgA/canny_round.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 334,
+        "height": 337
+      },
+      {
+        "ref": "imgA/rain.jpg",
+        "file": "imgA/rain.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 334,
+        "height": 338
+      },
+      {
+        "ref": "imgA/photography.jpg",
+        "file": "imgA/photography.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 334,
+        "height": 338
+      },
+      {
+        "ref": "imgA/chinesePainting.jpg",
+        "file": "imgA/chinesePainting.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 334,
+        "height": 338
+      },
+      {
+        "ref": "imgA/raining.jpg",
+        "file": "imgA/raining.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1200,
+        "height": 849
+      },
+      {
+        "ref": "imgA/water.jpg",
+        "file": "imgA/water.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1400,
+        "height": 239
+      },
+      {
+        "ref": "hideContent.js",
+        "file": "hideContent.js",
+        "exists": true,
+        "type": "other",
+        "ext": ".js"
+      }
+    ],
+    "ink-animation.html": [
+      {
+        "ref": "imgA/backButton.png",
+        "file": "imgA/backButton.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      },
+      {
+        "ref": "imgA/inkImage.png",
+        "file": "imgA/inkImage.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 1800,
+        "height": 900
+      },
+      {
+        "ref": "imgA/badashanren.png",
+        "file": "imgA/badashanren.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 1200,
+        "height": 546
+      },
+      {
+        "ref": "imgA/fish1.gif",
+        "file": "imgA/fish1.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 500,
+        "height": 500
+      },
+      {
+        "ref": "imgA/fish3.gif",
+        "file": "imgA/fish3.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 762,
+        "height": 881
+      },
+      {
+        "ref": "imgA/fish4.gif",
+        "file": "imgA/fish4.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 400,
+        "height": 253
+      },
+      {
+        "ref": "imgA/shrimp1.gif",
+        "file": "imgA/shrimp1.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 525,
+        "height": 446
+      },
+      {
+        "ref": "imgA/crabsnew.gif",
+        "file": "imgA/crabsnew.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 474,
+        "height": 336
+      },
+      {
+        "ref": "imgA/frog2.gif",
+        "file": "imgA/frog2.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 400,
+        "height": 461
+      },
+      {
+        "ref": "imgA/grass.gif",
+        "file": "imgA/grass.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 780,
+        "height": 565
+      },
+      {
+        "ref": "imgA/cat.gif",
+        "file": "imgA/cat.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 1000,
+        "height": 1538
+      }
+    ],
+    "jie.html": [
+      {
+        "ref": "imgA/backButton.png",
+        "file": "imgA/backButton.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      },
+      {
+        "ref": "imgA/insBorrow.jpg",
+        "file": "imgA/insBorrow.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 2000,
+        "height": 1009
+      },
+      {
+        "ref": "imgA/situationBorrow.jpg",
+        "file": "imgA/situationBorrow.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 753,
+        "height": 706
+      },
+      {
+        "ref": "imgA/needHelp.jpg",
+        "file": "imgA/needHelp.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1600,
+        "height": 1129
+      },
+      {
+        "ref": "imgA/jimmy.gif",
+        "file": "imgA/jimmy.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 338,
+        "height": 600
+      },
+      {
+        "ref": "imgA/david.gif",
+        "file": "imgA/david.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 338,
+        "height": 600
+      },
+      {
+        "ref": "imgA/appFlow.png",
+        "file": "imgA/appFlow.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2500,
+        "height": 1162
+      },
+      {
+        "ref": "imgA/asker_request.gif",
+        "file": "imgA/asker_request.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 600,
+        "height": 1065
+      },
+      {
+        "ref": "imgA/helper_confirm.gif",
+        "file": "imgA/helper_confirm.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 600,
+        "height": 1065
+      },
+      {
+        "ref": "imgA/asker_navigation.gif",
+        "file": "imgA/asker_navigation.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 600,
+        "height": 1065
+      }
+    ],
+    "omzug.html": [
+      {
+        "ref": "imgA/backButton.png",
+        "file": "imgA/backButton.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      },
+      {
+        "ref": "imgA/hotAirBalloon.mp4",
+        "file": "imgA/hotAirBalloon.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 2036,
+        "height": 960,
+        "duration": 12
+      },
+      {
+        "ref": "imgA/hotAirBalloon.gif",
+        "file": "imgA/hotAirBalloon.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 800,
+        "height": 377
+      },
+      {
+        "ref": "imgA/omzugLogo.png",
+        "file": "imgA/omzugLogo.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 500,
+        "height": 500
+      },
+      {
+        "ref": "imgA/tablefinal.gif",
+        "file": "imgA/tablefinal.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 1000,
+        "height": 723
+      },
+      {
+        "ref": "imgA/omzugPages.png",
+        "file": "imgA/omzugPages.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2500,
+        "height": 1002
+      },
+      {
+        "ref": "imgA/room_cut.mp4",
+        "file": "imgA/room_cut.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1712,
+        "height": 1056,
+        "duration": 4.116667
+      },
+      {
+        "ref": "imgA/room.gif",
+        "file": "imgA/room.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 800,
+        "height": 493
+      }
+    ],
+    "painting.html": [
+      {
+        "ref": "imgA/backButton.png",
+        "file": "imgA/backButton.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      },
+      {
+        "ref": "imgA/p1.jpg",
+        "file": "imgA/p1.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 645
+      },
+      {
+        "ref": "imgA/p2.jpg",
+        "file": "imgA/p2.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 645
+      },
+      {
+        "ref": "imgA/p3.jpg",
+        "file": "imgA/p3.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 502,
+        "height": 700
+      },
+      {
+        "ref": "imgA/p4.jpg",
+        "file": "imgA/p4.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 646
+      },
+      {
+        "ref": "imgA/p5.jpg",
+        "file": "imgA/p5.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 646
+      },
+      {
+        "ref": "imgA/p6.jpg",
+        "file": "imgA/p6.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 610
+      },
+      {
+        "ref": "imgA/p7.jpg",
+        "file": "imgA/p7.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 646
+      },
+      {
+        "ref": "imgA/p8.jpg",
+        "file": "imgA/p8.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 654
+      },
+      {
+        "ref": "carousel.js",
+        "file": "carousel.js",
+        "exists": true,
+        "type": "other",
+        "ext": ".js"
+      }
+    ],
+    "photography.html": [
+      {
+        "ref": "imgA/backButton.png",
+        "file": "imgA/backButton.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      },
+      {
+        "ref": "imgA/India1.jpg",
+        "file": "imgA/India1.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 594
+      },
+      {
+        "ref": "imgA/india2.jpg",
+        "file": "imgA/india2.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 611
+      },
+      {
+        "ref": "imgA/india3.jpg",
+        "file": "imgA/india3.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 592
+      },
+      {
+        "ref": "imgA/india4.jpg",
+        "file": "imgA/india4.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 566
+      },
+      {
+        "ref": "imgA/india5.jpg",
+        "file": "imgA/india5.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 569
+      },
+      {
+        "ref": "imgA/india6.jpg",
+        "file": "imgA/india6.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 571
+      },
+      {
+        "ref": "imgA/india7.jpg",
+        "file": "imgA/india7.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 568
+      },
+      {
+        "ref": "imgA/india8.jpg",
+        "file": "imgA/india8.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 570
+      },
+      {
+        "ref": "imgA/india9.jpg",
+        "file": "imgA/india9.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 569
+      },
+      {
+        "ref": "imgA/india10.jpg",
+        "file": "imgA/india10.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 568
+      },
+      {
+        "ref": "imgA/india11.jpg",
+        "file": "imgA/india11.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 583
+      },
+      {
+        "ref": "imgA/india12.jpg",
+        "file": "imgA/india12.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 580
+      },
+      {
+        "ref": "imgA/india13.jpg",
+        "file": "imgA/india13.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 573
+      },
+      {
+        "ref": "imgA/india14.jpg",
+        "file": "imgA/india14.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 654
+      },
+      {
+        "ref": "imgA/india15.jpg",
+        "file": "imgA/india15.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 579
+      },
+      {
+        "ref": "imgA/india16.jpg",
+        "file": "imgA/india16.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 609
+      },
+      {
+        "ref": "imgA/india17.jpg",
+        "file": "imgA/india17.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 608
+      },
+      {
+        "ref": "imgA/india18.jpg",
+        "file": "imgA/india18.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 574
+      },
+      {
+        "ref": "imgA/india19.jpg",
+        "file": "imgA/india19.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 570
+      },
+      {
+        "ref": "imgA/india20.jpg",
+        "file": "imgA/india20.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 900,
+        "height": 568
+      },
+      {
+        "ref": "carousel.js",
+        "file": "carousel.js",
+        "exists": true,
+        "type": "other",
+        "ext": ".js"
+      }
+    ],
+    "printing.html": [
+      {
+        "ref": "imgA/backButton.png",
+        "file": "imgA/backButton.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      },
+      {
+        "ref": "imgA/raining.jpg",
+        "file": "imgA/raining.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1200,
+        "height": 849
+      },
+      {
+        "ref": "imgA/chicken.jpg",
+        "file": "imgA/chicken.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 849,
+        "height": 1200
+      },
+      {
+        "ref": "imgA/whale.jpg",
+        "file": "imgA/whale.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1200,
+        "height": 849
+      },
+      {
+        "ref": "imgA/snow.jpg",
+        "file": "imgA/snow.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 849,
+        "height": 1200
+      },
+      {
+        "ref": "imgA/lotus.jpg",
+        "file": "imgA/lotus.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 855,
+        "height": 1200
+      },
+      {
+        "ref": "imgA/goose.jpg",
+        "file": "imgA/goose.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 855,
+        "height": 1200
+      },
+      {
+        "ref": "imgA/ciwei.jpg",
+        "file": "imgA/ciwei.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1200,
+        "height": 815
+      },
+      {
+        "ref": "imgA/printProcess.jpg",
+        "file": "imgA/printProcess.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 800,
+        "height": 600
+      },
+      {
+        "ref": "carousel.js",
+        "file": "carousel.js",
+        "exists": true,
+        "type": "other",
+        "ext": ".js"
+      }
+    ],
+    "responsive-lighting.html": [
+      {
+        "ref": "imgA/backButton.png",
+        "file": "imgA/backButton.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      }
+    ],
+    "scale.html": [
+      {
+        "ref": "imgA/backButtonWhite.png",
+        "file": "imgA/backButtonWhite.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      }
+    ],
+    "scribbling-speech.html": [
+      {
+        "ref": "imgA/backButtonWhite.png",
+        "file": "imgA/backButtonWhite.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      },
+      {
+        "ref": "imgA/main_movie_bird_sea.mp4",
+        "file": "imgA/main_movie_bird_sea.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1200,
+        "height": 800,
+        "duration": 7.774433
+      },
+      {
+        "ref": "imgA/concept_sketch.jpg",
+        "file": "imgA/concept_sketch.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1188,
+        "height": 1740
+      },
+      {
+        "ref": "imgA/forward_view.mp4",
+        "file": "imgA/forward_view.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1914,
+        "height": 1046,
+        "duration": 7.771167
+      },
+      {
+        "ref": "imgA/left_right_view.mp4",
+        "file": "imgA/left_right_view.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1680,
+        "height": 930,
+        "duration": 4.804417
+      },
+      {
+        "ref": "imgA/box_view_poster.png",
+        "file": "imgA/box_view_poster.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2560,
+        "height": 1419
+      },
+      {
+        "ref": "imgA/box_view.mp4",
+        "file": "imgA/box_view.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 4.98
+      },
+      {
+        "ref": "imgA/input_flow.png",
+        "file": "imgA/input_flow.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2454,
+        "height": 1170
+      },
+      {
+        "ref": "imgA/transcript_poster.png",
+        "file": "imgA/transcript_poster.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2558,
+        "height": 646
+      },
+      {
+        "ref": "imgA/poster_chinese.png",
+        "file": "imgA/poster_chinese.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2242,
+        "height": 966
+      },
+      {
+        "ref": "imgA/pic_quickdraw.png",
+        "file": "imgA/pic_quickdraw.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 1420,
+        "height": 755
+      },
+      {
+        "ref": "imgA/airplane_overview.png",
+        "file": "imgA/airplane_overview.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2560,
+        "height": 1120
+      },
+      {
+        "ref": "imgA/draw_airplane.gif",
+        "file": "imgA/draw_airplane.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 800,
+        "height": 610
+      },
+      {
+        "ref": "imgA/drawing_process.png",
+        "file": "imgA/drawing_process.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2558,
+        "height": 1072
+      },
+      {
+        "ref": "imgA/poster_cat_story.png",
+        "file": "imgA/poster_cat_story.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2560,
+        "height": 1600
+      },
+      {
+        "ref": "imgA/poster_chinese_video.png",
+        "file": "imgA/poster_chinese_video.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2560,
+        "height": 1600
+      },
+      {
+        "ref": "imgA/user_interaction_poster.png",
+        "file": "imgA/user_interaction_poster.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2560,
+        "height": 1428
+      },
+      {
+        "ref": "imgA/poster_visualisation_video.png",
+        "file": "imgA/poster_visualisation_video.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2560,
+        "height": 1398
+      }
+    ],
+    "sensing-armband.html": [
+      {
+        "ref": "imgA/backButtonWhite.png",
+        "file": "imgA/backButtonWhite.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      }
+    ],
+    "soft-robotic.html": [
+      {
+        "ref": "imgA/backButtonWhite.png",
+        "file": "imgA/backButtonWhite.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      },
+      {
+        "ref": "imgA/soft_background.jpg",
+        "file": "imgA/soft_background.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1800,
+        "height": 915
+      },
+      {
+        "ref": "imgA/sketch_softRobot.jpg",
+        "file": "imgA/sketch_softRobot.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1000,
+        "height": 750
+      },
+      {
+        "ref": "imgA/soft4.jpg",
+        "file": "imgA/soft4.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1000,
+        "height": 665
+      },
+      {
+        "ref": "imgA/soft2.gif",
+        "file": "imgA/soft2.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 600,
+        "height": 338
+      }
+    ],
+    "termochromic.html": [
+      {
+        "ref": "imgA/backButtonWhite.png",
+        "file": "imgA/backButtonWhite.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      },
+      {
+        "ref": "imgA/termochromic.mp4",
+        "file": "imgA/termochromic.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 3.830998
+      },
+      {
+        "ref": "imgA/termo2.jpg",
+        "file": "imgA/termo2.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "ref": "imgA/termo3.jpg",
+        "file": "imgA/termo3.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "ref": "imgA/termo4.jpg",
+        "file": "imgA/termo4.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1200,
+        "height": 900
+      },
+      {
+        "ref": "imgA/termo1.jpg",
+        "file": "imgA/termo1.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1200,
+        "height": 900
+      }
+    ],
+    "the-body-languages-of-machine.html": [
+      {
+        "ref": "imgA/backButtonWhite.png",
+        "file": "imgA/backButtonWhite.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      },
+      {
+        "ref": "imgA/pattern.png",
+        "file": "imgA/pattern.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2296,
+        "height": 1222
+      }
+    ],
+    "throw-it.html": [
+      {
+        "ref": "imgA/backButton.png",
+        "file": "imgA/backButton.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      },
+      {
+        "ref": "imgA/bucket_image.png",
+        "file": "imgA/bucket_image.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 1800,
+        "height": 1009
+      },
+      {
+        "ref": "imgA/bucket.gif",
+        "file": "imgA/bucket.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 674,
+        "height": 1198
+      }
+    ],
+    "web.html": [
+      {
+        "ref": "imgA/backButtonWhite.png",
+        "file": "imgA/backButtonWhite.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      },
+      {
+        "ref": "imgA/howIWork.mp4",
+        "file": "imgA/howIWork.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 2560,
+        "height": 1600,
+        "duration": 4.6875
+      },
+      {
+        "ref": "imgA/howIWork.gif",
+        "file": "imgA/howIWork.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 800,
+        "height": 500
+      },
+      {
+        "ref": "imgA/myWeb.jpg",
+        "file": "imgA/myWeb.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 1800,
+        "height": 1200
+      }
+    ],
+    "word-to-world.html": [
+      {
+        "ref": "imgA/backButtonWhite.png",
+        "file": "imgA/backButtonWhite.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 73,
+        "height": 56
+      },
+      {
+        "ref": "imgA/word_to_world_titel_.gif",
+        "file": "imgA/word_to_world_titel_.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 1200,
+        "height": 757
+      },
+      {
+        "ref": "imgA/structure.png",
+        "file": "imgA/structure.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 3308,
+        "height": 1343
+      },
+      {
+        "ref": "imgA/assetword.png",
+        "file": "imgA/assetword.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2560,
+        "height": 1020
+      },
+      {
+        "ref": "imgA/mushroomPoster.png",
+        "file": "imgA/mushroomPoster.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2428,
+        "height": 1282
+      },
+      {
+        "ref": "imgA/someMushroomss.mp4",
+        "file": "imgA/someMushroomss.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 6.366667
+      },
+      {
+        "ref": "imgA/animationText.png",
+        "file": "imgA/animationText.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2234,
+        "height": 950
+      },
+      {
+        "ref": "imgA/animation_transition.mp4",
+        "file": "imgA/animation_transition.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1074,
+        "duration": 7.574233
+      },
+      {
+        "ref": "imgA/elephantPoster.png",
+        "file": "imgA/elephantPoster.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2534,
+        "height": 1422
+      },
+      {
+        "ref": "imgA/elephant_drink.mp4",
+        "file": "imgA/elephant_drink.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 11.533333
+      },
+      {
+        "ref": "imgA/mocapMotions.gif",
+        "file": "imgA/mocapMotions.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "ref": "imgA/cowboyPoster.png",
+        "file": "imgA/cowboyPoster.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2520,
+        "height": 1398
+      },
+      {
+        "ref": "imgA/cowboy_waving.mp4",
+        "file": "imgA/cowboy_waving.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 7.966667
+      },
+      {
+        "ref": "imgA/bearMotions.gif",
+        "file": "imgA/bearMotions.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 1832,
+        "height": 941
+      },
+      {
+        "ref": "imgA/bearPoster.png",
+        "file": "imgA/bearPoster.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2498,
+        "height": 1382
+      },
+      {
+        "ref": "imgA/bear_dancing.mp4",
+        "file": "imgA/bear_dancing.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 10.933333
+      },
+      {
+        "ref": "imgA/inspirationMovies.gif",
+        "file": "imgA/inspirationMovies.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 1842,
+        "height": 906
+      },
+      {
+        "ref": "imgA/meshDeformerTool.mp4",
+        "file": "imgA/meshDeformerTool.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 2152,
+        "height": 1100,
+        "duration": 4.237567
+      },
+      {
+        "ref": "imgA/cubeMotions.gif",
+        "file": "imgA/cubeMotions.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 1920,
+        "height": 848
+      },
+      {
+        "ref": "imgA/tableMotions.gif",
+        "file": "imgA/tableMotions.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 1920,
+        "height": 1116
+      },
+      {
+        "ref": "imgA/sofa_walk.mp4",
+        "file": "imgA/sofa_walk.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 8.066667
+      },
+      {
+        "ref": "imgA/movementText.png",
+        "file": "imgA/movementText.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2212,
+        "height": 934
+      },
+      {
+        "ref": "imgA/balloon_scene.mp4",
+        "file": "imgA/balloon_scene.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 6.530317
+      },
+      {
+        "ref": "imgA/moon_rotates.mp4",
+        "file": "imgA/moon_rotates.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 18.6
+      },
+      {
+        "ref": "imgA/ufo.mp4",
+        "file": "imgA/ufo.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 8.133333
+      },
+      {
+        "ref": "imgA/earthquake.mp4",
+        "file": "imgA/earthquake.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 3.433333
+      },
+      {
+        "ref": "imgA/movementPaths.mp4",
+        "file": "imgA/movementPaths.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 2.625
+      },
+      {
+        "ref": "imgA/dinosaur_chase.mp4",
+        "file": "imgA/dinosaur_chase.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 8.966667
+      },
+      {
+        "ref": "imgA/navigation_pic.png",
+        "file": "imgA/navigation_pic.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2152,
+        "height": 1212
+      },
+      {
+        "ref": "imgA/girl_garden.mp4",
+        "file": "imgA/girl_garden.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 8.966667
+      },
+      {
+        "ref": "imgA/simulationText.png",
+        "file": "imgA/simulationText.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2256,
+        "height": 798
+      },
+      {
+        "ref": "imgA/pencil_ball_fall.mp4",
+        "file": "imgA/pencil_ball_fall.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 4.633333
+      },
+      {
+        "ref": "imgA/flock_birds.mp4",
+        "file": "imgA/flock_birds.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 12.333333
+      },
+      {
+        "ref": "imgA/flock_fishes.mp4",
+        "file": "imgA/flock_fishes.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 6.3
+      },
+      {
+        "ref": "imgA/chair_fall.mp4",
+        "file": "imgA/chair_fall.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 10.366667
+      },
+      {
+        "ref": "imgA/timeText.png",
+        "file": "imgA/timeText.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2460,
+        "height": 1074
+      },
+      {
+        "ref": "imgA/time_of_day.mp4",
+        "file": "imgA/time_of_day.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 5.875
+      },
+      {
+        "ref": "imgA/late_afternoon_.mp4",
+        "file": "imgA/late_afternoon_.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 3.431458
+      },
+      {
+        "ref": "imgA/on_a_sunny_day.mp4",
+        "file": "imgA/on_a_sunny_day.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 1.314292
+      },
+      {
+        "ref": "imgA/raining.mp4",
+        "file": "imgA/raining.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 5.965
+      },
+      {
+        "ref": "imgA/perspectiveText.png",
+        "file": "imgA/perspectiveText.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2560,
+        "height": 636
+      },
+      {
+        "ref": "imgA/firstPersonView.mp4",
+        "file": "imgA/firstPersonView.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 6.9
+      },
+      {
+        "ref": "imgA/thirdPersonView.mp4",
+        "file": "imgA/thirdPersonView.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 4.771678
+      },
+      {
+        "ref": "imgA/sawSomething.mp4",
+        "file": "imgA/sawSomething.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1920,
+        "height": 1080,
+        "duration": 3.133333
+      },
+      {
+        "ref": "imgA/fox_watch_TV.gif",
+        "file": "imgA/fox_watch_TV.gif",
+        "exists": true,
+        "type": "image",
+        "ext": ".gif",
+        "width": 1200,
+        "height": 675
+      },
+      {
+        "ref": "imgA/soundEffects.png",
+        "file": "imgA/soundEffects.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2218,
+        "height": 962
+      },
+      {
+        "ref": "imgA/nlp.png",
+        "file": "imgA/nlp.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 1870,
+        "height": 568
+      },
+      {
+        "ref": "imgA/verbs_classification.png",
+        "file": "imgA/verbs_classification.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 6000,
+        "height": 3065
+      },
+      {
+        "ref": "imgA/technical_flow_horizontal.png",
+        "file": "imgA/technical_flow_horizontal.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 6690,
+        "height": 2628
+      },
+      {
+        "ref": "imgA/giraffe_penguin_demo.mp4",
+        "file": "imgA/giraffe_penguin_demo.mp4",
+        "exists": true,
+        "type": "video",
+        "ext": ".mp4",
+        "width": 1564,
+        "height": 876,
+        "duration": 12.645967
+      },
+      {
+        "ref": "imgA/semantics.png",
+        "file": "imgA/semantics.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 2478,
+        "height": 1292
+      },
+      {
+        "ref": "imgA/story1.png",
+        "file": "imgA/story1.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 1626,
+        "height": 1184
+      },
+      {
+        "ref": "imgA/story2.png",
+        "file": "imgA/story2.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 1622,
+        "height": 1180
+      },
+      {
+        "ref": "imgA/story3.png",
+        "file": "imgA/story3.png",
+        "exists": true,
+        "type": "image",
+        "ext": ".png",
+        "width": 1626,
+        "height": 1182
+      },
+      {
+        "ref": "imgA/interface_index.jpg",
+        "file": "imgA/interface_index.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 2556,
+        "height": 1604
+      },
+      {
+        "ref": "imgA/interface_export.jpg",
+        "file": "imgA/interface_export.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 2556,
+        "height": 1604
+      },
+      {
+        "ref": "imgA/interface_bubble.jpg",
+        "file": "imgA/interface_bubble.jpg",
+        "exists": true,
+        "type": "image",
+        "ext": ".jpg",
+        "width": 2556,
+        "height": 1604
+      }
+    ],
+    "about/about.html": [
+      {
+        "ref": "../imgA/self.jpg",
+        "file": "imgA/self.jpg",
+        "exists": false,
+        "type": "image",
+        "ext": ".jpg"
+      }
+    ],
+    "contact/contact.html": [],
+    "design/indexdesign.html": [],
+    "paintings/indexpainting.html": [
+      {
+        "ref": "../imgA/jquery-1.11.3.js",
+        "file": "imgA/jquery-1.11.3.js",
+        "exists": true,
+        "type": "other",
+        "ext": ".js"
+      },
+      {
+        "ref": "../imgA/tuzi1.jpg",
+        "file": "imgA/tuzi1.jpg",
+        "exists": false,
+        "type": "image",
+        "ext": ".jpg"
+      },
+      {
+        "ref": "../imgA/sun.jpg",
+        "file": "imgA/sun.jpg",
+        "exists": false,
+        "type": "image",
+        "ext": ".jpg"
+      },
+      {
+        "ref": "../imgA/xiaobing.jpg",
+        "file": "imgA/xiaobing.jpg",
+        "exists": false,
+        "type": "image",
+        "ext": ".jpg"
+      },
+      {
+        "ref": "../imgA/hanwen.jpg",
+        "file": "imgA/hanwen.jpg",
+        "exists": false,
+        "type": "image",
+        "ext": ".jpg"
+      },
+      {
+        "ref": "../imgA/qingchengshan.jpg",
+        "file": "imgA/qingchengshan.jpg",
+        "exists": false,
+        "type": "image",
+        "ext": ".jpg"
+      },
+      {
+        "ref": "../imgA/tongtong.jpg",
+        "file": "imgA/tongtong.jpg",
+        "exists": false,
+        "type": "image",
+        "ext": ".jpg"
+      }
+    ],
+    "poems/indexpoem.html": [
+      {
+        "ref": "../imgA/tuzi.jpg",
+        "file": "imgA/tuzi.jpg",
+        "exists": false,
+        "type": "image",
+        "ext": ".jpg"
+      }
+    ]
+  },
+  "unique": {
+    "imgA/backButton.png": {
+      "ref": "imgA/backButton.png",
+      "file": "imgA/backButton.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 73,
+      "height": 56
+    },
+    "imgA/ronResch.jpg": {
+      "ref": "imgA/ronResch.jpg",
+      "file": "imgA/ronResch.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1578,
+      "height": 799
+    },
+    "imgA/breezeImage.png": {
+      "ref": "imgA/breezeImage.png",
+      "file": "imgA/breezeImage.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 1800,
+      "height": 1014
+    },
+    "imgA/setFire.jpg": {
+      "ref": "imgA/setFire.jpg",
+      "file": "imgA/setFire.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 403,
+      "height": 337
+    },
+    "imgA/blowOut.jpg": {
+      "ref": "imgA/blowOut.jpg",
+      "file": "imgA/blowOut.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 403,
+      "height": 337
+    },
+    "imgA/passingFlame.png": {
+      "ref": "imgA/passingFlame.png",
+      "file": "imgA/passingFlame.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 403,
+      "height": 337
+    },
+    "imgA/blowOn.gif": {
+      "ref": "imgA/blowOn.gif",
+      "file": "imgA/blowOn.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 900,
+      "height": 691
+    },
+    "imgA/blowOutLoop.gif": {
+      "ref": "imgA/blowOutLoop.gif",
+      "file": "imgA/blowOutLoop.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 900,
+      "height": 691
+    },
+    "imgA/lightUp.jpg": {
+      "ref": "imgA/lightUp.jpg",
+      "file": "imgA/lightUp.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 690
+    },
+    "imgA/technicalLayout.gif": {
+      "ref": "imgA/technicalLayout.gif",
+      "file": "imgA/technicalLayout.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 664,
+      "height": 500
+    },
+    "imgA/components.png": {
+      "ref": "imgA/components.png",
+      "file": "imgA/components.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 800,
+      "height": 534
+    },
+    "imgA/assembledBreeze.jpg": {
+      "ref": "imgA/assembledBreeze.jpg",
+      "file": "imgA/assembledBreeze.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 800,
+      "height": 534
+    },
+    "imgA/breeze_touching_1200.jpg": {
+      "ref": "imgA/breeze_touching_1200.jpg",
+      "file": "imgA/breeze_touching_1200.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1200,
+      "height": 675
+    },
+    "imgA/breezeVideoBackground.png": {
+      "ref": "imgA/breezeVideoBackground.png",
+      "file": "imgA/breezeVideoBackground.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2560,
+      "height": 1442
+    },
+    "imgA/backButtonWhite.png": {
+      "ref": "imgA/backButtonWhite.png",
+      "file": "imgA/backButtonWhite.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 73,
+      "height": 56
+    },
+    "imgA/canny.png": {
+      "ref": "imgA/canny.png",
+      "file": "imgA/canny.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 1920,
+      "height": 1080
+    },
+    "imgA/canny_640.gif": {
+      "ref": "imgA/canny_640.gif",
+      "file": "imgA/canny_640.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 640,
+      "height": 360
+    },
+    "imgA/espresso_in_hand.jpg": {
+      "ref": "imgA/espresso_in_hand.jpg",
+      "file": "imgA/espresso_in_hand.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 2000,
+      "height": 1205
+    },
+    "imgA/queue.jpg": {
+      "ref": "imgA/queue.jpg",
+      "file": "imgA/queue.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1400,
+      "height": 737
+    },
+    "imgA/coffee_menu.jpg": {
+      "ref": "imgA/coffee_menu.jpg",
+      "file": "imgA/coffee_menu.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1400,
+      "height": 737
+    },
+    "imgA/coffee_machine_interface.jpg": {
+      "ref": "imgA/coffee_machine_interface.jpg",
+      "file": "imgA/coffee_machine_interface.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1400,
+      "height": 737
+    },
+    "imgA/stopmotion2.mp4": {
+      "ref": "imgA/stopmotion2.mp4",
+      "file": "imgA/stopmotion2.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 27.6
+    },
+    "imgA/stone_cafe.png": {
+      "ref": "imgA/stone_cafe.png",
+      "file": "imgA/stone_cafe.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2560,
+      "height": 1438
+    },
+    "imgA/user_flow_coffee_composer.png": {
+      "ref": "imgA/user_flow_coffee_composer.png",
+      "file": "imgA/user_flow_coffee_composer.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 4062,
+      "height": 3118
+    },
+    "imgA/milk.png": {
+      "ref": "imgA/milk.png",
+      "file": "imgA/milk.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 258,
+      "height": 256
+    },
+    "imgA/almond_drink.png": {
+      "ref": "imgA/almond_drink.png",
+      "file": "imgA/almond_drink.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 258,
+      "height": 256
+    },
+    "imgA/soy_drink.png": {
+      "ref": "imgA/soy_drink.png",
+      "file": "imgA/soy_drink.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 258,
+      "height": 256
+    },
+    "imgA/white_sugar.png": {
+      "ref": "imgA/white_sugar.png",
+      "file": "imgA/white_sugar.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 258,
+      "height": 256
+    },
+    "imgA/brown_sugar.png": {
+      "ref": "imgA/brown_sugar.png",
+      "file": "imgA/brown_sugar.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 258,
+      "height": 256
+    },
+    "imgA/espresso.png": {
+      "ref": "imgA/espresso.png",
+      "file": "imgA/espresso.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 258,
+      "height": 258
+    },
+    "imgA/foam.png": {
+      "ref": "imgA/foam.png",
+      "file": "imgA/foam.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 256,
+      "height": 258
+    },
+    "imgA/hot_water.png": {
+      "ref": "imgA/hot_water.png",
+      "file": "imgA/hot_water.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 258,
+      "height": 258
+    },
+    "imgA/oat_drink.png": {
+      "ref": "imgA/oat_drink.png",
+      "file": "imgA/oat_drink.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 258,
+      "height": 258
+    },
+    "imgA/etc.png": {
+      "ref": "imgA/etc.png",
+      "file": "imgA/etc.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 256,
+      "height": 256
+    },
+    "imgA/coffee_chart.png": {
+      "ref": "imgA/coffee_chart.png",
+      "file": "imgA/coffee_chart.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 5213,
+      "height": 1131
+    },
+    "imgA/tokens_with_hands.jpg": {
+      "ref": "imgA/tokens_with_hands.jpg",
+      "file": "imgA/tokens_with_hands.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 2000,
+      "height": 1335
+    },
+    "imgA/media_photo_coffee.jpg": {
+      "ref": "imgA/media_photo_coffee.jpg",
+      "file": "imgA/media_photo_coffee.jpg",
+      "exists": false,
+      "type": "image",
+      "ext": ".jpg"
+    },
+    "imgA/corresponding_layers.jpg": {
+      "ref": "imgA/corresponding_layers.jpg",
+      "file": "imgA/corresponding_layers.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1698,
+      "height": 974
+    },
+    "imgA/choosing.mp4": {
+      "ref": "imgA/choosing.mp4",
+      "file": "imgA/choosing.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 7.48
+    },
+    "imgA/mechanism.mp4": {
+      "ref": "imgA/mechanism.mp4",
+      "file": "imgA/mechanism.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 13.980633
+    },
+    "imgA/embed_nfc.jpg": {
+      "ref": "imgA/embed_nfc.jpg",
+      "file": "imgA/embed_nfc.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 2000,
+      "height": 1334
+    },
+    "imgA/serial_communication_prototype.mp4": {
+      "ref": "imgA/serial_communication_prototype.mp4",
+      "file": "imgA/serial_communication_prototype.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 12.045367
+    },
+    "imgA/interact_with_machine.mp4": {
+      "ref": "imgA/interact_with_machine.mp4",
+      "file": "imgA/interact_with_machine.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 7.34972
+    },
+    "imgA/exhibition_in_milan.jpg": {
+      "ref": "imgA/exhibition_in_milan.jpg",
+      "file": "imgA/exhibition_in_milan.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1200,
+      "height": 900
+    },
+    "imgA/tailMaterial.JPG": {
+      "ref": "imgA/tailMaterial.JPG",
+      "file": "imgA/tailMaterial.JPG",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1129,
+      "height": 525
+    },
+    "imgA/lilypad.JPG": {
+      "ref": "imgA/lilypad.JPG",
+      "file": "imgA/lilypad.JPG",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 3120,
+      "height": 4160
+    },
+    "imgA/videoPoster.jpg": {
+      "ref": "imgA/videoPoster.jpg",
+      "file": "imgA/videoPoster.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1280,
+      "height": 720
+    },
+    "imgA/foxThumb.gif": {
+      "ref": "imgA/foxThumb.gif",
+      "file": "imgA/foxThumb.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 700,
+      "height": 537
+    },
+    "imgA/composerThumb_.jpg": {
+      "ref": "imgA/composerThumb_.jpg",
+      "file": "imgA/composerThumb_.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 742,
+      "height": 568
+    },
+    "imgA/bird_above_sea.gif": {
+      "ref": "imgA/bird_above_sea.gif",
+      "file": "imgA/bird_above_sea.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 600,
+      "height": 460
+    },
+    "imgA/breezeThumb.png": {
+      "ref": "imgA/breezeThumb.png",
+      "file": "imgA/breezeThumb.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 600,
+      "height": 460
+    },
+    "imgA/jieThumb.png": {
+      "ref": "imgA/jieThumb.png",
+      "file": "imgA/jieThumb.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 1134,
+      "height": 870
+    },
+    "imgA/inkThumb.png": {
+      "ref": "imgA/inkThumb.png",
+      "file": "imgA/inkThumb.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 670,
+      "height": 514
+    },
+    "imgA/grids.png": {
+      "ref": "imgA/grids.png",
+      "file": "imgA/grids.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2475,
+      "height": 789
+    },
+    "imgA/saodi_round.gif": {
+      "ref": "imgA/saodi_round.gif",
+      "file": "imgA/saodi_round.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 334,
+      "height": 338
+    },
+    "imgA/streetLighting_round.gif": {
+      "ref": "imgA/streetLighting_round.gif",
+      "file": "imgA/streetLighting_round.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 338,
+      "height": 338
+    },
+    "imgA/tactilePrototype_round.gif": {
+      "ref": "imgA/tactilePrototype_round.gif",
+      "file": "imgA/tactilePrototype_round.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 334,
+      "height": 338
+    },
+    "imgA/adaptiveSurface_round.gif": {
+      "ref": "imgA/adaptiveSurface_round.gif",
+      "file": "imgA/adaptiveSurface_round.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 336,
+      "height": 338
+    },
+    "imgA/color.gif": {
+      "ref": "imgA/color.gif",
+      "file": "imgA/color.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 334,
+      "height": 338
+    },
+    "imgA/feather.gif": {
+      "ref": "imgA/feather.gif",
+      "file": "imgA/feather.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 334,
+      "height": 338
+    },
+    "imgA/soft2_mask.gif": {
+      "ref": "imgA/soft2_mask.gif",
+      "file": "imgA/soft2_mask.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 334,
+      "height": 338
+    },
+    "imgA/canny_round.gif": {
+      "ref": "imgA/canny_round.gif",
+      "file": "imgA/canny_round.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 334,
+      "height": 337
+    },
+    "imgA/rain.jpg": {
+      "ref": "imgA/rain.jpg",
+      "file": "imgA/rain.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 334,
+      "height": 338
+    },
+    "imgA/photography.jpg": {
+      "ref": "imgA/photography.jpg",
+      "file": "imgA/photography.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 334,
+      "height": 338
+    },
+    "imgA/chinesePainting.jpg": {
+      "ref": "imgA/chinesePainting.jpg",
+      "file": "imgA/chinesePainting.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 334,
+      "height": 338
+    },
+    "imgA/raining.jpg": {
+      "ref": "imgA/raining.jpg",
+      "file": "imgA/raining.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1200,
+      "height": 849
+    },
+    "imgA/water.jpg": {
+      "ref": "imgA/water.jpg",
+      "file": "imgA/water.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1400,
+      "height": 239
+    },
+    "hideContent.js": {
+      "ref": "hideContent.js",
+      "file": "hideContent.js",
+      "exists": true,
+      "type": "other",
+      "ext": ".js"
+    },
+    "imgA/inkImage.png": {
+      "ref": "imgA/inkImage.png",
+      "file": "imgA/inkImage.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 1800,
+      "height": 900
+    },
+    "imgA/badashanren.png": {
+      "ref": "imgA/badashanren.png",
+      "file": "imgA/badashanren.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 1200,
+      "height": 546
+    },
+    "imgA/fish1.gif": {
+      "ref": "imgA/fish1.gif",
+      "file": "imgA/fish1.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 500,
+      "height": 500
+    },
+    "imgA/fish3.gif": {
+      "ref": "imgA/fish3.gif",
+      "file": "imgA/fish3.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 762,
+      "height": 881
+    },
+    "imgA/fish4.gif": {
+      "ref": "imgA/fish4.gif",
+      "file": "imgA/fish4.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 400,
+      "height": 253
+    },
+    "imgA/shrimp1.gif": {
+      "ref": "imgA/shrimp1.gif",
+      "file": "imgA/shrimp1.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 525,
+      "height": 446
+    },
+    "imgA/crabsnew.gif": {
+      "ref": "imgA/crabsnew.gif",
+      "file": "imgA/crabsnew.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 474,
+      "height": 336
+    },
+    "imgA/frog2.gif": {
+      "ref": "imgA/frog2.gif",
+      "file": "imgA/frog2.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 400,
+      "height": 461
+    },
+    "imgA/grass.gif": {
+      "ref": "imgA/grass.gif",
+      "file": "imgA/grass.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 780,
+      "height": 565
+    },
+    "imgA/cat.gif": {
+      "ref": "imgA/cat.gif",
+      "file": "imgA/cat.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 1000,
+      "height": 1538
+    },
+    "imgA/insBorrow.jpg": {
+      "ref": "imgA/insBorrow.jpg",
+      "file": "imgA/insBorrow.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 2000,
+      "height": 1009
+    },
+    "imgA/situationBorrow.jpg": {
+      "ref": "imgA/situationBorrow.jpg",
+      "file": "imgA/situationBorrow.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 753,
+      "height": 706
+    },
+    "imgA/needHelp.jpg": {
+      "ref": "imgA/needHelp.jpg",
+      "file": "imgA/needHelp.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1600,
+      "height": 1129
+    },
+    "imgA/jimmy.gif": {
+      "ref": "imgA/jimmy.gif",
+      "file": "imgA/jimmy.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 338,
+      "height": 600
+    },
+    "imgA/david.gif": {
+      "ref": "imgA/david.gif",
+      "file": "imgA/david.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 338,
+      "height": 600
+    },
+    "imgA/appFlow.png": {
+      "ref": "imgA/appFlow.png",
+      "file": "imgA/appFlow.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2500,
+      "height": 1162
+    },
+    "imgA/asker_request.gif": {
+      "ref": "imgA/asker_request.gif",
+      "file": "imgA/asker_request.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 600,
+      "height": 1065
+    },
+    "imgA/helper_confirm.gif": {
+      "ref": "imgA/helper_confirm.gif",
+      "file": "imgA/helper_confirm.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 600,
+      "height": 1065
+    },
+    "imgA/asker_navigation.gif": {
+      "ref": "imgA/asker_navigation.gif",
+      "file": "imgA/asker_navigation.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 600,
+      "height": 1065
+    },
+    "imgA/hotAirBalloon.mp4": {
+      "ref": "imgA/hotAirBalloon.mp4",
+      "file": "imgA/hotAirBalloon.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 2036,
+      "height": 960,
+      "duration": 12
+    },
+    "imgA/hotAirBalloon.gif": {
+      "ref": "imgA/hotAirBalloon.gif",
+      "file": "imgA/hotAirBalloon.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 800,
+      "height": 377
+    },
+    "imgA/omzugLogo.png": {
+      "ref": "imgA/omzugLogo.png",
+      "file": "imgA/omzugLogo.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 500,
+      "height": 500
+    },
+    "imgA/tablefinal.gif": {
+      "ref": "imgA/tablefinal.gif",
+      "file": "imgA/tablefinal.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 1000,
+      "height": 723
+    },
+    "imgA/omzugPages.png": {
+      "ref": "imgA/omzugPages.png",
+      "file": "imgA/omzugPages.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2500,
+      "height": 1002
+    },
+    "imgA/room_cut.mp4": {
+      "ref": "imgA/room_cut.mp4",
+      "file": "imgA/room_cut.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1712,
+      "height": 1056,
+      "duration": 4.116667
+    },
+    "imgA/room.gif": {
+      "ref": "imgA/room.gif",
+      "file": "imgA/room.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 800,
+      "height": 493
+    },
+    "imgA/p1.jpg": {
+      "ref": "imgA/p1.jpg",
+      "file": "imgA/p1.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 645
+    },
+    "imgA/p2.jpg": {
+      "ref": "imgA/p2.jpg",
+      "file": "imgA/p2.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 645
+    },
+    "imgA/p3.jpg": {
+      "ref": "imgA/p3.jpg",
+      "file": "imgA/p3.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 502,
+      "height": 700
+    },
+    "imgA/p4.jpg": {
+      "ref": "imgA/p4.jpg",
+      "file": "imgA/p4.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 646
+    },
+    "imgA/p5.jpg": {
+      "ref": "imgA/p5.jpg",
+      "file": "imgA/p5.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 646
+    },
+    "imgA/p6.jpg": {
+      "ref": "imgA/p6.jpg",
+      "file": "imgA/p6.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 610
+    },
+    "imgA/p7.jpg": {
+      "ref": "imgA/p7.jpg",
+      "file": "imgA/p7.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 646
+    },
+    "imgA/p8.jpg": {
+      "ref": "imgA/p8.jpg",
+      "file": "imgA/p8.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 654
+    },
+    "carousel.js": {
+      "ref": "carousel.js",
+      "file": "carousel.js",
+      "exists": true,
+      "type": "other",
+      "ext": ".js"
+    },
+    "imgA/India1.jpg": {
+      "ref": "imgA/India1.jpg",
+      "file": "imgA/India1.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 594
+    },
+    "imgA/india2.jpg": {
+      "ref": "imgA/india2.jpg",
+      "file": "imgA/india2.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 611
+    },
+    "imgA/india3.jpg": {
+      "ref": "imgA/india3.jpg",
+      "file": "imgA/india3.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 592
+    },
+    "imgA/india4.jpg": {
+      "ref": "imgA/india4.jpg",
+      "file": "imgA/india4.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 566
+    },
+    "imgA/india5.jpg": {
+      "ref": "imgA/india5.jpg",
+      "file": "imgA/india5.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 569
+    },
+    "imgA/india6.jpg": {
+      "ref": "imgA/india6.jpg",
+      "file": "imgA/india6.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 571
+    },
+    "imgA/india7.jpg": {
+      "ref": "imgA/india7.jpg",
+      "file": "imgA/india7.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 568
+    },
+    "imgA/india8.jpg": {
+      "ref": "imgA/india8.jpg",
+      "file": "imgA/india8.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 570
+    },
+    "imgA/india9.jpg": {
+      "ref": "imgA/india9.jpg",
+      "file": "imgA/india9.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 569
+    },
+    "imgA/india10.jpg": {
+      "ref": "imgA/india10.jpg",
+      "file": "imgA/india10.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 568
+    },
+    "imgA/india11.jpg": {
+      "ref": "imgA/india11.jpg",
+      "file": "imgA/india11.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 583
+    },
+    "imgA/india12.jpg": {
+      "ref": "imgA/india12.jpg",
+      "file": "imgA/india12.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 580
+    },
+    "imgA/india13.jpg": {
+      "ref": "imgA/india13.jpg",
+      "file": "imgA/india13.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 573
+    },
+    "imgA/india14.jpg": {
+      "ref": "imgA/india14.jpg",
+      "file": "imgA/india14.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 654
+    },
+    "imgA/india15.jpg": {
+      "ref": "imgA/india15.jpg",
+      "file": "imgA/india15.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 579
+    },
+    "imgA/india16.jpg": {
+      "ref": "imgA/india16.jpg",
+      "file": "imgA/india16.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 609
+    },
+    "imgA/india17.jpg": {
+      "ref": "imgA/india17.jpg",
+      "file": "imgA/india17.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 608
+    },
+    "imgA/india18.jpg": {
+      "ref": "imgA/india18.jpg",
+      "file": "imgA/india18.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 574
+    },
+    "imgA/india19.jpg": {
+      "ref": "imgA/india19.jpg",
+      "file": "imgA/india19.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 570
+    },
+    "imgA/india20.jpg": {
+      "ref": "imgA/india20.jpg",
+      "file": "imgA/india20.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 900,
+      "height": 568
+    },
+    "imgA/chicken.jpg": {
+      "ref": "imgA/chicken.jpg",
+      "file": "imgA/chicken.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 849,
+      "height": 1200
+    },
+    "imgA/whale.jpg": {
+      "ref": "imgA/whale.jpg",
+      "file": "imgA/whale.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1200,
+      "height": 849
+    },
+    "imgA/snow.jpg": {
+      "ref": "imgA/snow.jpg",
+      "file": "imgA/snow.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 849,
+      "height": 1200
+    },
+    "imgA/lotus.jpg": {
+      "ref": "imgA/lotus.jpg",
+      "file": "imgA/lotus.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 855,
+      "height": 1200
+    },
+    "imgA/goose.jpg": {
+      "ref": "imgA/goose.jpg",
+      "file": "imgA/goose.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 855,
+      "height": 1200
+    },
+    "imgA/ciwei.jpg": {
+      "ref": "imgA/ciwei.jpg",
+      "file": "imgA/ciwei.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1200,
+      "height": 815
+    },
+    "imgA/printProcess.jpg": {
+      "ref": "imgA/printProcess.jpg",
+      "file": "imgA/printProcess.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 800,
+      "height": 600
+    },
+    "imgA/main_movie_bird_sea.mp4": {
+      "ref": "imgA/main_movie_bird_sea.mp4",
+      "file": "imgA/main_movie_bird_sea.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1200,
+      "height": 800,
+      "duration": 7.774433
+    },
+    "imgA/concept_sketch.jpg": {
+      "ref": "imgA/concept_sketch.jpg",
+      "file": "imgA/concept_sketch.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1188,
+      "height": 1740
+    },
+    "imgA/forward_view.mp4": {
+      "ref": "imgA/forward_view.mp4",
+      "file": "imgA/forward_view.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1914,
+      "height": 1046,
+      "duration": 7.771167
+    },
+    "imgA/left_right_view.mp4": {
+      "ref": "imgA/left_right_view.mp4",
+      "file": "imgA/left_right_view.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1680,
+      "height": 930,
+      "duration": 4.804417
+    },
+    "imgA/box_view_poster.png": {
+      "ref": "imgA/box_view_poster.png",
+      "file": "imgA/box_view_poster.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2560,
+      "height": 1419
+    },
+    "imgA/box_view.mp4": {
+      "ref": "imgA/box_view.mp4",
+      "file": "imgA/box_view.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 4.98
+    },
+    "imgA/input_flow.png": {
+      "ref": "imgA/input_flow.png",
+      "file": "imgA/input_flow.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2454,
+      "height": 1170
+    },
+    "imgA/transcript_poster.png": {
+      "ref": "imgA/transcript_poster.png",
+      "file": "imgA/transcript_poster.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2558,
+      "height": 646
+    },
+    "imgA/poster_chinese.png": {
+      "ref": "imgA/poster_chinese.png",
+      "file": "imgA/poster_chinese.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2242,
+      "height": 966
+    },
+    "imgA/pic_quickdraw.png": {
+      "ref": "imgA/pic_quickdraw.png",
+      "file": "imgA/pic_quickdraw.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 1420,
+      "height": 755
+    },
+    "imgA/airplane_overview.png": {
+      "ref": "imgA/airplane_overview.png",
+      "file": "imgA/airplane_overview.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2560,
+      "height": 1120
+    },
+    "imgA/draw_airplane.gif": {
+      "ref": "imgA/draw_airplane.gif",
+      "file": "imgA/draw_airplane.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 800,
+      "height": 610
+    },
+    "imgA/drawing_process.png": {
+      "ref": "imgA/drawing_process.png",
+      "file": "imgA/drawing_process.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2558,
+      "height": 1072
+    },
+    "imgA/poster_cat_story.png": {
+      "ref": "imgA/poster_cat_story.png",
+      "file": "imgA/poster_cat_story.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2560,
+      "height": 1600
+    },
+    "imgA/poster_chinese_video.png": {
+      "ref": "imgA/poster_chinese_video.png",
+      "file": "imgA/poster_chinese_video.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2560,
+      "height": 1600
+    },
+    "imgA/user_interaction_poster.png": {
+      "ref": "imgA/user_interaction_poster.png",
+      "file": "imgA/user_interaction_poster.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2560,
+      "height": 1428
+    },
+    "imgA/poster_visualisation_video.png": {
+      "ref": "imgA/poster_visualisation_video.png",
+      "file": "imgA/poster_visualisation_video.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2560,
+      "height": 1398
+    },
+    "imgA/soft_background.jpg": {
+      "ref": "imgA/soft_background.jpg",
+      "file": "imgA/soft_background.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1800,
+      "height": 915
+    },
+    "imgA/sketch_softRobot.jpg": {
+      "ref": "imgA/sketch_softRobot.jpg",
+      "file": "imgA/sketch_softRobot.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1000,
+      "height": 750
+    },
+    "imgA/soft4.jpg": {
+      "ref": "imgA/soft4.jpg",
+      "file": "imgA/soft4.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1000,
+      "height": 665
+    },
+    "imgA/soft2.gif": {
+      "ref": "imgA/soft2.gif",
+      "file": "imgA/soft2.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 600,
+      "height": 338
+    },
+    "imgA/termochromic.mp4": {
+      "ref": "imgA/termochromic.mp4",
+      "file": "imgA/termochromic.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 3.830998
+    },
+    "imgA/termo2.jpg": {
+      "ref": "imgA/termo2.jpg",
+      "file": "imgA/termo2.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1200,
+      "height": 900
+    },
+    "imgA/termo3.jpg": {
+      "ref": "imgA/termo3.jpg",
+      "file": "imgA/termo3.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1200,
+      "height": 900
+    },
+    "imgA/termo4.jpg": {
+      "ref": "imgA/termo4.jpg",
+      "file": "imgA/termo4.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1200,
+      "height": 900
+    },
+    "imgA/termo1.jpg": {
+      "ref": "imgA/termo1.jpg",
+      "file": "imgA/termo1.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1200,
+      "height": 900
+    },
+    "imgA/pattern.png": {
+      "ref": "imgA/pattern.png",
+      "file": "imgA/pattern.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2296,
+      "height": 1222
+    },
+    "imgA/bucket_image.png": {
+      "ref": "imgA/bucket_image.png",
+      "file": "imgA/bucket_image.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 1800,
+      "height": 1009
+    },
+    "imgA/bucket.gif": {
+      "ref": "imgA/bucket.gif",
+      "file": "imgA/bucket.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 674,
+      "height": 1198
+    },
+    "imgA/howIWork.mp4": {
+      "ref": "imgA/howIWork.mp4",
+      "file": "imgA/howIWork.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 2560,
+      "height": 1600,
+      "duration": 4.6875
+    },
+    "imgA/howIWork.gif": {
+      "ref": "imgA/howIWork.gif",
+      "file": "imgA/howIWork.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 800,
+      "height": 500
+    },
+    "imgA/myWeb.jpg": {
+      "ref": "imgA/myWeb.jpg",
+      "file": "imgA/myWeb.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 1800,
+      "height": 1200
+    },
+    "imgA/word_to_world_titel_.gif": {
+      "ref": "imgA/word_to_world_titel_.gif",
+      "file": "imgA/word_to_world_titel_.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 1200,
+      "height": 757
+    },
+    "imgA/structure.png": {
+      "ref": "imgA/structure.png",
+      "file": "imgA/structure.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 3308,
+      "height": 1343
+    },
+    "imgA/assetword.png": {
+      "ref": "imgA/assetword.png",
+      "file": "imgA/assetword.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2560,
+      "height": 1020
+    },
+    "imgA/mushroomPoster.png": {
+      "ref": "imgA/mushroomPoster.png",
+      "file": "imgA/mushroomPoster.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2428,
+      "height": 1282
+    },
+    "imgA/someMushroomss.mp4": {
+      "ref": "imgA/someMushroomss.mp4",
+      "file": "imgA/someMushroomss.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 6.366667
+    },
+    "imgA/animationText.png": {
+      "ref": "imgA/animationText.png",
+      "file": "imgA/animationText.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2234,
+      "height": 950
+    },
+    "imgA/animation_transition.mp4": {
+      "ref": "imgA/animation_transition.mp4",
+      "file": "imgA/animation_transition.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1074,
+      "duration": 7.574233
+    },
+    "imgA/elephantPoster.png": {
+      "ref": "imgA/elephantPoster.png",
+      "file": "imgA/elephantPoster.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2534,
+      "height": 1422
+    },
+    "imgA/elephant_drink.mp4": {
+      "ref": "imgA/elephant_drink.mp4",
+      "file": "imgA/elephant_drink.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 11.533333
+    },
+    "imgA/mocapMotions.gif": {
+      "ref": "imgA/mocapMotions.gif",
+      "file": "imgA/mocapMotions.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 1920,
+      "height": 1080
+    },
+    "imgA/cowboyPoster.png": {
+      "ref": "imgA/cowboyPoster.png",
+      "file": "imgA/cowboyPoster.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2520,
+      "height": 1398
+    },
+    "imgA/cowboy_waving.mp4": {
+      "ref": "imgA/cowboy_waving.mp4",
+      "file": "imgA/cowboy_waving.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 7.966667
+    },
+    "imgA/bearMotions.gif": {
+      "ref": "imgA/bearMotions.gif",
+      "file": "imgA/bearMotions.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 1832,
+      "height": 941
+    },
+    "imgA/bearPoster.png": {
+      "ref": "imgA/bearPoster.png",
+      "file": "imgA/bearPoster.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2498,
+      "height": 1382
+    },
+    "imgA/bear_dancing.mp4": {
+      "ref": "imgA/bear_dancing.mp4",
+      "file": "imgA/bear_dancing.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 10.933333
+    },
+    "imgA/inspirationMovies.gif": {
+      "ref": "imgA/inspirationMovies.gif",
+      "file": "imgA/inspirationMovies.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 1842,
+      "height": 906
+    },
+    "imgA/meshDeformerTool.mp4": {
+      "ref": "imgA/meshDeformerTool.mp4",
+      "file": "imgA/meshDeformerTool.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 2152,
+      "height": 1100,
+      "duration": 4.237567
+    },
+    "imgA/cubeMotions.gif": {
+      "ref": "imgA/cubeMotions.gif",
+      "file": "imgA/cubeMotions.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 1920,
+      "height": 848
+    },
+    "imgA/tableMotions.gif": {
+      "ref": "imgA/tableMotions.gif",
+      "file": "imgA/tableMotions.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 1920,
+      "height": 1116
+    },
+    "imgA/sofa_walk.mp4": {
+      "ref": "imgA/sofa_walk.mp4",
+      "file": "imgA/sofa_walk.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 8.066667
+    },
+    "imgA/movementText.png": {
+      "ref": "imgA/movementText.png",
+      "file": "imgA/movementText.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2212,
+      "height": 934
+    },
+    "imgA/balloon_scene.mp4": {
+      "ref": "imgA/balloon_scene.mp4",
+      "file": "imgA/balloon_scene.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 6.530317
+    },
+    "imgA/moon_rotates.mp4": {
+      "ref": "imgA/moon_rotates.mp4",
+      "file": "imgA/moon_rotates.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 18.6
+    },
+    "imgA/ufo.mp4": {
+      "ref": "imgA/ufo.mp4",
+      "file": "imgA/ufo.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 8.133333
+    },
+    "imgA/earthquake.mp4": {
+      "ref": "imgA/earthquake.mp4",
+      "file": "imgA/earthquake.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 3.433333
+    },
+    "imgA/movementPaths.mp4": {
+      "ref": "imgA/movementPaths.mp4",
+      "file": "imgA/movementPaths.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 2.625
+    },
+    "imgA/dinosaur_chase.mp4": {
+      "ref": "imgA/dinosaur_chase.mp4",
+      "file": "imgA/dinosaur_chase.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 8.966667
+    },
+    "imgA/navigation_pic.png": {
+      "ref": "imgA/navigation_pic.png",
+      "file": "imgA/navigation_pic.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2152,
+      "height": 1212
+    },
+    "imgA/girl_garden.mp4": {
+      "ref": "imgA/girl_garden.mp4",
+      "file": "imgA/girl_garden.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 8.966667
+    },
+    "imgA/simulationText.png": {
+      "ref": "imgA/simulationText.png",
+      "file": "imgA/simulationText.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2256,
+      "height": 798
+    },
+    "imgA/pencil_ball_fall.mp4": {
+      "ref": "imgA/pencil_ball_fall.mp4",
+      "file": "imgA/pencil_ball_fall.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 4.633333
+    },
+    "imgA/flock_birds.mp4": {
+      "ref": "imgA/flock_birds.mp4",
+      "file": "imgA/flock_birds.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 12.333333
+    },
+    "imgA/flock_fishes.mp4": {
+      "ref": "imgA/flock_fishes.mp4",
+      "file": "imgA/flock_fishes.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 6.3
+    },
+    "imgA/chair_fall.mp4": {
+      "ref": "imgA/chair_fall.mp4",
+      "file": "imgA/chair_fall.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 10.366667
+    },
+    "imgA/timeText.png": {
+      "ref": "imgA/timeText.png",
+      "file": "imgA/timeText.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2460,
+      "height": 1074
+    },
+    "imgA/time_of_day.mp4": {
+      "ref": "imgA/time_of_day.mp4",
+      "file": "imgA/time_of_day.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 5.875
+    },
+    "imgA/late_afternoon_.mp4": {
+      "ref": "imgA/late_afternoon_.mp4",
+      "file": "imgA/late_afternoon_.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 3.431458
+    },
+    "imgA/on_a_sunny_day.mp4": {
+      "ref": "imgA/on_a_sunny_day.mp4",
+      "file": "imgA/on_a_sunny_day.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 1.314292
+    },
+    "imgA/raining.mp4": {
+      "ref": "imgA/raining.mp4",
+      "file": "imgA/raining.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 5.965
+    },
+    "imgA/perspectiveText.png": {
+      "ref": "imgA/perspectiveText.png",
+      "file": "imgA/perspectiveText.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2560,
+      "height": 636
+    },
+    "imgA/firstPersonView.mp4": {
+      "ref": "imgA/firstPersonView.mp4",
+      "file": "imgA/firstPersonView.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 6.9
+    },
+    "imgA/thirdPersonView.mp4": {
+      "ref": "imgA/thirdPersonView.mp4",
+      "file": "imgA/thirdPersonView.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 4.771678
+    },
+    "imgA/sawSomething.mp4": {
+      "ref": "imgA/sawSomething.mp4",
+      "file": "imgA/sawSomething.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 3.133333
+    },
+    "imgA/fox_watch_TV.gif": {
+      "ref": "imgA/fox_watch_TV.gif",
+      "file": "imgA/fox_watch_TV.gif",
+      "exists": true,
+      "type": "image",
+      "ext": ".gif",
+      "width": 1200,
+      "height": 675
+    },
+    "imgA/soundEffects.png": {
+      "ref": "imgA/soundEffects.png",
+      "file": "imgA/soundEffects.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2218,
+      "height": 962
+    },
+    "imgA/nlp.png": {
+      "ref": "imgA/nlp.png",
+      "file": "imgA/nlp.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 1870,
+      "height": 568
+    },
+    "imgA/verbs_classification.png": {
+      "ref": "imgA/verbs_classification.png",
+      "file": "imgA/verbs_classification.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 6000,
+      "height": 3065
+    },
+    "imgA/technical_flow_horizontal.png": {
+      "ref": "imgA/technical_flow_horizontal.png",
+      "file": "imgA/technical_flow_horizontal.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 6690,
+      "height": 2628
+    },
+    "imgA/giraffe_penguin_demo.mp4": {
+      "ref": "imgA/giraffe_penguin_demo.mp4",
+      "file": "imgA/giraffe_penguin_demo.mp4",
+      "exists": true,
+      "type": "video",
+      "ext": ".mp4",
+      "width": 1564,
+      "height": 876,
+      "duration": 12.645967
+    },
+    "imgA/semantics.png": {
+      "ref": "imgA/semantics.png",
+      "file": "imgA/semantics.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 2478,
+      "height": 1292
+    },
+    "imgA/story1.png": {
+      "ref": "imgA/story1.png",
+      "file": "imgA/story1.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 1626,
+      "height": 1184
+    },
+    "imgA/story2.png": {
+      "ref": "imgA/story2.png",
+      "file": "imgA/story2.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 1622,
+      "height": 1180
+    },
+    "imgA/story3.png": {
+      "ref": "imgA/story3.png",
+      "file": "imgA/story3.png",
+      "exists": true,
+      "type": "image",
+      "ext": ".png",
+      "width": 1626,
+      "height": 1182
+    },
+    "imgA/interface_index.jpg": {
+      "ref": "imgA/interface_index.jpg",
+      "file": "imgA/interface_index.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 2556,
+      "height": 1604
+    },
+    "imgA/interface_export.jpg": {
+      "ref": "imgA/interface_export.jpg",
+      "file": "imgA/interface_export.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 2556,
+      "height": 1604
+    },
+    "imgA/interface_bubble.jpg": {
+      "ref": "imgA/interface_bubble.jpg",
+      "file": "imgA/interface_bubble.jpg",
+      "exists": true,
+      "type": "image",
+      "ext": ".jpg",
+      "width": 2556,
+      "height": 1604
+    },
+    "imgA/self.jpg": {
+      "ref": "../imgA/self.jpg",
+      "file": "imgA/self.jpg",
+      "exists": false,
+      "type": "image",
+      "ext": ".jpg"
+    },
+    "imgA/jquery-1.11.3.js": {
+      "ref": "../imgA/jquery-1.11.3.js",
+      "file": "imgA/jquery-1.11.3.js",
+      "exists": true,
+      "type": "other",
+      "ext": ".js"
+    },
+    "imgA/tuzi1.jpg": {
+      "ref": "../imgA/tuzi1.jpg",
+      "file": "imgA/tuzi1.jpg",
+      "exists": false,
+      "type": "image",
+      "ext": ".jpg"
+    },
+    "imgA/sun.jpg": {
+      "ref": "../imgA/sun.jpg",
+      "file": "imgA/sun.jpg",
+      "exists": false,
+      "type": "image",
+      "ext": ".jpg"
+    },
+    "imgA/xiaobing.jpg": {
+      "ref": "../imgA/xiaobing.jpg",
+      "file": "imgA/xiaobing.jpg",
+      "exists": false,
+      "type": "image",
+      "ext": ".jpg"
+    },
+    "imgA/hanwen.jpg": {
+      "ref": "../imgA/hanwen.jpg",
+      "file": "imgA/hanwen.jpg",
+      "exists": false,
+      "type": "image",
+      "ext": ".jpg"
+    },
+    "imgA/qingchengshan.jpg": {
+      "ref": "../imgA/qingchengshan.jpg",
+      "file": "imgA/qingchengshan.jpg",
+      "exists": false,
+      "type": "image",
+      "ext": ".jpg"
+    },
+    "imgA/tongtong.jpg": {
+      "ref": "../imgA/tongtong.jpg",
+      "file": "imgA/tongtong.jpg",
+      "exists": false,
+      "type": "image",
+      "ext": ".jpg"
+    },
+    "imgA/tuzi.jpg": {
+      "ref": "../imgA/tuzi.jpg",
+      "file": "imgA/tuzi.jpg",
+      "exists": false,
+      "type": "image",
+      "ext": ".jpg"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+---
+title: Soft Robotic
+order: 16
+summary: Silicone-cast soft robots shaped by geometry.
+tools:
+  - Silicone Casting
+  - Rhino
+  - Air Pump
+cover:
+  src: projects/soft-robotic/hero/hero.jpg
+  alt: Soft robotic surface
+thumbnail:
+  src: site/home/soft2-mask/soft2-mask.gif
+  alt: Soft Robotic prototype
+  type: image
+  class: roundMasks
+homeSection: prototype
+backButton: white
+---
+
+import { mediaUrl } from '../../lib/media';
+import ResponsivePicture from '../../components/ResponsivePicture.astro';
+
+<div class="containerCenter">
+  <div class="insBorrowTitle">
+    Soft Robotic
+  </div>
+</div>
+<div class="containerCenter">
+  <div class=" projectContent projectTextInsBorrow" >
+    <b>Tools: <br/></b>
+    Silicone Casting, Rhino, Air Pump<br/>
+    <br/>
+    <b>Teamwork:</b><br/> Xinyue Yang, Anna Schäffner<br/><br/>
+    We tried several shapes and patterns to test out how the geometry will affect the behavior of the robot.
+  </div>
+</div>
+<div class="containerCenter">
+  <ResponsivePicture
+    src="projects/soft-robotic/sketch-soft-robot/sketch-soft-robot"
+    alt="Soft robot sketch"
+    width={1000}
+    height={750}
+    class="myWeb"
+  />
+  <ResponsivePicture
+    src="projects/soft-robotic/soft4/soft4"
+    alt="Soft robot prototype"
+    width={1000}
+    height={665}
+    class="myWeb"
+  />
+  <img
+    class="myWeb"
+    src={mediaUrl('projects/soft-robotic/soft2/soft2.gif')}
+    alt="Soft robot motion"
+  />
+</div>

@@ -1,0 +1,54 @@
+---
+import { mediaUrl } from '../lib/media';
+import '../styles/carousel.css';
+
+interface Slide {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+}
+
+interface Props {
+  slides: Slide[];
+  containerClass?: string;
+  sliderClass?: string;
+  slideClass?: string;
+  imageClass?: string;
+}
+
+const {
+  slides,
+  containerClass = 'container',
+  sliderClass = 'projectSlider',
+  slideClass = 's-container',
+  imageClass = 'printImageStyle',
+} = Astro.props;
+---
+
+<div class={containerClass}>
+  <div class={sliderClass} data-carousel>
+    {
+      slides.map((slide, index) => (
+        <div
+          class:list={[slideClass, index === 0 && 'is-active']}
+          data-carousel-slide
+        >
+          <img
+            class={imageClass}
+            src={mediaUrl(slide.src)}
+            alt={slide.alt}
+            width={slide.width}
+            height={slide.height}
+            loading={index === 0 ? 'eager' : 'lazy'}
+            decoding="async"
+          />
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  import '../scripts/carousel';
+</script>

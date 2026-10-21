@@ -1,0 +1,48 @@
+---
+title: Breathing Surface
+order: 13
+summary: An adaptive origami surface driven by servo motors.
+tools:
+  - Arduino
+  - Servo Motor
+  - Adaptive Origami
+cover:
+  src: projects/breathing-surface/hero/hero.jpg
+  alt: Adaptive origami surface
+thumbnail:
+  src: site/home/adaptive-surface-round/adaptive-surface-round.gif
+  alt: Breathing surface prototype
+  type: image
+  class: roundMasks
+homeSection: prototype
+homeLabel: Breathing surface
+backButton: black
+---
+
+import VideoPlayer from '../../components/VideoPlayer.astro';
+
+<div class="containerCenter">
+  <div class="insBorrowTitle">
+    Breathing Surface
+  </div>
+</div>
+<div class="containerCenter">
+  <div class=" projectContent projectTextInsBorrow" >
+    <b>Tools: <br/>
+      Arduino, Servo Motor, Adaptive Origami<br/></b>
+    <br/>
+    I used servo motor to made a mechanism transferring a rotation movement to linear movement, and fixed it
+    to a point on the origami, which origins from the classical Ron Resch's triangle pattern. The outcome
+    for me was like a breathing belly.
+  </div>
+</div>
+<div class="centerInk" style="margin-top: 30px; text-align: center" >
+  <VideoPlayer
+    src="projects/breathing-surface/prototype/prototype"
+    class="vimeoInk"
+    width={960}
+    height={540}
+    controls
+    preload="auto"
+  />
+</div>

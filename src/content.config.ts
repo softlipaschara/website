@@ -58,7 +58,9 @@ const projects = defineCollection({
     media: z.array(mediaItem).default([]),
     draft: z.boolean().default(false),
     homeSection: z.enum(['selectedWorks', 'prototype', 'whatsMore']).optional(),
+    homeLabel: z.string().optional(),
     featured: z.boolean().default(false),
+    backButton: z.enum(['black', 'white']).default('black'),
   }),
 });
 

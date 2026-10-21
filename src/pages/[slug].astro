@@ -27,7 +27,10 @@ const { Content } = await render(project);
 ---
 
 <BaseLayout title={project.data.title} description={project.data.summary}>
-  <ProjectLayout cover={project.data.cover} title={project.data.title}>
+  <ProjectLayout
+    cover={project.data.cover}
+    backButtonVariant={project.data.backButton}
+  >
     <Content />
   </ProjectLayout>
 </BaseLayout>

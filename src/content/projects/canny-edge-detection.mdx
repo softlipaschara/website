@@ -1,0 +1,62 @@
+---
+title: Canny Edge Detection
+order: 17
+summary: A Processing and OpenCV study that turns video into moving contour lines.
+tools:
+  - Processing
+  - OpenCV
+cover:
+  src: projects/canny-edge-detection/hero/hero.png
+  alt: Canny edge illustration
+thumbnail:
+  src: site/home/canny-round/canny-round.gif
+  alt: Canny edge prototype
+  type: image
+  class: roundMasks
+homeSection: prototype
+backButton: white
+---
+
+import { mediaUrl } from '../../lib/media';
+import VideoPlayer from '../../components/VideoPlayer.astro';
+
+<div class="containerCenter">
+  <div class="insBorrowTitle">
+    Canny Edge Detection
+  </div>
+</div>
+<div class="containerCenter">
+  <div class=" projectContent projectTextInsBorrow" >
+    <b>Tools: <br/></b>
+    Processing, OpenCV<br/><br/>
+    Canny edge detection is a technique to extract useful structural
+    information from different vision objects and dramatically reduce the
+    amount of data to be processed.The algorithm was developed by John F. Canny in 1986. <br/><br/>
+    With my interest of illustration, line drawings and scribbling, I am curious to see a video converted to simple moving lines in only black and white.
+    <br/><br/>
+  </div>
+</div>
+<div class="centerInk" style="margin-top: 30px; text-align: center" >
+  <VideoPlayer
+    src="projects/canny-edge-detection/demo/demo"
+    class="vimeoInk"
+    width={896}
+    height={504}
+    controls
+    preload="auto"
+  />
+  <div class=" projectContent projectTextInsBorrow" >
+    <br/>Original Video
+  </div>
+</div>
+<div class="containerCenter centerInk" style="text-align: center">
+  <img
+    class="myWeb"
+    style="margin-bottom:0%"
+    src={mediaUrl('projects/canny-edge-detection/canny-640/canny-640.gif')}
+    alt="Canny edge detection output"
+  />
+  <div class=" projectContent projectTextInsBorrow" >
+    <br/>Canny Edge Detection
+  </div>
+</div>

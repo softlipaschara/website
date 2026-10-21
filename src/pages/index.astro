@@ -1,12 +1,226 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../components/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import PrototypeTile from '../components/PrototypeTile.astro';
 import SiteHeader from '../components/SiteHeader.astro';
+import WhatsMoreLink from '../components/WhatsMoreLink.astro';
+import { prototypeTitlePlaceholders } from '../data/site';
+import { mediaUrl } from '../lib/media';
 import '../styles/portfolio.css';
+
+const projects = await getCollection('projects', ({ data }) => !data.draft);
+const withThumbnail = projects.filter((project) => project.data.thumbnail);
+const byOrder = (a: (typeof projects)[number], b: (typeof projects)[number]) =>
+  a.data.order - b.data.order;
+
+const selectedWorks = withThumbnail
+  .filter((project) => project.data.homeSection === 'selectedWorks')
+  .sort(byOrder);
+const prototypes = withThumbnail
+  .filter((project) => project.data.homeSection === 'prototype')
+  .sort(byOrder);
+const whatsMore = withThumbnail
+  .filter((project) => project.data.homeSection === 'whatsMore')
+  .sort(byOrder);
 ---
 
 <BaseLayout title="Xinyue">
   <SiteHeader />
-  <main class="containerCenter">
-    <p class="textBegin">Portfolio rebuild in progress.</p>
-  </main>
+
+  <div id="index">
+    <div id="video">
+      <img
+        src={mediaUrl('site/home/hero-poster/hero-poster.jpg')}
+        alt=""
+        style="width:100%"
+      />
+    </div>
+    <div class="itemCenter">
+      <div>
+        <p class="textOnVideo">
+          I'm Xinyue Yang,<br />an interaction and product designer<br />with passion for
+          physical computing,<br /> electronics, web, app and codes
+        </p>
+      </div>
+    </div>
+    <div class="selectedWorks">
+      <p><a id="selectedWorks"></a> Selected Works</p>
+    </div>
+
+    <div class="flexSpaceAround">
+      {
+        selectedWorks.map((project) => (
+          <ProjectCard
+            href={`/${project.id}/`}
+            title={project.data.title}
+            thumbnail={project.data.thumbnail!}
+          />
+        ))
+      }
+    </div>
+
+    <div id="prototypePart">
+      <div class="containerCenter prototypes">
+        <p>#Prototypes</p>
+      </div>
+      <div>
+        <img class="grids" src={mediaUrl('site/home/grids/grids.png')} alt="" />
+      </div>
+      <div class="prototypeGifs containerCenter">
+        {
+          prototypes.slice(0, 4).map((project) => (
+            <PrototypeTile
+              href={`/${project.id}/`}
+              label={project.data.homeLabel ?? project.data.title}
+              src={project.data.thumbnail!.src}
+              alt={project.data.thumbnail!.alt}
+            />
+          ))
+        }
+      </div>
+      <div>
+        <img class="grids" src={mediaUrl('site/home/grids/grids.png')} alt="" />
+      </div>
+      <div class="prototypeGifs containerCenter">
+        {
+          prototypes.slice(4, 8).map((project) => (
+            <PrototypeTile
+              href={`/${project.id}/`}
+              label={project.data.homeLabel ?? project.data.title}
+              src={project.data.thumbnail!.src}
+              alt={project.data.thumbnail!.alt}
+              tagStyle={project.id === 'canny-edge-detection' ? 'opacity: 1' : undefined}
+            />
+          ))
+        }
+      </div>
+      <div class="prototypeTitleBlock">
+        {
+          prototypeTitlePlaceholders.map((title) => (
+            <p class="prototypeTitle" style="opacity: 0">{title}</p>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="containerCenter">
+    <div class="containerColumn" id="about" style="display: none">
+      <div>
+        <p id="aboutText">
+          I'm Xinyue Yang, an interaction and product designer with passion for
+          electronics, codes, web, app and physical computing. Currently I am doing my Master
+          at Weissensee Art Academy Berlin.<br />
+          I like to apply technologies in a playful and creative way, with sense of simplicity,
+          humour and naivity.
+        </p>
+      </div>
+      <div class="download">
+        <a
+          id="download"
+          href="/assets/files/resume_xinyue_2020.pdf"
+          download="resume_xinyue_2020.pdf">download Resume</a
+        >
+      </div>
+    </div>
+
+    <div id="besidesPart" style="display: none">
+      <div class="containerCenter besides">
+        <p>What's More About Me</p>
+      </div>
+      <div class="anotherMe containerCenter">
+        {
+          whatsMore.map((project) => (
+            <WhatsMoreLink
+              href={`/${project.id}/`}
+              src={project.data.thumbnail!.src}
+              alt={project.data.thumbnail!.alt}
+            />
+          ))
+        }
+      </div>
+      <div class="prototypeTitleBlock">
+        {
+          whatsMore.map((project) => (
+            <p class="besidesTitle">{project.data.homeLabel ?? project.data.title}</p>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="containerCenter">
+    <div id="contact" style="display: none">
+      <div class="containerColumn" id="contactBlock">
+        <div>
+          <div id="email">Email</div>
+          <br />softlipaschara@gmail.com
+        </div>
+        <div>
+          <div id="address">Instagram</div>
+          <br />
+          softlipaschara
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div id="waterImage" style="display: none">
+      <img id="water" src={mediaUrl('site/home/water/water.jpg')} alt="" />
+    </div>
+  </div>
+
+  <div id="blog" style="display: none">
+    <div class="containerColumn projectContent projectTextInsBorrow" id="blogBlock">
+      <div>
+        <p class="blogDate">
+          <b
+            >8th. April 2018 <br /><i class="material-icons" style="font-size:12px">place</i
+            >Berlin</b
+          ><br />
+        </p>
+        <p class="blogText">
+          Recently I'm practicing this song. I heard it for the first time from the band
+          <b>Sun City Girls</b>, the name was <b>"summer dream(Amherst 2004)" </b>, I looked for
+          the guitar chords but didn't really find it. Then I searched the lyric and just knew
+          it's a song from <b>The Beach Boys</b>.<br /><br />
+          I prefer the one from Sun City Girls, it was recorded during their live performance
+          probably in a small bar. It must be on a sweet drunk night of summer. People were
+          sweating and singing with full of memories in the mind, love, laughters, loss, tears,
+          and guitars and beats and rebells and sadness and perfect imperfection and regrets and
+          alcohol. <br />
+        </p>
+      </div>
+      <div style="margin-top:10%">
+        <p class="blogDate">
+          <b
+            >4th. April 2018 <br /><i class="material-icons" style="font-size:12px">place</i
+            >Berlin Hackescher Markt</b
+          ><br />
+        </p>
+        <p class="blogText">Kids chasing bubbles.</p>
+      </div>
+      <div style="margin-top:10%">
+        <p class="blogDate">
+          <b
+            >3rd. April 2018 <br /><i class="material-icons" style="font-size:12px">place</i
+            >Berlin</b
+          ><br />
+        </p>
+        <p class="blogText">
+          气温达到十六度，我带小宝贝们到阳台上呼吸新鲜空气晒太阳。被小宝贝们簇拥的我要幸福死了，初春和煦的暖暖的风，一切都有了生气。此时音乐是，summer dream.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="containerCenter">
+    <p id="bottom">© 2019 XINYUE YANG</p>
+  </div>
+
+  <script>
+    import '../scripts/hide-content';
+  </script>
 </BaseLayout>

@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import Carousel from '../components/Carousel.astro';
+import '../styles/site.css';
+import '../styles/site/paintings.css';
+
+const slides = [
+  { src: 'site/paintings/tuzi1/tuzi1.jpg', alt: 'Rabbit painting' },
+  { src: 'site/paintings/sun/sun.jpg', alt: 'Sun painting' },
+  { src: 'site/paintings/xiaobing/xiaobing.jpg', alt: 'Xiaobing painting' },
+  { src: 'site/paintings/hanwen/hanwen.jpg', alt: 'Hanwen painting' },
+  { src: 'site/paintings/qingchengshan/qingchengshan.jpg', alt: 'Qingchengshan painting' },
+  { src: 'site/paintings/tongtong/tongtong.jpg', alt: 'Tongtong painting' },
+];
+---
+
+<BaseLayout title="Paintings">
+  <Carousel
+    slides={slides}
+    containerClass="container"
+    sliderClass="projectSlider"
+    slideClass="s-container"
+    imageClass="printImageStyle"
+  />
+</BaseLayout>

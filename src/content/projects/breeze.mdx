@@ -1,0 +1,197 @@
+---
+title: Breeze
+order: 4
+summary: A lamp that responds to breath.
+tools:
+  - Arduino
+  - Rhino
+cover:
+  src: projects/breeze/hero/hero.png
+  alt: Breeze lamp
+thumbnail:
+  src: site/home/breeze-thumb/breeze-thumb.png
+  alt: Breeze lamp thumbnail
+  type: image
+  class: breezeBlock homeCardImage
+homeSection: selectedWorks
+featured: true
+backButton: black
+---
+
+import ResponsivePicture from '../../components/ResponsivePicture.astro';
+import VideoPlayer from '../../components/VideoPlayer.astro';
+import { mediaUrl } from '../../lib/media';
+
+<div class="containerCenter">
+  <div class="breezeTitle">
+    Breeze
+  </div>
+</div>
+
+<div class=" containerCenter textBegin">
+
+  <div class="  breezeText projectContent projectTextInsBorrow" >
+    Supervised by Prof. Carola Zwick<br/>
+    Semester 5<br/><br/>
+    <b>Tools: </b><br/>
+      Arduino, Rhino<br/>
+    <br/>
+    <b>Starting Point:</b><br/>
+    I took up analog experiences of light which origins from fire, using digital technologies to make neo-analog
+    experience and gesture.<br/><br/>
+    <b>3 metaphors from the physical world:<br/></b>
+    1\. When you set a fire, you could blow towards it to make the air flow, the fire will be brighter and stronger.<br/>
+    2\. A sudden and strong blow makes the candle out.<br/>
+    3\. The flame can be passed from one to another spot.
+  </div>
+  <div class="metaphors" style="text-align: center">
+    <ResponsivePicture
+      src="projects/breeze/set-fire/set-fire"
+      alt="Sketch of setting a fire"
+      width={403}
+      height={337}
+      class="conceptSketch"
+    />
+    <ResponsivePicture
+      src="projects/breeze/blow-out/blow-out"
+      alt="Sketch of blowing out a candle"
+      width={403}
+      height={337}
+      class="conceptSketch"
+    />
+    <img
+      class="conceptSketch"
+      src={mediaUrl('projects/breeze/passing-flame/passing-flame.png')}
+      alt="Sketch of passing a flame"
+    />
+  </div>
+  <div class="projectContent projectTextInsBorrow">
+    <b>Transfer metaphors to the lamp:</b><br/>
+    1\. When I slightly blow towards it, the lamp gets brighter.<br/>
+    2\. When I strongly and quickly blow towards it, the lamp gets off.<br/>
+    3\. A lamp can light up another lamp.
+  </div>
+  <div class="metaphors" style="text-align: center">
+    <img
+      class="blowGif"
+      src={mediaUrl('projects/breeze/blow-on/blow-on.gif')}
+      alt="Lamp brightening when blown on"
+    />
+    <img
+      class="blowGif"
+      src={mediaUrl('projects/breeze/blow-out-loop/blow-out-loop.gif')}
+      alt="Lamp turning off when blown on"
+    />
+    <ResponsivePicture
+      src="projects/breeze/light-up/light-up"
+      alt="One lamp lighting another"
+      width={900}
+      height={690}
+      class="blowGif"
+    />
+  </div>
+</div>
+
+<div class="insBorrowTitle containerCenter">
+  First Prototype
+</div>
+
+<div class="containerCenter">
+  <div class=" projectContent projectTextInsBorrow" >
+    I took 'blow' as an input, using a microphone to detect if there’s a change of the air flow. The
+    blow data will be transferred to brightness of the LED stripe.
+    With a soft blowing the lamp will get slightly brighter. A strong blow will switch off the light.
+  </div>
+</div>
+
+<div class="centerInk" style="margin-top: 30px">
+  <VideoPlayer
+    src="projects/breeze/prototype/prototype"
+    class="vimeoInk"
+    width={960}
+    height={540}
+    controls
+    preload="auto"
+  />
+</div>
+
+<div class="containerCenter">
+  <div class=" projectContent projectTextInsBorrow layoutText" >
+    <b>Technical Layout</b><br/>
+    a microphone sensor +
+    led stripe +
+    two plexiglas diffusers,
+    two batteries,
+    a hall sensor to detect magnet,
+    magnet.(To realize passing the light metaphor)
+  </div>
+  <img
+    class="layoutGif"
+    src={mediaUrl('projects/breeze/technical-layout/technical-layout.gif')}
+    alt="Technical layout of the lamp"
+  />
+</div>
+
+<div class="containerCenter " style="margin-bottom:60px; ">
+  <div class="containerColumn oneOfTwo">
+    <div class="assembleTitleText" style="align-self: center"><b>Components</b></div>
+    <img
+      class="componentImage"
+      src={mediaUrl('projects/breeze/components/components.png')}
+      alt="Lamp components"
+    />
+  </div>
+  <div class="containerColumn oneOfTwo">
+    <div class="assembleTitleText" style="text-align: center"><b>After assembling</b></div>
+    <ResponsivePicture
+      src="projects/breeze/assembled-breeze/assembled-breeze"
+      alt="Assembled Breeze lamp"
+      width={800}
+      height={534}
+      class="componentImage"
+    />
+  </div>
+</div>
+
+<div class="containerCenter">
+  <div class="projectTextInsBorrow projectContent">
+    <h3>Light up the other lamp</h3>
+  </div>
+  <ResponsivePicture
+    src="projects/breeze/breeze-touching-1200/breeze-touching-1200"
+    alt="One Breeze lamp lighting another"
+    width={1200}
+    height={675}
+    class="appFlow"
+  />
+</div>
+
+<div class="insBorrowTitle containerCenter breezeVideoTitle">
+  Breeze Video
+</div>
+
+<div class="containerCenter">
+  <div class="breezeVideo" >
+    {/* Source unavailable: original S3 video returned HTTP 403. */}
+    <img
+      src={mediaUrl('projects/breeze/video-poster/video-poster.png')}
+      alt="Breeze lamp video poster"
+      style="width: 100%"
+    />
+  </div>
+</div>
+
+<div class="containerCenter bgm">
+  <div class="projectContent ">
+    Background music: 白水 BAISHUI
+  </div>
+</div>
+
+<div class="containerCenter">
+  <div class="projectTitle projectContent" style="margin-top: 30px">
+    Lovely User Testing during Milan Design Week 2017<br/>
+    taken by ins @_kasia.c<br/><br/>
+  </div>
+</div>
+
+{/* Source unavailable: original Instagram video and poster URLs are dead. */}

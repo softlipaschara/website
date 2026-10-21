@@ -1,0 +1,406 @@
+---
+title: Coffee Composer
+order: 2
+summary: A tactile token-based coffee ordering machine.
+tools:
+  - 3D printing
+  - laser cutting
+  - arduino
+  - LED strips
+  - stepper motor
+  - NFC sticker
+  - RFID reader
+cover:
+  src: projects/coffee-composer/hero/hero.jpg
+  alt: Hand holding an espresso cup
+thumbnail:
+  src: site/home/composer-thumb/composer-thumb.jpg
+  alt: Coffee Composer thumbnail
+  type: image
+  class: breezeBlock homeCardImage
+homeSection: selectedWorks
+featured: true
+backButton: black
+---
+
+import ResponsivePicture from '../../components/ResponsivePicture.astro';
+import VideoPlayer from '../../components/VideoPlayer.astro';
+import { mediaUrl } from '../../lib/media';
+
+<div class="containerCenter">
+  <div class="insBorrowTitle">Coffee Composer</div>
+</div>
+
+<div class="projectText" style="text-align:center; color:blue;">
+  Meet me at Milan Design Week 2019 <br /><br /> @ BASE MILANO / Space D <br /><br /> Via
+  Bergognone 34, 20144, Milan Italy <br /><br /><br />
+</div>
+
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    Supervised by Prof. Carola Zwick<br /> Master Semester 1<br /><br /> Tools: <br /> 3D
+    printing, laser cutting, arduino, LED strips, stepper motor, NFC sticker, RFID reader
+    <br />
+    <br />
+    <b>Teamwork:</b><br /> Xinyue Yang, Antonia Nandori<br /><br />
+    <b>Problems:</b><br /> Coffee consumption on the go increasingly relies on self-service.
+    Starbucks-style chain outlets make us stand in line to order; our workplace cafeteria
+    requires us to operate an automated machine. While this optimizes the process for the
+    organisation who sell the coffee, for the consumer, it becomes ever more tiresome. We spend
+    longer queueing, are under pressure to speed up our order, and know very little about the
+    product they will receive. This amounts to a dissatisfactory user experience, one which
+    falls far short of traditional café service. <br /><br /><br />
+    <ResponsivePicture
+      src="projects/coffee-composer/queue/queue"
+      alt="People queuing in a public space"
+      width={1400}
+      height={737}
+      style="width:100%;height:auto;"
+    />
+    <p style="text-align:center;">Queuing for a long time in public service</p><br />
+    <ResponsivePicture
+      src="projects/coffee-composer/coffee-menu/coffee-menu"
+      alt="Coffee menu with unfamiliar vocabulary"
+      width={1400}
+      height={737}
+      style="width:100%;height:auto;"
+    />
+    <p style="text-align:center;">
+      In front of a menu full of strange coffee vocabularies, user feels streesed to make a
+      quick decision
+    </p><br />
+    <ResponsivePicture
+      src="projects/coffee-composer/coffee-machine-interface/coffee-machine-interface"
+      alt="Coffee machine interface"
+      width={1400}
+      height={737}
+      style="width:100%;height:auto;"
+    />
+    <p style="text-align:center;">
+      The interaction is boring - pressing a button, and user knows little about what they will
+      receive
+    </p><br /><br /><br />
+    <b>Idea:</b><br /> Coffee Composer puts the fun back into self-service. This service design
+    concept enriches the interaction for consumers, making the most of what humans do best: the
+    creative and tactile parts of the process. A range of color-coded ‘tokens’ symbolize
+    possible ingredients (such as milk and sugar), <b>offering users greater transparency and
+    autonomy</b> to choose what ends up in their coffee. A glass cup makes it easy for users to
+    comprehend the custom combination of ingredients as they are dispensed.<br /><br />
+    <b>The selection process begins earlier, meaning queue time is used more effectively,</b> as
+    customers get to pick and stack their preferred elements to create their ideal hot beverage.
+    The automated coffee machine intuitively ‘reads’ their order, converting each token into its
+    corresponding ingredient in consecutive order.
+    <b>The communication between the automated machine and human user becomes more subtle and
+    enjoyable.</b><br /><br /> Coffee Composer demonstrates that increased automation need not
+    result in a banal and laboured interaction between user and machine - it should instead free
+    us humans up to pursue activities we enjoy.<br /><br />
+  </div>
+</div>
+
+<div class="containerCenter" style="margin:5% 0 0.0% 0;">
+  <h2 style="letter-spacing:.06em;">User Journey</h2>
+</div>
+<div class="containerCenter">
+  <div class="videos_scribbling_speech">
+    <VideoPlayer
+      src="projects/coffee-composer/stopmotion2/stopmotion2"
+      autoplay
+      loop
+      muted
+      width="100%"
+    />
+  </div>
+</div>
+
+<div class="containerCenter" style="margin:5% 0 1% 0;">
+  <h2 style="letter-spacing:.06em;">User Flow</h2>
+</div>
+<div class="containerCenter">
+  <img
+    class="composerImage"
+    src={mediaUrl('projects/coffee-composer/stone-cafe/stone-cafe.png')}
+    alt="Public service coffee setting"
+  />
+</div>
+<div class="containerCenter">
+  <p class="picture_note">Background: Public Service / Semi Self Service</p>
+</div>
+<div class="containerCenter" style="margin-top:3%;">
+  <img
+    class="composerImage"
+    src={mediaUrl('projects/coffee-composer/user-flow-coffee-composer/user-flow-coffee-composer.png')}
+    alt="Coffee Composer user flow"
+  />
+</div>
+
+<div style="margin:10% 0 5% 0;">
+  <h2 style="text-align:center; letter-spacing:0.06em;">Ingredients Module System</h2>
+</div>
+<div class="containerCenter" style="margin-top:1%; margin-bottom:3%;">
+  <div class="projectContent projectTextInsBorrow">
+    <br />This modular system is considered to be scalable depending on diffenrent preference,
+    region and various coffee culture.
+  </div>
+</div>
+
+<div class="containerCenter">
+  <div class="containerColumn tokenColumn">
+    <img
+      class="tokens"
+      src={mediaUrl('projects/coffee-composer/milk/milk.png')}
+      alt="Milk token"
+    />
+    <div class="projectText tokenText">Milk</div>
+  </div>
+  <div class="containerColumn tokenColumn">
+    <img
+      class="tokens"
+      src={mediaUrl('projects/coffee-composer/almond-drink/almond-drink.png')}
+      alt="Almond drink token"
+    />
+    <div class="projectText tokenText">Almond Drink</div>
+  </div>
+  <div class="containerColumn tokenColumn">
+    <img
+      class="tokens"
+      src={mediaUrl('projects/coffee-composer/soy-drink/soy-drink.png')}
+      alt="Soya drink token"
+    />
+    <div class="projectText tokenText">Soya Drink</div>
+  </div>
+  <div class="containerColumn tokenColumn">
+    <img
+      class="tokens"
+      src={mediaUrl('projects/coffee-composer/white-sugar/white-sugar.png')}
+      alt="White sugar token"
+    />
+    <div class="projectText tokenText"> White Sugar</div>
+  </div>
+  <div class="containerColumn tokenColumn">
+    <img
+      class="tokens"
+      src={mediaUrl('projects/coffee-composer/brown-sugar/brown-sugar.png')}
+      alt="Brown sugar token"
+    />
+    <div class="projectText tokenText">Brown Sugar</div>
+  </div>
+</div>
+
+<div class="containerCenter" style="margin-bottom:1.5%;">
+  <div class="containerColumn tokenColumn">
+    <img
+      class="tokens"
+      src={mediaUrl('projects/coffee-composer/espresso/espresso.png')}
+      alt="Espresso token"
+    />
+    <div class="projectText tokenText">Espresso</div>
+  </div>
+  <div class="containerColumn tokenColumn">
+    <img class="tokens" src={mediaUrl('projects/coffee-composer/foam/foam.png')} alt="Foam token" />
+    <div class="projectText tokenText">Foam</div>
+  </div>
+  <div class="containerColumn tokenColumn">
+    <img
+      class="tokens"
+      src={mediaUrl('projects/coffee-composer/hot-water/hot-water.png')}
+      alt="Hot water token"
+    />
+    <div class="projectText tokenText">Hot Water</div>
+  </div>
+  <div class="containerColumn tokenColumn">
+    <img
+      class="tokens"
+      src={mediaUrl('projects/coffee-composer/oat-drink/oat-drink.png')}
+      alt="Oat drink token"
+    />
+    <div class="projectText tokenText"> Oat Drink</div>
+  </div>
+  <div class="containerColumn tokenColumn">
+    <img class="tokens" src={mediaUrl('projects/coffee-composer/etc/etc.png')} alt="More tokens" />
+    <div class="projectText tokenText">and so on...</div>
+  </div>
+</div>
+
+<div class="containerCenter">
+  <img
+    class="composerImage"
+    src={mediaUrl('projects/coffee-composer/coffee-chart/coffee-chart.png')}
+    alt="Coffee ingredient chart"
+  />
+</div>
+
+<div class="containerCenter" style="margin-bottom:2%;">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br /><br />Each module represents an ingredient and has a bold-style graphic logo on
+    it. The sideview of the modules visually makes the ratio between different ingredients much
+    stronger. The color code serves as a supporting hint to help people recognize what module it
+    is. They have different heights of 3mm, 5mm and 9mm.
+  </div>
+</div>
+<div class="containerCenter">
+  <ResponsivePicture
+    src="projects/coffee-composer/tokens-with-hands/tokens-with-hands"
+    alt="Hands composing a drink with tokens"
+    width={2000}
+    height={1335}
+    class="composerImage"
+  />
+</div>
+<div class="containerCenter">
+  <p class="picture_note">a playfull experience of composing a drink</p>
+</div>
+<div class="containerCenter">
+  <img
+    class="composerImage"
+    src={mediaUrl('projects/coffee-composer/media-photo-coffee/media-photo-coffee.jpg')}
+    alt="Coffee Composer media photo (asset unavailable)"
+  />
+</div>
+<div class="containerCenter">
+  <ResponsivePicture
+    src="projects/coffee-composer/corresponding-layers/corresponding-layers"
+    alt="Layers corresponding to drink ingredients"
+    width={1698}
+    height={974}
+    class="composerImage"
+  />
+</div>
+<div class="containerCenter">
+  <p class="picture_note">
+    visually corresponded layers, it brings more transparency and knowledge to your drink
+  </p>
+</div>
+
+<div style="margin:10% 0 2% 0;">
+  <h2 style="text-align:center; letter-spacing:0.06em;">Choosing Process</h2>
+</div>
+<div class="containerCenter" style="margin-top:1%; margin-bottom:0%;">
+  <div class="projectContent projectTextInsBorrow">
+    <br />The choosing process starts earlier as soon as people join the queue. With a playful
+    choosing experience, it makes waiting time seem shorter.
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="videos_scribbling_speech">
+    <VideoPlayer
+      src="projects/coffee-composer/choosing/choosing"
+      autoplay
+      loop
+      muted
+      width="100%"
+    />
+  </div>
+</div>
+<div class="containerCenter">
+  <p class="picture_note">
+    She chose 2x Milk and 1x espresso, the ratio is 2:1 (milk to espresso)<br />
+    It might taste similar as cappuccino
+  </p>
+</div>
+
+<div style="margin:8% 0 0% 0;">
+  <h2 style="text-align:center; letter-spacing:0.06em;">Machine Prototype</h2>
+</div>
+<div class="containerCenter">
+  <div class="videos_scribbling_speech">
+    <VideoPlayer
+      src="projects/coffee-composer/mechanism/mechanism"
+      autoplay
+      loop
+      muted
+      width="100%"
+    />
+  </div>
+</div>
+<div class="containerCenter">
+  <p class="picture_note">mechanism inside of the machine</p>
+</div>
+
+<div style="margin:8% 0 0% 0;">
+  <h2 style="text-align:center; letter-spacing:0.06em;">Serial Communication Prototype</h2>
+</div>
+<div class="containerCenter">
+  <ResponsivePicture
+    src="projects/coffee-composer/embed-nfc/embed-nfc"
+    alt="Embedded NFC sticker"
+    width={2000}
+    height={1334}
+    class="composerImage"
+  />
+</div>
+<div class="containerCenter">
+  <p class="picture_note">An embedded NFC sticker makes it recognizable<br /></p>
+</div>
+<div class="containerCenter">
+  <div class="videos_scribbling_speech">
+    <VideoPlayer
+      src="projects/coffee-composer/serial-communication-prototype/serial-communication-prototype"
+      autoplay
+      loop
+      muted
+      width="100%"
+    />
+  </div>
+</div>
+<div class="containerCenter">
+  <p class="picture_note">serial communication between arduino (nfc reader) and p5.js</p>
+</div>
+
+<div style="margin:8% 0 4% 0;">
+  <h2 style="text-align:center; letter-spacing:0.06em;">Interacting with Machine</h2>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br />The machine starts to recognize the cup as soon as you take it. <br />The breathing
+    LED light gives you a hint where to put your cup and modules. The biggest cup would be
+    suggested to place onto the lowerst platform while the smallest cup will be suggested to the
+    highest platform. <br />By placing the modules onto the surface, it can recognize the type
+    and amount of the modules. In the end it maps the ratio into cup's volume.
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="videos_scribbling_speech">
+    <VideoPlayer
+      src="projects/coffee-composer/interact-with-machine/interact-with-machine"
+      autoplay
+      loop
+      muted
+      width="100%"
+    />
+  </div>
+</div>
+<div class="containerCenter">
+  <p class="picture_note">
+    By taking the cup - Machine recognizes the cup and gives you light signal<br />
+    By placing the tokens - Machine recognizes the tokens and calculates the price
+  </p>
+</div>
+
+<div style="margin:8% 0 4% 0;">
+  <h2 style="text-align:center; letter-spacing:0.06em;">Coffee Composer Video</h2>
+</div>
+<div class="centerInk">
+  <VideoPlayer
+    src="projects/coffee-composer/video/video"
+    class="vimeoInk"
+    width={960}
+    height={540}
+    controls
+    preload="auto"
+  />
+</div><br /><br />
+
+<div style="margin:5% 0 1% 0;">
+  <h2 style="text-align:center; letter-spacing:0.06em;">
+    Exhibition at Milan Design Week 2019
+  </h2>
+</div>
+<div class="containerCenter">
+  <ResponsivePicture
+    src="projects/coffee-composer/exhibition-in-milan/exhibition-in-milan"
+    alt="Coffee Composer exhibition at Milan Design Week"
+    width={1200}
+    height={900}
+    class="composerImage"
+  />
+</div><br /><br /><br />

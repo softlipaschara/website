@@ -1,0 +1,1000 @@
+---
+title: Word to World
+order: 1
+summary: Real-time speech transformed into a dynamic 3D visual world.
+tools:
+  - Google Speech API
+  - Google Natural Language API
+  - Unity
+  - Asset store
+cover:
+  src: projects/word-to-world/hero/hero.gif
+  alt: Word to World title animation
+thumbnail:
+  src: site/home/fox-thumb/fox-thumb.gif
+  alt: Fox animation thumbnail
+  type: image
+  class: breezeBlock homeCardImage
+homeSection: selectedWorks
+featured: true
+backButton: white
+---
+
+import ResponsivePicture from '../../components/ResponsivePicture.astro';
+import VideoPlayer from '../../components/VideoPlayer.astro';
+import { mediaUrl } from '../../lib/media';
+
+<div class="containerCenter">
+  <div class="insBorrowTitle">Word to World</div>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    Supervised by Prof. Carola Zwick<br /> Master Project, May 2020<br /><br />
+    <b>Tools: <br /></b> Google Speech API, Google Natural Language API, Unity, Asset store
+    <br />
+    <br />
+    <b>Idea:</b><br /> “Word to World” is a further development of my bachelor thesis
+    “Scribbling Speech”. It is a software that transforms real-time speech into dynamic
+    visualisation. I used Unity game engine to process the data passing from the language
+    input, the computer outputs a corresponding three-dimensional visual world where camera
+    movements, physics, forces, collisions, animations, and motions are working together. We
+    are proficient at intuition, language, imagination, and creativity, while the computer is
+    proficient at computation, algorithm, logic, and memory, "Word to World" created a mix of
+    intuition and logic. It encourages creation with technology.<br /><br /><br /><br />
+  </div>
+</div>
+
+<div class="containerCenter">
+  <h2>World Structure:</h2>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br /> Visualizing human's "free speech" is a complex task, so I deconstructed the
+    project into following elements:
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="videos_scribbling_speech"
+    style="margin-top:5%; opacity:.8;"
+    src={mediaUrl('projects/word-to-world/structure/structure.png')}
+    alt="World structure diagram"
+  />
+</div>
+
+<div class="containerCenter" style="margin-top:6%;">
+  <h2>Bringing Objects onto the Canvas</h2>
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br />Assets are what we have in our world: natural environments, animals, people,
+    objects, transportation and even places, landmarks and so on. The computer will find the
+    corresponding asset according to the detected "nouns".
+  </div>
+</div>
+
+<div class="containerCenter">
+  <img
+    class="videos_scribbling_speech"
+    style="margin-top:5%; opacity:.8;"
+    src={mediaUrl('projects/word-to-world/assetword/assetword.png')}
+    alt="Asset word diagram"
+  />
+</div>
+
+<div class="containerCenter">
+  <div class="videos_scribbling_speech">
+    <VideoPlayer
+      src="projects/word-to-world/some-mushroomss/some-mushroomss"
+      poster="projects/word-to-world/mushroom-poster/mushroom-poster.png"
+      controls
+      playsinline
+      width="100%"
+      style="border:1px solid black;"
+      preload="auto"
+    />
+  </div>
+</div>
+<div class="containerCenter">
+  <p class="picture_note" style="color: #a5a5a5">
+    "Some <span style="color: grey;">mushrooms</span> here"
+  </p>
+</div>
+
+<div class="containerCenter" style="margin-top:5%;">
+  <h2>Bringing Animations to the World</h2>
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br /> The word “animation” stems from the Latin “animātiōn”, stem of “animātiō”,
+    meaning “<b>a bestowing of life</b>”. Bringing motions into our canvas can largely increase
+    the vividness of the world. <br />A cat can eat, walk, jump, run, sleep; a human can walk,
+    kick, sit, dance, they can move!<br />
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="videos_scribbling_speech"
+    style="margin-top:5%; opacity:.8;"
+    src={mediaUrl('projects/word-to-world/animation-text/animation-text.png')}
+    alt="Animation text diagram"
+  />
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br />
+    <h3>• Animal Animations:</h3> Each animal has its own specific animations built by
+    animators, by detecting "verbs", an animation will be triggered and transit from the
+    previous state. The default initial state is "idle".
+  </div>
+</div>
+<div class="containerCenter" style="margin-bottom:-2%; margin-top:2%;">
+  <div class="containerColumn twoVideos">
+    <VideoPlayer
+      src="projects/word-to-world/animation-transition/animation-transition"
+      autoplay
+      loop
+      muted
+      playsinline
+      width="100%"
+      style="border:1px solid #a5a5a5;"
+    />
+    <p class="picture_note" style="color: #a5a5a5">
+      transit from the default <span style="color: grey;">"idle"</span> state to
+      <span style="color: grey;">"walk"</span> state
+    </p>
+  </div>
+  <div class="containerColumn twoVideos">
+    <VideoPlayer
+      src="projects/word-to-world/elephant-drink/elephant-drink"
+      poster="projects/word-to-world/elephant-poster/elephant-poster.png"
+      controls
+      playsinline
+      width="100%"
+      style="border:1px solid #a5a5a5;"
+      preload="auto"
+    />
+    <p class="picture_note" style="color: #a5a5a5">
+      "The elephant is <span style="color: grey;">drinking</span> water."
+    </p>
+  </div>
+</div>
+
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br />
+    <h3>• Humanoid Animations:</h3>
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow" style="margin-bottom: -1%;">
+    I applied motion datas (fbx format) from CMUMocap database to a man character which is
+    rigged and have humanoid rigs. Below are the screenshots of the man doing different motion,
+    as a result of visualizing verbs.
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="image_scribbling_speech"
+    style="margin-top:5%;"
+    src={mediaUrl('projects/word-to-world/mocap-motions/mocap-motions.gif')}
+    alt="Motion capture examples"
+  />
+</div>
+<div class="containerCenter">
+  <div class="videos_scribbling_speech">
+    <VideoPlayer
+      src="projects/word-to-world/cowboy-waving/cowboy-waving"
+      poster="projects/word-to-world/cowboy-poster/cowboy-poster.png"
+      controls
+      playsinline
+      width="100%"
+      style="border:1px solid;"
+      preload="auto"
+    />
+  </div>
+</div>
+<div class="containerCenter">
+  <p class="picture_note" style="color: #a5a5a5">
+    "The cowboy is <span style="color: grey;">waving</span> to the penguin"
+  </p>
+</div>
+
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow" style="margin-bottom: 1%;">
+    <br /><br />
+    <h3>• Anthropomorphic Animations:</h3> Bringing anthropomorphism in character animation
+    could stimulate our imagination through storytelling, you can tell a story of a bear
+    dancing and doing boxing! Following are examples of a bear doing different motions after we
+    give it a humanoid rig.
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="image_scribbling_speech"
+    style="margin-top:0%;"
+    src={mediaUrl('projects/word-to-world/bear-motions/bear-motions.gif')}
+    alt="Bear motion examples"
+  />
+</div>
+<div class="containerCenter">
+  <div class="videos_scribbling_speech">
+    <VideoPlayer
+      src="projects/word-to-world/bear-dancing/bear-dancing"
+      poster="projects/word-to-world/bear-poster/bear-poster.png"
+      controls
+      playsinline
+      width="100%"
+      style="border:1px solid;"
+      preload="auto"
+    />
+  </div>
+</div>
+<div class="containerCenter">
+  <p class="picture_note" style="color: #a5a5a5">
+    "The bear is <span style="color: grey;">dancing</span> in front of the rose."
+  </p>
+</div>
+
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br />
+    <h3>• Animating Lifeless Objects:</h3> Inanimate objects such as tables, chairs, boxes,
+    stones and so on, they are lifeless in the real world, but in a world of fantasy, everything
+    can be living!<br /><br />
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="videos_scribbling_speech"
+    style="margin-top:1%;"
+    src={mediaUrl('projects/word-to-world/inspiration-movies/inspiration-movies.gif')}
+    alt="Examples of animated objects"
+  />
+</div>
+<div class="containerCenter">
+  <p class="picture_note" style="color: #a5a5a5">
+    Above are examples I collected to show how lifeless objects <br />can be animated and
+    brought to life.
+  </p>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br /> I used a mesh deformer tool written by Keenan Woodall, it has various methods
+    like "bend", "sine", "skew", "inflate" and so on, to change and animate the form of the
+    models.
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="videos_scribbling_speech" id="box_view" style="margin-top:2%;">
+    <VideoPlayer
+      src="projects/word-to-world/mesh-deformer-tool/mesh-deformer-tool"
+      autoplay
+      loop
+      muted
+      width="100%"
+    />
+  </div>
+</div>
+<div class="containerCenter">
+  <p class="picture_note" style="color: #a5a5a5">
+    a mesh deformer tool written by Keenan Woodall
+  </p>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br /> I started with the most basic geometry, a cube, by combining different
+    deforming methods, I found the behaviors of the cube can already express some emotions and
+    meanings.<br /><br />
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="image_scribbling_speech"
+    style="margin-top:0%;"
+    src={mediaUrl('projects/word-to-world/cube-motions/cube-motions.gif')}
+    alt="Cube motion experiments"
+  />
+</div>
+<div class="containerCenter">
+  <p class="picture_note" style="color: #a5a5a5">
+    start experimenting with the most basic "cube"
+  </p>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br />
+    Then I moved on with the same methods to a "table" model, we could see the table comes to
+    alive.<br /><br />
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="videos_scribbling_speech"
+    style="margin-top:1%;"
+    src={mediaUrl('projects/word-to-world/table-motions/table-motions.gif')}
+    alt="Table motion experiments"
+  />
+</div>
+<div class="containerCenter">
+  <p class="picture_note" style="color: #a5a5a5">further study with a "table" model</p>
+</div>
+<div class="containerCenter">
+  <div class="videos_scribbling_speech">
+    <VideoPlayer
+      src="projects/word-to-world/sofa-walk/sofa-walk"
+      autoplay
+      loop
+      muted
+      width="100%"
+      playsinline
+      style="border:1px solid;"
+    />
+  </div>
+</div>
+<div class="containerCenter">
+  <p class="picture_note" style="color: #a5a5a5">
+    "The <span style="color: grey;">sofa</span> is
+    <span style="color: grey;">walking</span> to the chair"
+  </p>
+</div>
+
+<div class="containerCenter" style="margin-top:6%;">
+  <h2>Movement Path</h2>
+</div>
+<div class="containerCenter">
+  <img
+    class="videos_scribbling_speech"
+    style="margin-top:5%; opacity:.8;"
+    src={mediaUrl('projects/word-to-world/movement-text/movement-text.png')}
+    alt="Movement path diagram"
+  />
+</div>
+<div class="containerCenter" style="margin-top:3%;">
+  <div class="projectContent projectTextInsBorrow">
+    <h3>• Linear and Random Movement Paths:</h3> We have groups of verbs that will trigger
+    object's linear movement, like "rise", "sink", "rotates", "dive", "go towards", etc. And we
+    will give the objects a random path by decting verbs like "fly", "play around", etc.
+  </div>
+</div>
+<div class="containerCenter" style="margin-bottom:-5%;">
+  <div class="containerColumn twoVideos">
+    <VideoPlayer
+      src="projects/word-to-world/balloon-scene/balloon-scene"
+      autoplay
+      loop
+      muted
+      width="100%"
+      playsinline
+      style="border:1px solid #a5a5a5;"
+    />
+    <p class="picture_note" style="color: #a5a5a5">
+      "The hot air balloon is <span style="color: grey;">rising</span>."<br />(linear motion)
+    </p>
+  </div>
+  <div class="containerColumn twoVideos">
+    <VideoPlayer
+      src="projects/word-to-world/moon-rotates/moon-rotates"
+      autoplay
+      loop
+      muted
+      width="100%"
+      playsinline
+      style="border:1px solid #a5a5a5;"
+    />
+    <p class="picture_note" style="color: #a5a5a5">
+      "The moon <span style="color: grey;">rotates around</span> the earth."<br />(linear
+      rotation)
+    </p>
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="containerColumn twoVideos">
+    <VideoPlayer
+      src="projects/word-to-world/ufo/ufo"
+      autoplay
+      loop
+      muted
+      width="100%"
+      playsinline
+      style="border:1px solid #a5a5a5;"
+    />
+    <p class="picture_note" style="color: #a5a5a5">
+      "A <span style="color: grey;">flying</span> UFO!"<br />(random motion)
+    </p>
+  </div>
+  <div class="containerColumn twoVideos">
+    <VideoPlayer
+      src="projects/word-to-world/earthquake/earthquake"
+      autoplay
+      loop
+      muted
+      width="100%"
+      playsinline
+      style="border:1px solid #a5a5a5;"
+    />
+    <p class="picture_note" style="color: #a5a5a5">
+      "There's an <span style="color: grey;">earthquake</span>!"<br />(camera movement)
+    </p>
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br />
+    <h3>• Movement Paths with Intelligence:</h3><br /> Some verbs like “arrive”, “avoid”,
+    “flee”, “follow”, “hide”, “pursuit”, “seek”, they all require the objects intelligently
+    deploy its path.
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="containerColumn twoVideos">
+    <VideoPlayer
+      src="projects/word-to-world/movement-paths/movement-paths"
+      autoplay
+      loop
+      muted
+      playsinline
+      width="100%"
+    />
+  </div>
+  <div class="containerColumn twoVideos">
+    <VideoPlayer
+      src="projects/word-to-world/dinosaur-chase/dinosaur-chase"
+      autoplay
+      loop
+      muted
+      width="100%"
+      playsinline
+      style="border:1px solid #a5a5a5;"
+    />
+    <p class="picture_note" style="color: #a5a5a5">
+      "The dinosaur is <span style="color: grey;">chasing</span> to the fox!"
+    </p>
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br />
+    <h3>• Real-time Navigating:</h3><br /> If you say "The girl walks in her room", the
+    computer will calculate the walkable area of the "room" in real-time, this ensures that the
+    girl won't walk into tables and shelves.
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="containerColumn twoVideos">
+    <img
+      class="videos_scribbling_speech"
+      style="margin-top:1%; width:100%;"
+      src={mediaUrl('projects/word-to-world/navigation-pic/navigation-pic.png')}
+      alt="Walkable area diagram"
+    />
+    <p class="picture_note" style="color: #a5a5a5">walkable area</p>
+  </div>
+  <div class="containerColumn twoVideos">
+    <VideoPlayer
+      src="projects/word-to-world/girl-garden/girl-garden"
+      autoplay
+      loop
+      muted
+      width="100%"
+      playsinline
+      style="border:1px solid #a5a5a5;"
+    />
+    <p class="picture_note" style="color: #a5a5a5">
+      "The girl is <span style="color: grey;">wandering</span> in the garden."
+    </p>
+  </div>
+</div>
+
+<div class="containerCenter" style="margin-top:4%;">
+  <h2>Simulation</h2>
+</div>
+<div class="containerCenter">
+  <img
+    class="videos_scribbling_speech"
+    style="margin-top:5%; opacity:.8;"
+    src={mediaUrl('projects/word-to-world/simulation-text/simulation-text.png')}
+    alt="Simulation text diagram"
+  />
+</div>
+<div class="containerCenter" style="margin-top:3%;">
+  <div class="projectContent projectTextInsBorrow">
+    Simulations could help us visualize a world that we are familiar with: we use gravity
+    simulations to visualize for example, "An apple falls from the tree."; we use fluid
+    simulations to visualize how a chair moves and floats in the water.
+  </div>
+</div>
+<div class="containerCenter" style="margin-bottom:-5%;">
+  <div class="containerColumn twoVideos">
+    <VideoPlayer
+      src="projects/word-to-world/pencil-ball-fall/pencil-ball-fall"
+      autoplay
+      loop
+      muted
+      width="100%"
+      playsinline
+      style="border:1px solid #a5a5a5;"
+    />
+    <p class="picture_note" style="color: #a5a5a5">
+      "The pencil and the ball <span style="color: grey;">fell down</span>."<br />(Gravity
+      Simulation)
+    </p>
+  </div>
+  <div class="containerColumn twoVideos">
+    <VideoPlayer
+      src="projects/word-to-world/flock-birds/flock-birds"
+      autoplay
+      loop
+      muted
+      width="100%"
+      playsinline
+      style="border:1px solid #a5a5a5;"
+    />
+    <p class="picture_note" style="color: #a5a5a5">
+      "<span style="color: grey;">A flock of birds</span> is flying over the mountains."<br />(Swarm
+      Simulation)
+    </p>
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="containerColumn twoVideos">
+    <VideoPlayer
+      src="projects/word-to-world/flock-fishes/flock-fishes"
+      autoplay
+      loop
+      muted
+      width="100%"
+      playsinline
+      style="border:1px solid #a5a5a5;"
+    />
+    <p class="picture_note" style="color: #a5a5a5">
+      "There's <span style="color: grey;">a swarm of fish</span> swimming!"<br />(Swarm
+      Simulation)
+    </p>
+  </div>
+  <div class="containerColumn twoVideos">
+    <VideoPlayer
+      src="projects/word-to-world/chair-fall/chair-fall"
+      autoplay
+      loop
+      muted
+      width="100%"
+      playsinline
+      style="border:1px solid #a5a5a5;"
+    />
+    <p class="picture_note" style="color: #a5a5a5">
+      "A chair <span style="color: grey;">fell into the water</span>."<br />(Fluid Physics
+      Simulation)
+    </p>
+  </div>
+</div>
+
+<div class="containerCenter" style="margin-top:2%;">
+  <h2>Time and Weather</h2>
+</div>
+<div class="containerCenter">
+  <img
+    class="videos_scribbling_speech"
+    style="margin-top:5%; opacity:.8;"
+    src={mediaUrl('projects/word-to-world/time-text/time-text.png')}
+    alt="Time and weather diagram"
+  />
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br />
+    <h3>• Using Shadow to Visualize Time:</h3> In “Word to World”, we use the shadow to
+    represent the sun and the time. At different times of the day, our shadow gets longer and
+    shorter or may disappear. We can tell the time based on your shadow’s current length and
+    angle. With this method, you are free to say "Now it's 7am in the morning."
+  </div>
+</div>
+<div class="containerCenter" style="margin-bottom:-2%;">
+  <div class="containerColumn twoVideos">
+    <VideoPlayer
+      src="projects/word-to-world/time-of-day/time-of-day"
+      autoplay
+      loop
+      muted
+      width="100%"
+      playsinline
+      style="border:1px solid #a5a5a5;"
+    />
+    <p class="picture_note" style="color: #a5a5a5">tell the time by showing the shadow</p>
+  </div>
+  <div class="containerColumn twoVideos">
+    <VideoPlayer
+      src="projects/word-to-world/late-afternoon/late-afternoon"
+      autoplay
+      loop
+      muted
+      width="100%"
+      playsinline
+      style="border:1px solid #a5a5a5;"
+    />
+    <p class="picture_note" style="color: #a5a5a5">
+      "In the <span style="color: grey;">late afternoon</span>, it starts
+      <span style="color: grey;">snowing</span>."
+    </p>
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br />
+    <h3>• Weather Conditions:</h3> In “Word to World” we will have 6 weather conditions:<br />
+    “sunny”, “cloudy”, “rainy”, “thunderstorm”, “windy” and “snowy”.
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="containerColumn twoVideos">
+    <VideoPlayer
+      src="projects/word-to-world/on-a-sunny-day/on-a-sunny-day"
+      autoplay
+      loop
+      muted
+      width="100%"
+      playsinline
+      style="border:1px solid #a5a5a5;"
+    />
+    <p class="picture_note" style="color: #a5a5a5">
+      "On a <span style="color: grey;">sunny day</span>..."
+    </p>
+  </div>
+  <div class="containerColumn twoVideos">
+    <VideoPlayer
+      src="projects/word-to-world/raining/raining"
+      autoplay
+      loop
+      muted
+      width="100%"
+      playsinline
+      style="border:1px solid #a5a5a5;"
+    />
+    <p class="picture_note" style="color: #a5a5a5">
+      "It's <span style="color: grey;">raining</span>!"
+    </p>
+  </div>
+</div>
+
+<div class="containerCenter" style="margin-top:2%;">
+  <h2>Camera Language</h2>
+</div>
+<div class="containerCenter">
+  <img
+    class="videos_scribbling_speech"
+    style="margin-top:5%; opacity:.8;"
+    src={mediaUrl('projects/word-to-world/perspective-text/perspective-text.png')}
+    alt="Camera perspective diagram"
+  />
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br />
+    <h3>• First Person & Third Person:</h3> In “Word to World”, we use the shadow to represent
+    the sun and the time. At different times of the day, our shadow gets longer and shorter or
+    may disappear. We can tell the time based on your shadow’s current length and angle.
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="containerColumn twoVideos">
+    <VideoPlayer
+      src="projects/word-to-world/first-person-view/first-person-view"
+      autoplay
+      loop
+      muted
+      width="100%"
+      playsinline
+      style="border:1px solid #a5a5a5;"
+    />
+    <p class="picture_note" style="color: #a5a5a5">
+      "<span style="color: grey;">I'm </span>walking in the forest."<br />(will trigger a
+      first-person controller)
+    </p>
+  </div>
+  <div class="containerColumn twoVideos">
+    <VideoPlayer
+      src="projects/word-to-world/third-person-view/third-person-view"
+      autoplay
+      loop
+      muted
+      width="100%"
+      playsinline
+      style="border:1px solid #a5a5a5;"
+    />
+    <p class="picture_note" style="color: #a5a5a5">
+      "<span style="color: grey;">The girl</span> is walking in the garden."<br />(will trigger
+      a third-person controller)
+    </p>
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br />
+    <h3>• Changing Camera Perspective by Wording:</h3> We can switch the perspective of the
+    camera to from back viewed perspective by saying <br />"something sees something", <br />
+    "something looks at something", <br />“in something’s eyes, the....”
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="videos_scribbling_speech">
+    <VideoPlayer
+      src="projects/word-to-world/saw-something/saw-something"
+      autoplay
+      loop
+      muted
+      width="100%"
+      playsinline
+      style="border:1px solid;"
+    />
+  </div>
+</div>
+<div class="containerCenter">
+  <p class="picture_note" style="color: #a5a5a5">
+    "The bear <span style="color: grey;">saw</span> an elephant!"
+  </p>
+</div>
+
+<div class="containerCenter" style="margin-top:4%;">
+  <h2>Adding a Virtual Layer</h2>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br /> How do we visualize sentences like “A little boy is watching animation on a
+    TV.”, “I’m watching a news report on the TV”, “The man is watching a weather report on the
+    TV.”? “Word to World” will prepare three virtual layers which often appear on “screens”, a
+    children’s animation clip, a weather report video clip, a news report video clip.
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="image_scribbling_speech"
+    style="margin-top:5%;"
+    src={mediaUrl('projects/word-to-world/fox-watch-tv/fox-watch-tv.gif')}
+    alt="Fox watching television"
+  />
+</div>
+<div class="containerCenter">
+  <p class="picture_note" style="color: #a5a5a5">
+    "The fox is watching an <span style="color: grey;">animation on TV</span>!"
+  </p>
+</div>
+
+<div class="containerCenter" style="margin-top:4%;">
+  <h2>Audio Experience</h2>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br />
+    We also provide great audio experience besides the visualisations. The sound effects in “Word
+    to World” are from freesound.org. I divide the words into three groups: <br />
+    <br />words that has sound effects attached;<br />
+    words that are "silent";<br />
+    words and sentences like "I listen to...", "I hear...", this will trigger a sound effect when
+    detected.
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="videos_scribbling_speech"
+    style="margin-top:5%; opacity:.8;"
+    src={mediaUrl('projects/word-to-world/sound-effects/sound-effects.png')}
+    alt="Sound effects diagram"
+  />
+</div>
+
+<div class="containerCenter" style="margin-top:6%;">
+  <h2>Natural Language Processing</h2>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br />
+    The "Speech to Text API" will recognize real-time speech and convert it to text. The
+    "Natural Language API" will then process the text to make the computer “understand” it.
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="videos_scribbling_speech"
+    style="margin-top:5%;"
+    src={mediaUrl('projects/word-to-world/nlp/nlp.png')}
+    alt="Natural language processing diagram"
+  />
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br />
+    <h3>• Classifying Verbs to Assign Animation and Movement:</h3>
+    To make actions happen, for example, to make the giraffe walk to the penguin, we will
+    correspondingly assign an animation and movement to the subject fox according to the verb
+    "walk".<br /><br />However, there are other verbs that can change the size of the object,
+    verbs that can make the object talk, verbs that can make the object interact with the
+    environment. So we have to classify the verbs according to their semantics.
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="videos_scribbling_speech"
+    style="margin-top:5%; opacity:1; width:75%;"
+    src={mediaUrl('projects/word-to-world/verbs-classification/verbs-classification.png')}
+    alt="Verb classification diagram"
+  />
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br />
+    <h3>• Technical Flow:</h3>
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="videos_scribbling_speech"
+    style="margin-top:5%; opacity:1; margin-bottom:5%; width:85%;"
+    src={mediaUrl('projects/word-to-world/technical-flow-horizontal/technical-flow-horizontal.png')}
+    alt="Technical flow diagram"
+  />
+</div>
+<div class="containerCenter">
+  <div class="videos_scribbling_speech">
+    <VideoPlayer
+      src="projects/word-to-world/giraffe-penguin-demo/giraffe-penguin-demo"
+      autoplay
+      loop
+      muted
+      width="100%"
+      playsinline
+      style="border:1px solid;"
+    />
+  </div>
+</div>
+<div class="containerCenter">
+  <p class="picture_note" style="color: #a5a5a5">
+    "The giraffe is walking to the penguin!"
+  </p>
+</div>
+
+<div class="containerCenter" style="margin-top:6%;">
+  <h2>Semantic Models</h2>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br /> We can make the computer understand us way much smarter by using semantic
+    models, such as semantic network, hierarchical network model, synonyms, hyponymy and
+    hypernymy.
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="videos_scribbling_speech"
+    style="margin-top:5%; opacity:1; width:75%;"
+    src={mediaUrl('projects/word-to-world/semantics/semantics.png')}
+    alt="Semantic model diagram"
+  />
+</div>
+
+<div class="containerCenter" style="margin-top:6%;">
+  <h2>User Scenarios</h2>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br />
+    <br />
+    <h3>• Storytelling:</h3> "Word to World" can be used as a storytelling tool for people to
+    tell and share their stories. They can use it to record their dreams, explain something to
+    somebody, describe their daily life, document a public event and so on.
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="videos_scribbling_speech"
+    style="margin-top:5%; opacity:1;"
+    src={mediaUrl('projects/word-to-world/story1/story1.png')}
+    alt="Storytelling scenario"
+  />
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br />
+    <br />
+    <h3>• Bedtime story with Kids:</h3> "Word to World" can be used for telling bedtime stories
+    for kids. Nowadays we have a limited way of telling a story - read books, but with "Word to
+    World", we can not only create a brand new story by ourselves but also create and tell it
+    together with your beloved ones in real-time. It can stimulate kids' imagination as well as
+    improve their language skills.
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="videos_scribbling_speech"
+    style="margin-top:5%; opacity:1;"
+    src={mediaUrl('projects/word-to-world/story2/story2.png')}
+    alt="Bedtime story scenario"
+  />
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br />
+    <br />
+    <h3>• For Professionals:</h3> Game designers can use "Word to World" to construct a static
+    scene such as a landscape, where the focus would be on the assets and aesthetics, therefore
+    besides the option of exporting a story as a video, an option of exporting the whole scene
+    as a 3D file package is also available.
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="videos_scribbling_speech"
+    style="margin-top:5%; opacity:1;"
+    src={mediaUrl('projects/word-to-world/story3/story3.png')}
+    alt="Professional scenario"
+  />
+</div>
+
+<div class="containerCenter" style="margin-top:6%;">
+  <h2>Schematic Interface</h2>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br />
+    <br />
+    <h3>• Start Telling a Story:</h3> There will be some tips that guiding user to start
+    speaking.
+  </div>
+</div>
+<div class="containerCenter">
+  <ResponsivePicture
+    src="projects/word-to-world/interface-index/interface-index"
+    alt="Interface for starting a story"
+    width={2556}
+    height={1604}
+    class="videos_scribbling_speech"
+    style="margin-top:2%; opacity:1;"
+  />
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br />
+    <br />
+    <h3>• Export a Story:</h3> When a user remains silent for more than 10 seconds, the computer
+    will ask the user if he/she would like to export the story, user can choose "continue story"
+    to continue telling the story or export it as a 3D file or a video. The other way is a user
+    saying "Export the story as a video." or "Export it as a 3D file."
+  </div>
+</div>
+<div class="containerCenter">
+  <ResponsivePicture
+    src="projects/word-to-world/interface-export/interface-export"
+    alt="Interface for exporting a story"
+    width={2556}
+    height={1604}
+    class="videos_scribbling_speech"
+    style="margin-top:2%; opacity:1;"
+  />
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br />
+    <br />
+    <h3>• Talking State:</h3> The bubble is a visual indicator, indicating that the user is
+    speaking. And it gets broken when anything is not stored in the system.
+  </div>
+</div>
+<div class="containerCenter">
+  <ResponsivePicture
+    src="projects/word-to-world/interface-bubble/interface-bubble"
+    alt="Interface talking state"
+    width={2556}
+    height={1604}
+    class="videos_scribbling_speech"
+    style="margin-top:2%; opacity:1;"
+  />
+</div>
+
+<div class="containerCenter" style="margin-top:6%;">
+  <h2>Demo</h2>
+</div>
+<div class="centerInk" style="margin-top:3%; margin-bottom:5%;">
+  <VideoPlayer
+    src="projects/word-to-world/demo/demo"
+    class="vimeoInk"
+    width={960}
+    height={540}
+    controls
+    preload="auto"
+  />
+</div>

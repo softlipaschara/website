@@ -1,0 +1,128 @@
+---
+title: Interactive Ink Animation
+order: 6
+summary: Traditional Chinese painting brought to life with Leap Motion.
+tools:
+  - Processing
+  - Photoshop
+  - Leap Motion
+cover:
+  src: projects/ink-animation/hero/hero.png
+  alt: Ink animation artwork
+thumbnail:
+  src: site/home/ink-thumb/ink-thumb.png
+  alt: Interactive Ink Animation thumbnail
+  type: image
+  class: breezeBlock homeCardImage
+homeSection: selectedWorks
+backButton: black
+---
+
+import { mediaUrl } from '../../lib/media';
+import VideoPlayer from '../../components/VideoPlayer.astro';
+
+<div class="containerCenter">
+  <div class="insBorrowTitle omzugTitle">
+    Interactive Ink Animation
+  </div>
+</div>
+<div class="containerCenter">
+  <div class=" projectContent projectTextInsBorrow" >
+    Supervised by Prof. Dr. Christine Coutrie<br/>
+    Semester 2<br/><br/>
+    <b>Tools: <br/></b>
+    processing, photoshop, leap motion<br/>
+    <br/>
+    In this project I brought traditional Chinese literati painting to life.
+    The interactive part starts with reaching a hand upon Leap Motion controller,
+    which can sense the movement of your hands, a frog will appear on the screen
+    and move according to the hand position. All of the tadpoles will swim away from it.
+    When there's no hand, the frog will disappear and the babies will swim back to their
+    original position.<br/><br/>
+    I took elements from Badashanren's and Qi Baishi's paintings and made them into animated gifs.
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="myWeb"
+    src={mediaUrl('projects/ink-animation/badashanren/badashanren.png')}
+    alt="Badashanren ink painting reference"
+  />
+</div>
+<div class="containerCenter">
+  <img
+    class="myWeb"
+    style="width:20%;"
+    src={mediaUrl('projects/ink-animation/fish1/fish1.gif')}
+    alt="Animated fish drawing"
+  />
+  <img
+    class="myWeb"
+    style="width:20%;"
+    src={mediaUrl('projects/ink-animation/fish3/fish3.gif')}
+    alt="Animated fish drawing"
+  />
+  <img
+    class="myWeb"
+    style="width:20%;"
+    src={mediaUrl('projects/ink-animation/fish4/fish4.gif')}
+    alt="Animated fish drawing"
+  />
+</div>
+<div class="containerCenter">
+  <img
+    class="myWeb"
+    style="width:20%;"
+    src={mediaUrl('projects/ink-animation/shrimp1/shrimp1.gif')}
+    alt="Animated shrimp drawing"
+  />
+  <img
+    class="myWeb"
+    style="width:20%;"
+    src={mediaUrl('projects/ink-animation/crabsnew/crabsnew.gif')}
+    alt="Animated crab drawing"
+  />
+  <img
+    class="myWeb"
+    style="width:20%;"
+    src={mediaUrl('projects/ink-animation/frog2/frog2.gif')}
+    alt="Animated frog drawing"
+  />
+</div>
+<div class="containerCenter">
+  <img
+    class="myWeb"
+    style="width:20%;"
+    src={mediaUrl('projects/ink-animation/grass/grass.gif')}
+    alt="Animated grass drawing"
+  />
+  <img
+    class="myWeb"
+    style="width:20%;"
+    src={mediaUrl('projects/ink-animation/cat/cat.gif')}
+    alt="Animated cat drawing"
+  />
+</div>
+<div class="centerInk">
+  <VideoPlayer
+    src="projects/ink-animation/demo/demo"
+    class="vimeoInk"
+    width={960}
+    height={540}
+    controls
+    preload="auto"
+  />
+</div>
+<div class="containerCenter">
+  <div class="insBorrowTitle omzugTitle">
+    What I Learned
+  </div>
+</div>
+<div class="containerCenter " style="margin-bottom: 8%">
+  <div class=" projectContent projectTextInsBorrow projectContent"  >
+    This was a 10-day project in a foundation course 'digital media' at Kunsthochschule Berlin-Weißeesee. I would
+    like to thank Prof. Dr. Christine Goutrié for the enlightenment of my coding experience. Since then I have been
+    interested in coding and human computer interaction. And thank Daniel Shiffman to explain basic knowledge about Processing
+    in such a simple and lovely way.
+  </div>
+</div>

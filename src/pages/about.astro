@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import { mediaUrl } from '../lib/media';
+import '../styles/site.css';
+import '../styles/site/about.css';
+---
+
+<BaseLayout title="About">
+  <a href="/">Back</a>
+
+  <div class="container">
+    <div class="selfPortrait">
+      <img src={mediaUrl('site/about/self/self.jpg')} alt="Portrait of Xinyue Yang" />
+    </div>
+    <div class="introduction">
+      <p>
+        Xinyue Yang, born in Chengdu, China.<br />
+        Currently studies product design in Berlin, Germany<br />
+        at <a href="http://www.kh-berlin.de"><i>Kunsthochschule Berlin Weissensee</i></a>
+        <br /><br />
+      </p>
+      <p class="chinese">
+        杨鑫玥<br />出生于四川成都<br />德国柏林白湖艺术学院<br />产品设计专业
+      </p>
+    </div>
+  </div>
+</BaseLayout>

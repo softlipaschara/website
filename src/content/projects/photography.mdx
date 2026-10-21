@@ -1,0 +1,61 @@
+---
+title: Photography
+order: 21
+summary: Forty-two days volunteering at an animal farm in Pune, India.
+tools:
+  - Contax T2
+thumbnail:
+  src: site/home/photography/photography.jpg
+  alt: India photography
+  type: image
+  class: roundMasks
+homeSection: whatsMore
+homeLabel: I Do Photography
+backButton: black
+---
+
+import Carousel from '../../components/Carousel.astro';
+import '../../styles/projects/photography.css';
+
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow indiaText" >
+    <div>
+    This was a winter in India in 2012, a small city named Pune which is next to Mombai.
+    I carried my Contax T2 camera and documented 42 unforgettable days of my volunteering experience in an animal farm.
+    There were sick and disabled animals, most of them are dogs and cows, a horse and an eagle with a wounded wing.
+        They had two doctors, four workers respectively charged in feeding, washing, medical assisting, and cleaning.
+    I usually helped feeding them.<br/>
+
+        I miss them all.
+    </div>
+  </div>
+</div>
+
+<Carousel
+  containerClass="container"
+  sliderClass="projectSlider"
+  slideClass="s-container"
+  imageClass="printImageStyle"
+  slides={[
+    { src: 'projects/photography/india1/india1.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 1', width: 900, height: 594 },
+    { src: 'projects/photography/india2/india2.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 2', width: 900, height: 611 },
+    { src: 'projects/photography/india3/india3.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 3', width: 900, height: 592 },
+    { src: 'projects/photography/india4/india4.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 4', width: 900, height: 566 },
+    { src: 'projects/photography/india5/india5.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 5', width: 900, height: 569 },
+    { src: 'projects/photography/india6/india6.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 6', width: 900, height: 571 },
+    { src: 'projects/photography/india7/india7.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 7', width: 900, height: 568 },
+    { src: 'projects/photography/india8/india8.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 8', width: 900, height: 570 },
+    { src: 'projects/photography/india9/india9.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 9', width: 900, height: 569 },
+    { src: 'projects/photography/india10/india10.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 10', width: 900, height: 568 },
+    { src: 'projects/photography/india11/india11.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 11', width: 900, height: 583 },
+    { src: 'projects/photography/india12/india12.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 12', width: 900, height: 580 },
+    { src: 'projects/photography/india13/india13.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 13', width: 900, height: 573 },
+    { src: 'projects/photography/india14/india14.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 14', width: 900, height: 654 },
+    { src: 'projects/photography/india15/india15.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 15', width: 900, height: 579 },
+    { src: 'projects/photography/india16/india16.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 16', width: 900, height: 609 },
+    { src: 'projects/photography/india17/india17.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 17', width: 900, height: 608 },
+    { src: 'projects/photography/india18/india18.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 18', width: 900, height: 574 },
+    { src: 'projects/photography/india19/india19.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 19', width: 900, height: 570 },
+    { src: 'projects/photography/india20/india20.jpg', alt: 'Animal farm volunteer life in Pune, India, photograph 20', width: 900, height: 568 },
+  ]}
+/>

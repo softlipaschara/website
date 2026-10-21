@@ -1,0 +1,44 @@
+---
+title: Printing
+order: 20
+summary: A collection of hand-carved lino prints.
+tools:
+  - Lino Cutting
+thumbnail:
+  src: site/home/rain/rain.jpg
+  alt: Lino print
+  type: image
+  class: roundMasks
+homeSection: whatsMore
+homeLabel: I Do Lino Print
+backButton: black
+---
+
+import Carousel from '../../components/Carousel.astro';
+import '../../styles/projects/printing.css';
+
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow indiaText" >
+    <div>
+        1\. Rain drops.<br/> 2\. Chicken mom and baby for 2017 Chinese New Year.<br/>
+        3\. A whale tail in the bowl.<br/> 4\. On the way home stepping on the snow field under the moon.
+    </div>
+  </div>
+</div>
+
+<Carousel
+  containerClass="container"
+  sliderClass="projectSlider"
+  slideClass="s-container"
+  imageClass="printImageStyle"
+  slides={[
+    { src: 'projects/printing/raining/raining.jpg', alt: 'Rain drops lino print', width: 1200, height: 849 },
+    { src: 'projects/printing/chicken/chicken.jpg', alt: 'Chicken mother and baby lino print', width: 849, height: 1200 },
+    { src: 'projects/printing/whale/whale.jpg', alt: 'Whale tail lino print', width: 1200, height: 849 },
+    { src: 'projects/printing/snow/snow.jpg', alt: 'Snow field lino print', width: 849, height: 1200 },
+    { src: 'projects/printing/lotus/lotus.jpg', alt: 'Lotus lino print', width: 855, height: 1200 },
+    { src: 'projects/printing/goose/goose.jpg', alt: 'Goose lino print', width: 855, height: 1200 },
+    { src: 'projects/printing/ciwei/ciwei.jpg', alt: 'Hedgehog lino print', width: 1200, height: 815 },
+    { src: 'projects/printing/print-process/print-process.jpg', alt: 'Lino print production process', width: 800, height: 600 },
+  ]}
+/>

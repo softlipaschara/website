@@ -1,0 +1,316 @@
+---
+title: Scribbling Speech 画话
+order: 3
+summary: Real-time speech transformed into animated drawings.
+tools:
+  - Google Speech API
+  - Google Natural Language API
+  - Quickdraw Dataset
+  - Processing
+  - After Effects
+thumbnail:
+  src: site/home/bird-above-sea/bird-above-sea.gif
+  alt: Bird above the sea animation
+  type: image
+  class: speechBlock homeCardImage
+homeSection: selectedWorks
+featured: true
+backButton: white
+---
+
+import ResponsivePicture from '../../components/ResponsivePicture.astro';
+import VideoPlayer from '../../components/VideoPlayer.astro';
+import { mediaUrl } from '../../lib/media';
+
+<div class="armbandGif" style="z-index: 1">
+  <div id="video">
+    <VideoPlayer
+      src="projects/scribbling-speech/hero/hero"
+      autoplay
+      loop
+      muted
+      width="100%"
+      style="margin-top:5%;"
+    />
+  </div>
+</div>
+
+<div class="containerCenter">
+  <div class="insBorrowTitle">Scribbling Speech</div>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    Supervised by Prof. Carola Zwick<br />
+    Bachelor Project, July 2018<br /><br />
+    <b>Tools: <br /></b>
+    Google Speech API, Google Natural Language API, Quickdraw Dataset, Processing, After
+    Effects<br />
+    <br />
+    <b>Idea:</b><br />
+    Language and images are closely intertwined: We think in pictures and we explain facts as
+    spatial constellations. What if the spoken word could be transformed into dynamic visual
+    worlds in real time? Speech input, machine learning and recurrent neural networks for image
+    generation allow to com- puter generate complex imaginary worlds that follow the narrator
+    and thus create complex animations controlled by linguistic structures.<br /><br />
+  </div>
+</div>
+
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <b>Concept Sketch:</b><br />
+  </div>
+</div>
+<div class="containerCenter">
+  <ResponsivePicture
+    id="conceptSketch"
+    src="projects/scribbling-speech/concept-sketch/concept-sketch"
+    alt="Concept sketch"
+    width={1188}
+    height={1740}
+  />
+</div>
+
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br /><br /><br /><b>Create a Virtual World while Speaking</b><br /><br />
+    In the model, the objects have their default position value x, y, and z index. A camera has
+    been applied to open our eyes to see this world.
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="videos_scribbling_speech">
+    <VideoPlayer
+      src="projects/scribbling-speech/forward-view/forward-view"
+      autoplay
+      loop
+      muted
+      width="100%"
+      style="border:1px solid;"
+    />
+  </div>
+</div>
+<div class="containerCenter">
+  <p class="picture_note">"I'm going to the house." - Going forward view</p>
+</div>
+
+<div class="containerCenter">
+  <div class="videos_scribbling_speech">
+    <VideoPlayer
+      src="projects/scribbling-speech/left-right-view/left-right-view"
+      autoplay
+      loop
+      muted
+      width="100%"
+      style="border:1px solid;"
+    />
+  </div>
+</div>
+<div class="containerCenter">
+  <p class="picture_note">"I look to the left/right." - Rotating to the left/right view</p>
+</div>
+
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br /><br /><br /><b>Initial Object Position</b><br /><br />
+    SkyObject: clouds, sun, moon, airplane, stars...<br />
+    AirObject: butterfly, bird, mosquito...<br />
+    FloorObject: house, flowers, building, apple, girl, shoes...
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="videos_scribbling_speech" id="box_view">
+    <VideoPlayer
+      src="projects/scribbling-speech/box-view/box-view"
+      poster="projects/scribbling-speech/box-view-poster/box-view-poster.png"
+      autoplay
+      loop
+      muted
+      width="100%"
+    />
+  </div>
+</div>
+
+<div class="containerCenter" style="margin-top:10%;">
+  <h2>Input - Spoken Words</h2>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br /><br /><b>Real time Voice Recognition and Multi language Detection</b><br /><br />
+    With Google Speech API and Google Natural Language API, it is able to extract nouns and
+    adpostions like "above","under" and so on from the real time streaming. RecognizeStream,
+    getEntities and analyzeSyntax are used to realize the input part.<br /><br />
+    For example. "There is a bird flying above the sea", the computer will return "sea", "bird"
+    and "above" in the end.<br /><br />
+    Besides, not only English can be recognized, but also many other languages like Chinese,
+    French, German and so on.
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    class="image_scribbling_speech"
+    src={mediaUrl('projects/scribbling-speech/input-flow/input-flow.png')}
+    alt="Input flow diagram"
+  />
+</div>
+
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br /><br /><b>Realtime Speech Recognition Demo (Please enable audio)</b><br />
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <div>
+      {/* Source unavailable: the original Tumblr video is offline. */}
+      <img
+        class="terminal_demo"
+        src={mediaUrl('projects/scribbling-speech/transcript-poster/transcript-poster.png')}
+        alt="Realtime speech recognition demo poster"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><b>Realtime Speech Recognition Demo in Chinese</b><br />
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <div>
+      {/* Source unavailable: the original Tumblr video is offline. */}
+      <img
+        class="terminal_demo"
+        src={mediaUrl('projects/scribbling-speech/poster-chinese/poster-chinese.png')}
+        alt="Realtime speech recognition demo in Chinese poster"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="containerCenter" style="margin-top:10%;">
+  <h2>Output - Animated Drawings</h2>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br /><b>Quickdraw Dataset</b><br /><br />
+    Quick, Draw! is an AI experiment from Google that has delighted millions of people across
+    the world. The game asks users to draw a doodle, then the game’s AI tries to guess what it
+    is.<br /><br />
+    The richness and the huge amount of data as well as the simplicity of human doodlings, which
+    contains a common understanding of human depicted common objects. It is a visual language of
+    stereotypes of flower”, “mountain”, “cloud”, “river” etc. Over a billion doodles have been
+    drawn by people playing the game and subsequently collected into this anonymized dataset.
+  </div>
+</div>
+<div class="containerCenter">
+  <img
+    id="pic_quickdraw"
+    src={mediaUrl('projects/scribbling-speech/pic-quickdraw/pic-quickdraw.png')}
+    alt="Quickdraw dataset examples"
+  />
+  <img
+    id="airplane_overview"
+    src={mediaUrl('projects/scribbling-speech/airplane-overview/airplane-overview.png')}
+    alt="Airplanes drawn in Quickdraw"
+  />
+</div>
+<div class="containerCenter">
+  <p class="picture_note">different airplanes drawn by different people in Quickdraw</p>
+</div>
+
+<div class="containerCenter">
+  <img
+    id="draw_airplane"
+    src={mediaUrl('projects/scribbling-speech/draw-airplane/draw-airplane.gif')}
+    alt="Hand-drawn airplane animation"
+  />
+</div>
+<div class="containerCenter">
+  <p class="picture_note">Creating a sense of hand drawn animation</p>
+</div>
+
+<div class="containerCenter">
+  <img
+    class="image_scribbling_speech"
+    src={mediaUrl('projects/scribbling-speech/drawing-process/drawing-process.png')}
+    alt="Process from speech to animation"
+  />
+</div>
+<div class="containerCenter">
+  <p class="picture_note">Process from free speech to animation</p>
+</div>
+
+<div class="containerCenter" style="margin-top:10%;">
+  <h2>Demo</h2>
+</div>
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br /><br /><b>Talking in English (Please enable audio)</b><br /><br />
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="videos_scribbling_speech">
+    {/* Source unavailable: the original S3 video returned HTTP 403. */}
+    <img
+      src={mediaUrl('projects/scribbling-speech/poster-cat-story/poster-cat-story.png')}
+      alt="Talking in English demo poster"
+      width="100%"
+      style="border:1px solid; margin-top:-6%;"
+    />
+  </div>
+</div>
+
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br /><br /><b>Talking in Chinese (Please enable audio)</b><br /><br />
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="videos_scribbling_speech">
+    {/* Source unavailable: the original S3 video returned HTTP 403. */}
+    <img
+      src={mediaUrl('projects/scribbling-speech/poster-chinese-video/poster-chinese-video.png')}
+      alt="Talking in Chinese demo poster"
+      width="100%"
+      style="border:1px solid; margin-top:-6%;"
+    />
+  </div>
+</div>
+
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br /><br /><b>User interacting with Scribbling Speech</b><br /><br />
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="videos_scribbling_speech">
+    {/* Source unavailable: the original S3 video returned HTTP 403. */}
+    <img
+      src={mediaUrl('projects/scribbling-speech/user-interaction-poster/user-interaction-poster.png')}
+      alt="User interacting with Scribbling Speech poster"
+      width="100%"
+      style="border:1px solid; margin-top:-6%;"
+    />
+  </div>
+</div>
+
+<div class="containerCenter">
+  <div class="projectContent projectTextInsBorrow">
+    <br /><br /><br /><b>Visualisation of the created 3D space</b><br /><br />
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="videos_scribbling_speech" style="margin-bottom:10%;">
+    {/* The original S3 video is unavailable; this is the recovered Vimeo visualisation. */}
+    <VideoPlayer
+      src="projects/scribbling-speech/visualisation/visualisation"
+      poster="projects/scribbling-speech/poster-visualisation-video/poster-visualisation-video.png"
+      controls
+      width="100%"
+      style="border:1px solid; margin-top:-6%;"
+      preload="auto"
+    />
+  </div>
+</div>

@@ -1,0 +1,28 @@
+---
+import { mediaUrl } from '../lib/media';
+
+interface Props {
+  href: string;
+  label: string;
+  src: string;
+  alt: string;
+  imageClass?: string;
+  tagClass?: string;
+  tagStyle?: string;
+}
+
+const {
+  href,
+  label,
+  src,
+  alt,
+  imageClass = 'roundMasks',
+  tagClass = 'noHoverStyle prototypeTag',
+  tagStyle,
+} = Astro.props;
+---
+
+<a class="prototypeImage containerColumn" href={href}>
+  <img class={imageClass} src={mediaUrl(src)} alt={alt} />
+  <p class={tagClass} style={tagStyle}>#{label}</p>
+</a>

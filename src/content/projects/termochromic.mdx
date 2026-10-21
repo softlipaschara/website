@@ -1,0 +1,91 @@
+---
+title: Termochromic Print
+order: 14
+summary: Heat-sensitive inks and silk printing on cotton.
+tools:
+  - Termochromic inks
+  - Silk printing
+thumbnail:
+  src: site/home/color/color.gif
+  alt: Thermochromic print demonstration
+  type: image
+  class: roundMasks
+homeSection: prototype
+backButton: white
+---
+
+import ResponsivePicture from '../../components/ResponsivePicture.astro';
+import VideoPlayer from '../../components/VideoPlayer.astro';
+
+<div  class="armbandGif" style="z-index: 1">
+  <div id="video">
+    <VideoPlayer
+      src="projects/termochromic/hero/hero"
+      autoplay
+      loop
+      muted
+      playsinline
+      width="100%"
+    />
+  </div>
+</div>
+<div class="containerCenter">
+  <div class="insBorrowTitle">
+    Termochromic Print
+  </div>
+</div>
+<div class="containerCenter">
+  <div class=" projectContent projectTextInsBorrow" >
+    <b>Tools: <br/></b>
+      Termochromic inks, silk printing<br/><br/>
+    <b>Teamwork:</b><br/> Xinyue Yang, Ningyuan Xu<br/><br/>
+    <b>Technology:</b><br/>
+    # Soft Interactive Technology <br/><br/>
+
+    This was a two-day workshop for soft interactive technology workshop guided by Gast Prof. Mika Satomi at
+    Kunsthochschule Berlin Weißennsee in May 2017. <br/>
+    Thermochromic inks change color from color to colorless when it reaches certain temperature. We decided the color
+    we want and mixed up the thermochromic ink and normal ink to create the color changing effect that we expected for.
+    The colors were silk printed from different patterns on cotton cloths.
+  </div>
+</div>
+<div class="centerInk" style="margin-top: 30px; text-align: center" >
+  <VideoPlayer
+    src="projects/termochromic/prototype/prototype"
+    class="vimeoInk"
+    width={960}
+    height={540}
+    controls
+    preload="auto"
+  />
+</div>
+<div class="containerCenter">
+  <ResponsivePicture
+    src="projects/termochromic/termo2/termo2"
+    alt="Thermochromic print sample 2"
+    width={1200}
+    height={900}
+    class="myWeb"
+  />
+  <ResponsivePicture
+    src="projects/termochromic/termo3/termo3"
+    alt="Thermochromic print sample 3"
+    width={1200}
+    height={900}
+    class="myWeb"
+  />
+  <ResponsivePicture
+    src="projects/termochromic/termo4/termo4"
+    alt="Thermochromic print sample 4"
+    width={1200}
+    height={900}
+    class="myWeb"
+  />
+  <ResponsivePicture
+    src="projects/termochromic/termo1/termo1"
+    alt="Thermochromic print sample 1"
+    width={1200}
+    height={900}
+    class="myWeb"
+  />
+</div>

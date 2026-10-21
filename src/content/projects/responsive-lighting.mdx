@@ -1,0 +1,45 @@
+---
+title: Responsive Lighting
+order: 11
+summary: A street-light network that dims with distance.
+tools:
+  - Arduino
+  - Soft Potentiometer
+  - LEDs
+thumbnail:
+  src: site/home/street-lighting-round/street-lighting-round.gif
+  alt: Responsive Lighting prototype
+  type: image
+  class: roundMasks
+homeSection: prototype
+backButton: black
+---
+
+import VideoPlayer from '../../components/VideoPlayer.astro';
+
+<div class="containerCenter">
+  <div class="insBorrowTitle">
+    Responsive Lighting
+  </div>
+</div>
+<div class="containerCenter">
+  <div class=" projectContent projectTextInsBorrow" >
+    <b>Tools: <br/>
+      Arduino, Soft Potentiometer, Leds<br/></b><br/>
+    <b>Teamwork:</b><br/>Xinyue Yang, Henning R Horstmann <br/><br/>
+
+    At night the street lamps are always on, this triggers high costs and is a waste of energy. We simulated
+    a lighting network which can detect the position of the people. The further away from the position, the
+    dimmer the light will become.
+  </div>
+</div>
+<div class="centerInk" style="margin-top: 30px; text-align: center" >
+  <VideoPlayer
+    src="projects/responsive-lighting/prototype/prototype"
+    class="vimeoInk"
+    width={960}
+    height={540}
+    controls
+    preload="auto"
+  />
+</div>

@@ -1,8 +1,9 @@
 # rclone and R2 setup
 
-Status: the bucket, custom domain, and 395-object upload are complete on
-2026-10-22. All 395 keys return HTTP 200 over HTTPS. The local rclone remote is
-configured; its token is not stored in the repository.
+Status: the bucket, custom domain, and upload are complete on 2026-10-22. The
+bucket holds 399 objects after four recovered images were added from the old
+Mac. All 399 keys return HTTP 200 over HTTPS. The local rclone remote is
+configured on each machine; tokens are not stored in the repository.
 
 ## Cloudflare resources
 
@@ -61,8 +62,10 @@ rclone lsd r2:portfolio-media
 npm run media:upload -- --apply
 ```
 
-The upload completed on 2026-10-22: 395 files, 362.65 MiB, 100%. The upload
-uses `rclone copy`, never `rclone sync`. Cache-Control is
+The original upload completed on 2026-10-22: 395 files, 362.65 MiB, 100%. A
+second `rclone copy` from the old Mac added four recovered images (1.85 MiB),
+bringing the bucket to 399 objects and 364.49 MiB. The upload uses
+`rclone copy`, never `rclone sync`. Cache-Control is
 `public, max-age=604800` because object keys are stable; a shorter TTL keeps
 updates visible without a purge step. Purge changed objects in the Cloudflare
 dashboard if an update must be immediate.
@@ -74,8 +77,10 @@ rclone check media-out r2:portfolio-media --size-only
 npm run media:check
 ```
 
-Results: 395 matching files, 0 differences; all 395 keys returned HTTP 200 over
-`https://media.xinyue.de`. Sample objects return the expected `Content-Type`
+Results: all 399 keys returned HTTP 200 over `https://media.xinyue.de`. The four
+recovered files matched their local sources with `rclone check --size-only`; the
+original 395 objects were not present locally on the old Mac and were verified
+over HTTPS. Sample objects return the expected `Content-Type`
 (`image/gif`, `image/png`, `image/webp`, `image/jpeg`, `video/mp4`) and
 `Cache-Control: public, max-age=604800`. The bucket root returns 404 because no
 root object exists.

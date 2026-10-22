@@ -1,7 +1,7 @@
 # Migration checklist
 
-Status: Phases 1-4 and the R2 upload are complete on 2026-10-22. Pages cutover
-is pending.
+Status: Phases 1-4 and the R2 upload are complete on 2026-10-22, including four
+recovered images. Pages cutover is pending.
 
 ## Routes
 
@@ -66,10 +66,12 @@ directories. Each stub has a meta refresh, a canonical link, and `noindex`.
 - `npm run media:localize` copies `media-out/` to `public/media/` for local
   preview. `public/media/` is gitignored and the prebuild guard blocks a
   production build while it exists.
-- `portfolio-media` and `media.xinyue.de` are active. The upload completed with
-  395 files and 362.65 MiB. `rclone check --size-only` reports 0 differences.
-  `npm run media:check` returned HTTP 200 for all 395 keys. Sample responses
-  have the expected Content-Type and `Cache-Control: public, max-age=604800`.
+- `portfolio-media` and `media.xinyue.de` are active. The original upload
+  completed with 395 files and 362.65 MiB. Four recovered images (1.85 MiB) were
+  then uploaded from the old Mac, bringing the bucket to 399 objects and
+  364.49 MiB. `npm run media:check` returned HTTP 200 for all 399 keys. Sample
+  responses have the expected Content-Type and
+  `Cache-Control: public, max-age=604800`.
 
 ## Responsive and parity verification
 
@@ -98,9 +100,13 @@ directories. Each stub has a meta refresh, a canonical link, and `noindex`.
 ## R2 verification
 
 - Bucket: `portfolio-media`; custom domain: `media.xinyue.de`; ownership and SSL active.
-- Upload: 395 objects, 362.65 MiB, 100%, 2m 5s.
-- Size check: 395 matching files, 0 differences.
-- HTTPS check: 395/395 keys returned HTTP 200.
+- Original upload: 395 objects, 362.65 MiB, 100%, 2m 5s.
+- Recovered-image upload: 4 objects, 1.85 MiB; the bucket now holds 399 objects
+  and 364.49 MiB.
+- Size check: the four recovered files matched their remote objects; the other
+  395 objects were verified over HTTPS because they are not present locally on
+  the old Mac.
+- HTTPS check: 399/399 keys returned HTTP 200.
 - Cache headers: `public, max-age=604800`; content types match the file extensions.
 - Production build (`dist/` with `https://media.xinyue.de` URLs) checked at 390
   and 1200 px: 0 overflows, 0 page errors.

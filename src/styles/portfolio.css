@@ -255,11 +255,23 @@ html:has(#headerSticky) {
 
 @media all and (max-width: 768px) {
     html:has(#headerSticky) {
-        scroll-padding-top: 130px;
+        scroll-padding-top: 100px;
     }
 
     #headerSticky {
         background: #fff;
+    }
+
+    #headerSticky #mask {
+        height: 48px;
+    }
+
+    #headerSticky #navigation a,
+    #headerSticky #navigation a:hover,
+    #headerSticky #navigation a:focus,
+    #headerSticky #navigation a:focus-visible,
+    #headerSticky #navigation a:active {
+        background-color: transparent;
     }
 }
 
@@ -592,10 +604,6 @@ a:active {
     font-size: small;
     margin-top: 45px;
     margin-bottom: 30px;
-}
-
-html.about-locked{
-    overflow: hidden;
 }
 
 body.about-active #bottom{
@@ -1216,6 +1224,13 @@ body.prototype-page{
 body.prototype-page > div:last-of-type,
 body.prototype-page > div:last-of-type > :last-child{
     margin-bottom: 0;
+}
+
+@media all and (max-width: 768px) {
+    #prototypePart .prototypeImage,
+    #besidesPart .prototypeImage{
+        margin: 12px 0;
+    }
 }
 .bgm{
     font-size: 14px;

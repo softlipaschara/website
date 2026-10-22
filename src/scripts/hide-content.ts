@@ -47,7 +47,6 @@ function showSection(section: Section): void {
 
   document.body.classList.toggle('contact-active', section === 'contact');
   document.body.classList.toggle('about-active', section === 'about');
-  document.documentElement.classList.toggle('about-locked', section === 'about');
   if (section === 'about') {
     window.scrollTo(0, 0);
   }

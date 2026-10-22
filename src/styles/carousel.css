@@ -11,6 +11,14 @@
     display: flex;
 }
 
+[data-carousel] .s-container img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
 [data-carousel] .carousel-arrow {
     position: absolute;
     top: 50%;

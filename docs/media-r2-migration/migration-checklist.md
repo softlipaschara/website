@@ -1,7 +1,7 @@
 # Migration checklist
 
-Status: Phase 2 and local Phase 3/4 work complete on 2026-10-22. R2 upload and
-Pages cutover are pending.
+Status: Phases 1-4 and the R2 upload are complete on 2026-10-22. Pages cutover
+is pending.
 
 ## Routes
 
@@ -62,9 +62,10 @@ directories. Each stub has a meta refresh, a canonical link, and `noindex`.
 - `npm run media:localize` copies `media-out/` to `public/media/` for local
   preview. `public/media/` is gitignored and the prebuild guard blocks a
   production build while it exists.
-- `portfolio-media` and `media.xinyue.de` have been created in Cloudflare. The
-  rclone API token is pending. `npm run media:upload` performs an rclone copy
-  dry run; no media has been uploaded yet.
+- `portfolio-media` and `media.xinyue.de` are active. The upload completed with
+  395 files and 362.65 MiB. `rclone check --size-only` reports 0 differences.
+  `npm run media:check` returned HTTP 200 for all 395 keys. Sample responses
+  have the expected Content-Type and `Cache-Control: public, max-age=604800`.
 
 ## Responsive and parity verification
 
@@ -84,9 +85,17 @@ directories. Each stub has a meta refresh, a canonical link, and `noindex`.
 
 ## Remaining work
 
-- Create the rclone R2 API token and run `npm run media:upload -- --apply`.
-- Verify `media.xinyue.de` over HTTPS with `npm run media:check`.
 - Phase 5: GitHub Actions deploy and cutover.
+
+## R2 verification
+
+- Bucket: `portfolio-media`; custom domain: `media.xinyue.de`; ownership and SSL active.
+- Upload: 395 objects, 362.65 MiB, 100%, 2m 5s.
+- Size check: 395 matching files, 0 differences.
+- HTTPS check: 395/395 keys returned HTTP 200.
+- Cache headers: `public, max-age=604800`; content types match the file extensions.
+- Production build (`dist/` with `https://media.xinyue.de` URLs) checked at 390
+  and 1200 px: 0 overflows, 0 page errors.
 
 ## Cutover order
 

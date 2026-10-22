@@ -1,8 +1,8 @@
 # rclone and R2 setup
 
-Status: `portfolio-media` and the `media.xinyue.de` custom domain were created on
-2026-10-22. The rclone API token has not been created yet, so no media has been
-uploaded.
+Status: the bucket, custom domain, and 395-object upload are complete on
+2026-10-22. All 395 keys return HTTP 200 over HTTPS. The local rclone remote is
+configured; its token is not stored in the repository.
 
 ## Cloudflare resources
 
@@ -23,11 +23,12 @@ npx wrangler r2 bucket domain add portfolio-media \
 ```
 
 The custom domain record is proxied. GitHub Pages records stay DNS-only. The
-domain ownership and SSL status were `pending` immediately after creation.
+domain ownership and SSL status became `active` after creation.
 
 ## API token
 
-Create an R2 API token with Object Read and Write for `portfolio-media` only.
+The local rclone remote uses an R2 API token with Object Read and Write for
+`portfolio-media` only.
 Store the token in the local rclone config, never in the repository.
 
 ## rclone config
@@ -60,17 +61,21 @@ rclone lsd r2:portfolio-media
 npm run media:upload -- --apply
 ```
 
-The upload uses `rclone copy`, never `rclone sync`. Cache-Control is
+The upload completed on 2026-10-22: 395 files, 362.65 MiB, 100%. The upload
+uses `rclone copy`, never `rclone sync`. Cache-Control is
 `public, max-age=604800` because object keys are stable; a shorter TTL keeps
 updates visible without a purge step. Purge changed objects in the Cloudflare
 dashboard if an update must be immediate.
 
 ## Post-upload verification
 
-Run the manifest-driven HEAD/GET check after upload:
-
 ```bash
-node scripts/media/check-remote.mjs
+rclone check media-out r2:portfolio-media --size-only
+npm run media:check
 ```
 
-The check reads `media-manifest.json` and requests every key over HTTPS.
+Results: 395 matching files, 0 differences; all 395 keys returned HTTP 200 over
+`https://media.xinyue.de`. Sample objects return the expected `Content-Type`
+(`image/gif`, `image/png`, `image/webp`, `image/jpeg`, `video/mp4`) and
+`Cache-Control: public, max-age=604800`. The bucket root returns 404 because no
+root object exists.

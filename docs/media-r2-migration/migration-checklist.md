@@ -1,7 +1,7 @@
 # Migration checklist
 
-Status: Phases 1-4 and the R2 upload are complete on 2026-10-22, including four
-recovered images and all recovered S3 videos. Pages cutover is pending.
+Status: Phases 1-5 are complete on 2026-10-22. The site is live on GitHub Pages
+through GitHub Actions. Four owner-supplied images remain missing.
 
 ## Routes
 
@@ -102,7 +102,9 @@ directories. Each stub has a meta refresh, a canonical link, and `noindex`.
 
 ## Remaining work
 
-- Phase 5: GitHub Actions deploy and cutover.
+- Delete the legacy root HTML, CSS, JS, and `imgA/` after the live site is
+  confirmed stable.
+- Optional: history cleanup to remove large media from `.git`.
 
 ## R2 verification
 
@@ -118,9 +120,25 @@ directories. Each stub has a meta refresh, a canonical link, and `noindex`.
 - Production build (`dist/` with `https://media.xinyue.de` URLs) checked at 390
   and 1200 px: 0 overflows, 0 page errors.
 
+## Cutover verification
+
+- Pages Source: GitHub Actions.
+- First deploy: workflow run 39803095006 completed successfully.
+- `master` and `astro-rebuild` both point at `ca1c24f`.
+- Rollback refs: tag `pre-astro` and branch `legacy-site`, both at `3eb00f0`.
+- Live routes `/`, `/breeze/`, `/sensing-armband/`, `/scribbling-speech/`,
+  `/word-to-world/`, `/word-to-world.html`, `/about/about.html`, and
+  `/paintings/indexpainting.html` returned HTTP 200.
+- Legacy stubs return a meta refresh and a canonical link.
+- Live 390/1200 checks: 0 overflows, 0 page errors, 0 broken images. All restored
+  videos reached `readyState` 4. Hero videos have no controls; the Scribbling
+  Speech demos keep controls.
+- `xinyue.de` serves the new site over HTTPS. Enforce HTTPS still needs to be
+  confirmed in Settings -> Pages.
+
 ## Cutover order
 
-Do not merge before the Pages source and custom domain are checked.
+The cutover below was completed on 2026-10-22 and is kept as a rollback reference.
 
 1. Tag `pre-astro` at the current `master` commit.
 2. Create and push a `legacy-site` branch at that commit. A tag cannot be selected

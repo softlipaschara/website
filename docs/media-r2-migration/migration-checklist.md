@@ -62,8 +62,9 @@ directories. Each stub has a meta refresh, a canonical link, and `noindex`.
 - `npm run media:localize` copies `media-out/` to `public/media/` for local
   preview. `public/media/` is gitignored and the prebuild guard blocks a
   production build while it exists.
-- `npm run media:upload` performs an rclone copy dry run. No upload has been
-  performed because the R2 bucket and API token do not exist yet.
+- `portfolio-media` and `media.xinyue.de` have been created in Cloudflare. The
+  rclone API token is pending. `npm run media:upload` performs an rclone copy
+  dry run; no media has been uploaded yet.
 
 ## Responsive and parity verification
 
@@ -83,8 +84,8 @@ directories. Each stub has a meta refresh, a canonical link, and `noindex`.
 
 ## Remaining work
 
-- Upload `media-out/` to R2 after the bucket and API token exist.
-- Verify `media.xinyue.de` over HTTPS.
+- Create the rclone R2 API token and run `npm run media:upload -- --apply`.
+- Verify `media.xinyue.de` over HTTPS with `npm run media:check`.
 - Phase 5: GitHub Actions deploy and cutover.
 
 ## Cutover order

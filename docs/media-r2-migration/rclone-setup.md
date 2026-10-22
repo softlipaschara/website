@@ -1,26 +1,29 @@
 # rclone and R2 setup
 
-The R2 bucket and API token are not created yet. Do not upload until both exist and
-the token is scoped to `portfolio-media`.
+Status: `portfolio-media` and the `media.xinyue.de` custom domain were created on
+2026-10-22. The rclone API token has not been created yet, so no media has been
+uploaded.
 
 ## Cloudflare resources
 
 - Account: `xinyue@wordtoworld.io`
 - Account ID: `885f84180d079ead1db018f64e14072b`
-- Bucket: `portfolio-media` (new; do not reuse `w2w-cdn`)
+- Zone: `xinyue.de`, zone ID `a30e33ef1be4c0a485ee587dc0eaa62f`
+- Bucket: `portfolio-media` (do not reuse `w2w-cdn`)
 - Custom domain: `media.xinyue.de`
-- The bucket and the `xinyue.de` zone must be in the same Cloudflare account.
+- The bucket and the `xinyue.de` zone are in the same Cloudflare account.
 
-Create the bucket and custom domain with `wrangler` once the zone ID is known:
+Commands already run:
 
 ```bash
 npx wrangler r2 bucket create portfolio-media
 npx wrangler r2 bucket domain add portfolio-media \
   --domain media.xinyue.de \
-  --zone-id <zone-id>
+  --zone-id a30e33ef1be4c0a485ee587dc0eaa62f
 ```
 
-The custom domain record is proxied. GitHub Pages records stay DNS-only.
+The custom domain record is proxied. GitHub Pages records stay DNS-only. The
+domain ownership and SSL status were `pending` immediately after creation.
 
 ## API token
 

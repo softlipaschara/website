@@ -223,6 +223,7 @@ export function buildSourceIndex() {
   }
 
   const recovered = [
+    ['breeze.html', 'breezeLamp.mp4'],
     ['index.html', 'blog-1.png'],
     ['index.html', 'blog-2.jpg'],
     ['index.html', 'blog-3.jpg'],
@@ -238,13 +239,14 @@ export function buildSourceIndex() {
     if (!fs.existsSync(sourcePath)) {
       continue;
     }
+    const isVideo = /\.(?:mp4|mov|webm|m4v)$/i.test(name);
     add(page, {
       file: `imgA/${name}`,
       sourcePath,
       exists: true,
-      type: 'image',
+      type: isVideo ? 'video' : 'image',
       recovered: true,
-      ...probeImage(sourcePath),
+      ...(isVideo ? probeVideo(sourcePath) : probeImage(sourcePath)),
     });
   }
 

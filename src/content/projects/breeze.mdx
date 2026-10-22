@@ -170,12 +170,13 @@ import { mediaUrl } from '../../lib/media';
 </div>
 
 <div class="containerCenter">
-  <div class="breezeVideo" >
-    {/* Source unavailable: original S3 video returned HTTP 403. */}
-    <img
-      src={mediaUrl('projects/breeze/video-poster/video-poster.png')}
-      alt="Breeze lamp video poster"
-      style="width: 100%"
+  <div class="breezeVideo">
+    <VideoPlayer
+      src="projects/breeze/breeze-lamp/breeze-lamp"
+      poster="projects/breeze/video-poster/video-poster.png"
+      width="100%"
+      controls
+      preload="metadata"
     />
   </div>
 </div>

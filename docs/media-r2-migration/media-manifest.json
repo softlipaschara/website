@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-22T13:44:28.576Z",
+  "generatedAt": "2026-10-22T14:44:09.278Z",
   "mediaBase": "https://media.xinyue.de",
-  "entryCount": 399,
-  "totalBytes": 382204477,
+  "entryCount": 401,
+  "totalBytes": 387155578,
   "sources": [
     {
       "key": "projects/breathing-surface/hero/hero.jpg",
@@ -2186,6 +2186,16 @@
       "source": "../media-recovered/blog-3.jpg",
       "width": 1280,
       "height": 960
+    },
+    {
+      "key": "projects/breeze/breeze-lamp/breeze-lamp",
+      "kind": "video",
+      "page": "breeze.html",
+      "status": "ready",
+      "source": "../media-recovered/breezeLamp.mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 48.6
     }
   ],
   "missing": [
@@ -6404,6 +6414,30 @@
       "sha256": "4c9920a2f828a705a9cc58355e84bd2be2f9d85736914281446981ae0fbd55fb",
       "width": 1280,
       "height": 960
+    },
+    {
+      "key": "projects/breeze/breeze-lamp/breeze-lamp-720.mp4",
+      "variantOf": "projects/breeze/breeze-lamp/breeze-lamp",
+      "type": "video",
+      "format": "mp4",
+      "bytes": 3227884,
+      "sha256": "ddcf58c4fea3373c9381f561d2cb18c73f190cd788abc97e6d41011871e12c7f",
+      "rendition": 720,
+      "width": 1280,
+      "height": 720,
+      "duration": 48.598
+    },
+    {
+      "key": "projects/breeze/breeze-lamp/breeze-lamp-480.mp4",
+      "variantOf": "projects/breeze/breeze-lamp/breeze-lamp",
+      "type": "video",
+      "format": "mp4",
+      "bytes": 1723217,
+      "sha256": "2d5b25841e4f28f93b06f4d010f5b50c2a18ca91e731077ee4952590acd27b80",
+      "rendition": 480,
+      "width": 854,
+      "height": 480,
+      "duration": 48.598
     }
   ]
 }

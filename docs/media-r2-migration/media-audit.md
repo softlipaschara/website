@@ -40,7 +40,7 @@ the repository and are copied to R2 under their manifest keys.
 ## Recovered on the old Mac (2026-10-22)
 
 The three blog images were still served by the Tumblr CDN. The Coffee Composer
-media photo was found in the local project archive.
+media photo and the Breeze video were found in the local project archive.
 
 | Asset | Source | Dimensions | SHA-256 |
 | --- | --- | --- | --- |
@@ -48,6 +48,7 @@ media photo was found in the local project archive.
 | `blog-2.jpg` | Tumblr `tumblr_p6o36lMMsC1qkfs2lo1_1280.jpg` | 1280×960 | `79abeb7c45ff735d0dfbcdaf3b692b95226ecbeb7089f0ee25661b2d618fd5d0` |
 | `blog-3.jpg` | Tumblr `tumblr_p6mou53IBL1qkfs2lo1_1280.jpg` | 1280×960 | `4c9920a2f828a705a9cc58355e84bd2be2f9d85736914281446981ae0fbd55fb` |
 | `media_photo_coffee.jpg` | `~/Documents/ma semester 1/video material/coffee_composer_press.jpg` | 2000×1206 | `7395a3c159d429783ddde32b25f547aa4d788aaa1b117af1d881121dcc2266f1` |
+| `breezeLamp.mp4` | `~/Documents/Semester5/blowConcept/breeze_video/breeze_final.mp4`, byte-identical to the Wayback copy of the S3 original | 1920×1080, 48.6 s | `1a3775206baf4d0acc7bc7963c17aadc215359a1f9059226ea761796d74667c2` |
 
 ## External media decisions
 
@@ -75,13 +76,14 @@ Eleven iframes were live. Two were commented out in the legacy HTML:
 
 ### S3
 
-All seven `s3.eu-central-1.amazonaws.com/omzug.com` references return HTTP 403.
-No local copies were found.
+Six of the seven `s3.eu-central-1.amazonaws.com/omzug.com` references still
+return HTTP 403. The Breeze video was recovered from the owner's local archive
+and matches the Wayback Machine copy of the original S3 object byte for byte.
 
 | Page | Reference | Outcome |
 | --- | --- | --- |
 | `/` | `armbandprototype.mp4` (hero) | Replaced by `videoPoster.jpg` as a still image. |
-| `/breeze/` | `breezeLamp.mp4` | Poster-only using `breezeVideoBackground.png`. |
+| `/breeze/` | `breezeLamp.mp4` | Recovered from `~/Documents/Semester5/blowConcept/breeze_video/breeze_final.mp4`; transcoded to 720p and 480p. |
 | `/sensing-armband/` | `armbandprototype.mp4` (hero) | Poster-only using the Vimeo thumbnail. |
 | `/scribbling-speech/` | `cat_story.mov` | Poster-only. |
 | `/scribbling-speech/` | `moon_table_chinese.mov` | Poster-only. |

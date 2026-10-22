@@ -1,7 +1,7 @@
 # Migration checklist
 
 Status: Phases 1-4 and the R2 upload are complete on 2026-10-22, including four
-recovered images. Pages cutover is pending.
+recovered images and the Breeze video. Pages cutover is pending.
 
 ## Routes
 
@@ -16,7 +16,7 @@ All 27 routes build from `src/pages/`:
 | `/paintings/` | `paintings/indexpainting.html` | `src/pages/paintings.astro` | Bootstrap carousel replaced by `Carousel`. Three of six images are unrecoverable. |
 | `/poems/` | `poems/indexpoem.html` | `src/pages/poems.astro` | Recoverable `tuzi.jpg`; commented poems removed. |
 | `/breathing-surface/` | `breathing-surface.html` | MDX | Vimeo 190151883 replaced. |
-| `/breeze/` | `breeze.html` | MDX | Vimeo 195434826 replaced; S3 video poster-only; Instagram video removed. |
+| `/breeze/` | `breeze.html` | MDX | Vimeo 195434826 replaced; S3 video recovered and transcoded; Instagram video removed. |
 | `/canny-edge-detection/` | `canny-edge-detection.html` | MDX | Vimeo 262208745 replaced. |
 | `/coffee-composer/` | `coffee-composer.html` | MDX | Vimeo 329613216 replaced; missing media photo kept. |
 | `/emotional-tail/` | `emotional-tail.html` | MDX | Commented Vimeo iframe removed. |
@@ -55,23 +55,25 @@ directories. Each stub has a meta refresh, a canonical link, and `noindex`.
 ## Media build
 
 - `npm run media:audit` last ran on the source machine: 235 references, 230
-  ready, 5 allowed-missing, 0 unexpected. The four recovered images raise the
-  totals to 238 references, 234 ready, and 4 allowed-missing. The plan was not
-  regenerated on the old Mac because `ffprobe` is not installed there.
+  ready, 5 allowed-missing, 0 unexpected. The recovered images and Breeze video
+  raise the totals to 239 references, 235 ready, and 4 allowed-missing. The plan
+  was not regenerated on the old Mac because the Vimeo sources in `media-src`
+  are not present there.
 - The original build produced 395 files (362.6 MiB) in `media-out/` and
-  `media-manifest.json`. Four recovered images were added on the old Mac: three
-  blog images and the Coffee Composer media photo. The manifest now has 399
-  files (364.5 MiB). `npm run media:validate` confirms every referenced key is
-  in the manifest.
+  `media-manifest.json`. Four recovered images and one recovered video were
+  added on the old Mac: three blog images, the Coffee Composer media photo, and
+  the Breeze video with 720p and 480p renditions. The manifest now has 401 files
+  (369.2 MiB). `npm run media:validate` confirms every referenced key is in the
+  manifest.
 - `npm run media:localize` copies `media-out/` to `public/media/` for local
   preview. `public/media/` is gitignored and the prebuild guard blocks a
   production build while it exists.
 - `portfolio-media` and `media.xinyue.de` are active. The original upload
-  completed with 395 files and 362.65 MiB. Four recovered images (1.85 MiB) were
-  then uploaded from the old Mac, bringing the bucket to 399 objects and
-  364.49 MiB. `npm run media:check` returned HTTP 200 for all 399 keys. Sample
-  responses have the expected Content-Type and
-  `Cache-Control: public, max-age=604800`.
+  completed with 395 files and 362.65 MiB. Four recovered images (1.85 MiB) and
+  the two Breeze video renditions (4.72 MiB) were then uploaded from the old
+  Mac, bringing the bucket to 401 objects and 369.22 MiB. `npm run media:check`
+  returned HTTP 200 for all 401 keys. Sample responses have the expected
+  Content-Type and `Cache-Control: public, max-age=604800`.
 
 ## Responsive and parity verification
 
@@ -82,6 +84,9 @@ directories. Each stub has a meta refresh, a canonical link, and `noindex`.
   checked all 27 routes and the five home hash states: 0 overflows, 0 page
   errors. The new images loaded at their expected dimensions and no page had a
   broken image.
+- The Breeze video was re-checked at 390 and 1200 px after restoration: 0
+  overflows, 0 page errors. The player loaded the 1280x720 rendition
+  (`readyState` 4, duration 48.6 s) with controls.
 - Screenshots at 1200 and 1440 were captured to `/tmp/portfolio-screenshots`
   and compared with the legacy local site.
 - The home page matches the legacy layout. Project text blocks, images, videos,
@@ -101,12 +106,12 @@ directories. Each stub has a meta refresh, a canonical link, and `noindex`.
 
 - Bucket: `portfolio-media`; custom domain: `media.xinyue.de`; ownership and SSL active.
 - Original upload: 395 objects, 362.65 MiB, 100%, 2m 5s.
-- Recovered-image upload: 4 objects, 1.85 MiB; the bucket now holds 399 objects
-  and 364.49 MiB.
-- Size check: the four recovered files matched their remote objects; the other
+- Recovered upload: 4 images (1.85 MiB) and 2 Breeze renditions (4.72 MiB); the
+  bucket now holds 401 objects and 369.22 MiB.
+- Size check: the six recovered files matched their remote objects; the other
   395 objects were verified over HTTPS because they are not present locally on
   the old Mac.
-- HTTPS check: 399/399 keys returned HTTP 200.
+- HTTPS check: 401/401 keys returned HTTP 200.
 - Cache headers: `public, max-age=604800`; content types match the file extensions.
 - Production build (`dist/` with `https://media.xinyue.de` URLs) checked at 390
   and 1200 px: 0 overflows, 0 page errors.

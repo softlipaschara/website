@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-21T17:24:21.210Z",
+  "generatedAt": "2026-10-22T13:44:28.576Z",
   "mediaBase": "https://media.xinyue.de",
-  "entryCount": 395,
-  "totalBytes": 380266047,
+  "entryCount": 399,
+  "totalBytes": 382204477,
   "sources": [
     {
       "key": "projects/breathing-surface/hero/hero.jpg",
@@ -453,13 +453,6 @@
       "source": "imgA/coffee_chart.png",
       "width": 5213,
       "height": 1131
-    },
-    {
-      "key": "projects/coffee-composer/media-photo-coffee/media-photo-coffee.jpg",
-      "kind": "image-original",
-      "page": "coffee-composer.html",
-      "status": "allowed-missing",
-      "note": "Owner-supplied asset pending"
     },
     {
       "key": "projects/emotional-tail/tail-material/tail-material.jpg",
@@ -2157,14 +2150,45 @@
       "source": "../media-recovered/tuzi.jpg",
       "width": 800,
       "height": 461
+    },
+    {
+      "key": "projects/coffee-composer/media-photo-coffee/media-photo-coffee.jpg",
+      "kind": "image-original",
+      "page": "coffee-composer.html",
+      "status": "ready",
+      "source": "../media-recovered/media_photo_coffee.jpg",
+      "width": 2000,
+      "height": 1206
+    },
+    {
+      "key": "site/home/blog-1/blog-1.png",
+      "kind": "image-original",
+      "page": "index.html",
+      "status": "ready",
+      "source": "../media-recovered/blog-1.png",
+      "width": 868,
+      "height": 706
+    },
+    {
+      "key": "site/home/blog-2/blog-2.jpg",
+      "kind": "image-original",
+      "page": "index.html",
+      "status": "ready",
+      "source": "../media-recovered/blog-2.jpg",
+      "width": 1280,
+      "height": 960
+    },
+    {
+      "key": "site/home/blog-3/blog-3.jpg",
+      "kind": "image-original",
+      "page": "index.html",
+      "status": "ready",
+      "source": "../media-recovered/blog-3.jpg",
+      "width": 1280,
+      "height": 960
     }
   ],
   "missing": [
-    {
-      "key": "projects/coffee-composer/media-photo-coffee/media-photo-coffee.jpg",
-      "status": "allowed-missing",
-      "note": "Owner-supplied asset pending"
-    },
     {
       "key": "site/about/self/self.jpg",
       "status": "allowed-missing",
@@ -6340,6 +6364,46 @@
       "sha256": "7a176b8cb2d4afc2aeae1f540bd0249d48cf3d13423699a6f5008cfeaf421ecc",
       "width": 800,
       "height": 461
+    },
+    {
+      "key": "projects/coffee-composer/media-photo-coffee/media-photo-coffee.jpg",
+      "variantOf": "projects/coffee-composer/media-photo-coffee/media-photo-coffee.jpg",
+      "type": "original",
+      "format": "jpg",
+      "bytes": 936868,
+      "sha256": "7395a3c159d429783ddde32b25f547aa4d788aaa1b117af1d881121dcc2266f1",
+      "width": 2000,
+      "height": 1206
+    },
+    {
+      "key": "site/home/blog-1/blog-1.png",
+      "variantOf": "site/home/blog-1/blog-1.png",
+      "type": "original",
+      "format": "png",
+      "bytes": 77708,
+      "sha256": "d8b5812cfc70edac4afbc937c1c9b616f4341eeaaa66c8ed696b20b838b8416c",
+      "width": 868,
+      "height": 706
+    },
+    {
+      "key": "site/home/blog-2/blog-2.jpg",
+      "variantOf": "site/home/blog-2/blog-2.jpg",
+      "type": "original",
+      "format": "jpg",
+      "bytes": 468737,
+      "sha256": "79abeb7c45ff735d0dfbcdaf3b692b95226ecbeb7089f0ee25661b2d618fd5d0",
+      "width": 1280,
+      "height": 960
+    },
+    {
+      "key": "site/home/blog-3/blog-3.jpg",
+      "variantOf": "site/home/blog-3/blog-3.jpg",
+      "type": "original",
+      "format": "jpg",
+      "bytes": 455117,
+      "sha256": "4c9920a2f828a705a9cc58355e84bd2be2f9d85736914281446981ae0fbd55fb",
+      "width": 1280,
+      "height": 960
     }
   ]
 }

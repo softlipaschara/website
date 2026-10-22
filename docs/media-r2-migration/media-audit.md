@@ -11,7 +11,8 @@ HTML files after removing HTML comments.
 | Unique local media references | 227 |
 | Missing local references | 9 |
 | Recoverable from git `cc4449b` | 4 |
-| Unrecoverable local references | 5 |
+| Recovered from owner's local files | 1 |
+| Still unrecoverable local references | 4 |
 | Vimeo iframes in legacy pages | 13 |
 | Live Vimeo iframes | 11 |
 | Downloaded Vimeo sources | 13/13 |
@@ -24,7 +25,7 @@ URLs, which are listed separately below.
 | File | Page | Outcome |
 | --- | --- | --- |
 | `imgA/self.jpg` | `/about/` | Broken image kept with alt text; owner may supply. |
-| `imgA/media_photo_coffee.jpg` | `/coffee-composer/` | Broken image kept; owner may supply. |
+| `imgA/media_photo_coffee.jpg` | `/coffee-composer/` | Recovered from `~/Documents/ma semester 1/video material/coffee_composer_press.jpg`. |
 | `imgA/tuzi1.jpg` | `/paintings/` | Recovered from `cc4449b`. |
 | `imgA/xiaobing.jpg` | `/paintings/` | Recovered from `cc4449b`. |
 | `imgA/tongtong.jpg` | `/paintings/` | Recovered from `cc4449b`. |
@@ -33,8 +34,20 @@ URLs, which are listed separately below.
 | `imgA/hanwen.jpg` | `/paintings/` | Unrecoverable; owner may supply. |
 | `imgA/qingchengshan.jpg` | `/paintings/` | Unrecoverable; owner may supply. |
 
-Recovered files are staged in `/Users/xiaoxia/Development/portfolio/media-recovered/`
-outside the repository and will be moved to R2 in Phase 3.
+Recovered files are staged in `~/Development/portfolio/media-recovered/` outside
+the repository and are copied to R2 under their manifest keys.
+
+## Recovered on the old Mac (2026-10-22)
+
+The three blog images were still served by the Tumblr CDN. The Coffee Composer
+media photo was found in the local project archive.
+
+| Asset | Source | Dimensions | SHA-256 |
+| --- | --- | --- | --- |
+| `blog-1.png` | Tumblr `tumblr_p6u7jchytL1qkfs2lo1_1280.png` | 868×706 | `d8b5812cfc70edac4afbc937c1c9b616f4341eeaaa66c8ed696b20b838b8416c` |
+| `blog-2.jpg` | Tumblr `tumblr_p6o36lMMsC1qkfs2lo1_1280.jpg` | 1280×960 | `79abeb7c45ff735d0dfbcdaf3b692b95226ecbeb7089f0ee25661b2d618fd5d0` |
+| `blog-3.jpg` | Tumblr `tumblr_p6mou53IBL1qkfs2lo1_1280.jpg` | 1280×960 | `4c9920a2f828a705a9cc58355e84bd2be2f9d85736914281446981ae0fbd55fb` |
+| `media_photo_coffee.jpg` | `~/Documents/ma semester 1/video material/coffee_composer_press.jpg` | 2000×1206 | `7395a3c159d429783ddde32b25f547aa4d788aaa1b117af1d881121dcc2266f1` |
 
 ## External media decisions
 
@@ -77,10 +90,13 @@ No local copies were found.
 
 ### Tumblr, Instagram, Xiami
 
-- `index.html`: three `78.media.tumblr.com` images removed; the Xiami Flash player removed.
+- `index.html`: the three `78.media.tumblr.com` images were recovered from the
+  Tumblr CDN and stored as `blog-1.png`, `blog-2.jpg`, and `blog-3.jpg`; the Xiami
+  Flash player was removed.
 - `scribbling-speech.html`: two `vt.media.tumblr.com` videos removed; posters retained.
 - `breeze.html`: Instagram video and poster removed.
-- All were unrecoverable from this environment.
+- The remaining Scribbling Speech Tumblr videos and the Instagram video were
+  unrecoverable from this environment.
 
 ### Third-party JavaScript and CSS
 

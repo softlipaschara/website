@@ -9,10 +9,11 @@ require owner-supplied assets.
 - `/paintings/`: `sun.jpg`, `hanwen.jpg`, `qingchengshan.jpg` are unrecoverable.
   `tuzi1.jpg`, `xiaobing.jpg`, and `tongtong.jpg` were recovered from git.
 - `/poems/`: `tuzi.jpg` was recovered from git.
-- `/coffee-composer/`: `media_photo_coffee.jpg` is unrecoverable.
+- `/coffee-composer/`: `media_photo_coffee.jpg` was recovered from the local
+  project archive and is no longer missing.
 
-The three unrecoverable paintings and the two other missing images remain broken
-images with descriptive alt text, matching the legacy state.
+The three missing paintings and the About portrait remain broken images with
+descriptive alt text, matching the legacy state.
 
 ## Content that existed only in HTML comments
 
@@ -44,7 +45,8 @@ Ask the owner before reintroducing any of these.
   printing, and painting pages were left-aligned because the page-level `.slider`
   rule collided with the toggle-switch `.slider` rule in `index.css`. The new
   component avoids that collision.
-- The blog's dead Tumblr images and Xiami Flash player were removed.
+- The blog's Tumblr images were restored from the original CDN; the dead Xiami
+  Flash player was removed.
 - The home hero and the Sensing Armband hero use poster images because their S3
   sources are unavailable.
 - The About page now declares a viewport, so its mobile layout will differ from

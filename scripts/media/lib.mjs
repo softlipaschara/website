@@ -223,6 +223,10 @@ export function buildSourceIndex() {
   }
 
   const recovered = [
+    ['index.html', 'blog-1.png'],
+    ['index.html', 'blog-2.jpg'],
+    ['index.html', 'blog-3.jpg'],
+    ['coffee-composer.html', 'media_photo_coffee.jpg'],
     ['poems/indexpoem.html', 'tuzi.jpg'],
     ['paintings/indexpainting.html', 'tuzi1.jpg'],
     ['paintings/indexpainting.html', 'xiaobing.jpg'],

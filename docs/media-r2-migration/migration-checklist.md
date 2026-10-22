@@ -54,11 +54,15 @@ directories. Each stub has a meta refresh, a canonical link, and `noindex`.
 
 ## Media build
 
-- `npm run media:audit` builds `media-plan.json`: 235 references, 230 ready,
-  5 allowed-missing, 0 unexpected.
-- `npm run media:build` produced 395 files (362.6 MiB) in `media-out/` and
-  `media-manifest.json`. `npm run media:validate` confirms every referenced key
-  is in the manifest.
+- `npm run media:audit` last ran on the source machine: 235 references, 230
+  ready, 5 allowed-missing, 0 unexpected. The four recovered images raise the
+  totals to 238 references, 234 ready, and 4 allowed-missing. The plan was not
+  regenerated on the old Mac because `ffprobe` is not installed there.
+- The original build produced 395 files (362.6 MiB) in `media-out/` and
+  `media-manifest.json`. Four recovered images were added on the old Mac: three
+  blog images and the Coffee Composer media photo. The manifest now has 399
+  files (364.5 MiB). `npm run media:validate` confirms every referenced key is
+  in the manifest.
 - `npm run media:localize` copies `media-out/` to `public/media/` for local
   preview. `public/media/` is gitignored and the prebuild guard blocks a
   production build while it exists.
@@ -72,6 +76,10 @@ directories. Each stub has a meta refresh, a canonical link, and `noindex`.
 - `npm run verify` checked all 27 routes and all five home hash states at 320,
   375, 390, 414, 640, 768, 900, 1024, 1200, 1280, 1440, and 1920 px.
 - Result: 0 horizontal overflows, 0 page errors.
+- After the four recovered images were merged, a second run at 390 and 1200 px
+  checked all 27 routes and the five home hash states: 0 overflows, 0 page
+  errors. The new images loaded at their expected dimensions and no page had a
+  broken image.
 - Screenshots at 1200 and 1440 were captured to `/tmp/portfolio-screenshots`
   and compared with the legacy local site.
 - The home page matches the legacy layout. Project text blocks, images, videos,

@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../components/BaseLayout.astro';
+import BackButton from '../components/BackButton.astro';
 import '../styles/site.css';
 import '../styles/site/contact.css';
 ---
 
 <BaseLayout title="Contact">
-  <a href="/">Back</a>
+  <BackButton label="Back" fallback="/" />
 
   <div class="container">
     <p class="hvr-float">

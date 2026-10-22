@@ -2,6 +2,11 @@
     position: relative;
 }
 
+html,
+body {
+    background-color: #fff;
+}
+
 @font-face {
     font-family: 'Signika Negative';
     font-style: normal;
@@ -32,4 +37,95 @@
     font-weight: 400;
     font-display: swap;
     src: url('/assets/fonts/unna-latin-400.woff2') format('woff2');
+}
+
+/* Sticky back control. The script in src/scripts/back.ts toggles is-black /
+   is-white from the background under the control. */
+.backButtonLink {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: block;
+    color: #111;
+    pointer-events: none;
+}
+
+.backButtonLink--text {
+    top: 28px;
+}
+
+.backButtonLink[data-back-variant='white'] {
+    color: #fff;
+}
+
+.backButtonLink[data-back-variant='black'] {
+    color: #111;
+}
+
+.backButtonLink.is-white {
+    color: #fff;
+}
+
+.backButtonLink.is-black {
+    color: #111;
+}
+
+.backButtonLink:link,
+.backButtonLink:visited,
+.backButtonLink:hover,
+.backButtonLink:active {
+    background-color: transparent;
+    opacity: 1;
+}
+
+.backButton {
+    display: inline-block;
+    height: 17px;
+    background-color: currentColor;
+    -webkit-mask-image: url('/assets/ui/backButtonWhite.png');
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-image: url('/assets/ui/backButtonWhite.png');
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    pointer-events: auto;
+}
+
+.backButtonText {
+    display: inline-block;
+    pointer-events: auto;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+.backButtonLink.is-white .backButton {
+    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.65));
+}
+
+.backButtonLink.is-black .backButton {
+    filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.65));
+}
+
+/* High-contrast inversion of the backdrop inside the arrow mask. This gives a
+   pure white arrow on dark media and a pure black arrow on light media. */
+@supports ((backdrop-filter: invert(1)) or (-webkit-backdrop-filter: invert(1))) {
+    .backButtonLink .backButton,
+    .backButtonLink.is-white .backButton,
+    .backButtonLink.is-black .backButton {
+        background-color: transparent;
+        filter: none;
+        -webkit-backdrop-filter: grayscale(1) brightness(0.8) contrast(8) invert(1);
+        backdrop-filter: grayscale(1) brightness(0.8) contrast(8) invert(1);
+    }
+}
+
+.backButtonLink.is-white .backButtonText {
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.65);
+}
+
+.backButtonLink.is-black .backButtonText {
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.65);
 }

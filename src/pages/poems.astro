@@ -1,12 +1,13 @@
 ---
 import BaseLayout from '../components/BaseLayout.astro';
+import BackButton from '../components/BackButton.astro';
 import { mediaUrl } from '../lib/media';
 import '../styles/site.css';
 import '../styles/site/poems.css';
 ---
 
 <BaseLayout title="Poem">
-  <a href="/">Back</a>
+  <BackButton label="Back" fallback="/" />
 
   <div class="container0">
     <div class="bilderleft">

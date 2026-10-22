@@ -2,14 +2,25 @@
 interface Props {
   variant?: 'black' | 'white';
   fallback?: string;
+  label?: string;
 }
 
-const { variant = 'black', fallback = '/' } = Astro.props;
-const icon = variant === 'white' ? '/assets/ui/backButtonWhite.png' : '/assets/ui/backButton.png';
+const { variant = 'black', fallback = '/', label } = Astro.props;
 ---
 
-<a class="backButtonLink" href={fallback} data-back-button>
-  <img class="backButton" src={icon} alt="Back" />
+<a
+  class:list={['backButtonLink', { 'backButtonLink--text': Boolean(label) }]}
+  href={fallback}
+  data-back-button
+  data-back-variant={variant}
+>
+  {
+    label ? (
+      <span class="backButtonText">{label}</span>
+    ) : (
+      <span class="backButton" role="img" aria-label="Back"></span>
+    )
+  }
 </a>
 
 <script>

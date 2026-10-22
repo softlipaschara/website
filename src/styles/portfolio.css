@@ -207,12 +207,69 @@ li {
 h1 {
     text-align: right;
 }
+#headerSticky{
+    position: sticky;
+    top: 0;
+    z-index: 40;
+}
+
+#headerSticky::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.2s ease-out 0.1s;
+    pointer-events: none;
+}
+
+#headerSticky.is-scrolled::before{
+    opacity: 1;
+}
+
+#headerSticky.is-scrolled #mask{
+    opacity: 0;
+}
+
+#headerSticky #navigation a{
+    transition: color 0.2s ease-out 0.1s;
+}
+
+#headerSticky.is-scrolled #navigation a,
+#headerSticky.is-scrolled #navigation a:link,
+#headerSticky.is-scrolled #navigation a:visited,
+#headerSticky.is-scrolled #navigation a:hover{
+    color: #fff;
+}
+
+#headerSticky.no-header-transition::before,
+#headerSticky.no-header-transition #mask,
+#headerSticky.no-header-transition #navigation a{
+    transition: none;
+}
+
+html:has(#headerSticky) {
+    scroll-padding-top: 100px;
+}
+
+@media all and (max-width: 768px) {
+    html:has(#headerSticky) {
+        scroll-padding-top: 130px;
+    }
+
+    #headerSticky {
+        background: #fff;
+    }
+}
+
 #mask{
     /*background: black;*/
     opacity: 0.4;
     z-index: 2;
     width:100%;
     height:84px;
+    transition: opacity 0.2s ease-out 0.1s;
 }
 .maskBlack{
     background: black;
@@ -535,6 +592,46 @@ a:active {
     font-size: small;
     margin-top: 45px;
     margin-bottom: 30px;
+}
+
+html.about-locked{
+    overflow: hidden;
+}
+
+body.about-active #bottom{
+    position: fixed;
+    left: 50%;
+    bottom: 2%;
+    z-index: 1;
+    transform: translateX(-50%);
+    margin: 0;
+}
+
+body.contact-active #waterImage{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    margin: 0;
+    pointer-events: none;
+}
+
+body.contact-active #water{
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+body.contact-active #bottom{
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    z-index: 1;
+    transform: translateX(-50%);
+    margin: 0;
+    padding-bottom: 2%;
 }
 #about{
     width:100%;
@@ -1066,6 +1163,59 @@ a:active {
     height:100%;
     margin-top: 5%;
     margin-bottom: 5%;
+}
+
+/* Prototype project body content (text, images, videos) matches the Coffee
+   Composer body width: 60% on larger screens and 90% at phone widths. */
+.prototype-page .projectContent,
+.prototype-page .vimeoInk,
+.prototype-page .myWeb,
+.prototype-page #lilypad,
+.prototype-page .projectContent img,
+.prototype-page .projectContent video{
+    width: 60vw;
+    max-width: 60vw;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+@media all and (max-width: 414px) {
+    .prototype-page .projectContent,
+    .prototype-page .vimeoInk,
+    .prototype-page .myWeb,
+    .prototype-page #lilypad,
+    .prototype-page .projectContent img,
+    .prototype-page .projectContent video{
+        width: 90vw;
+        max-width: 90vw;
+    }
+}
+
+/* Portrait media is narrower than the body text: 30vw on larger screens and
+   45vw at phone widths. */
+.prototype-page .is-portrait,
+.prototype-page #lilypad.is-portrait{
+    width: 30vw;
+    max-width: 30vw;
+}
+
+@media all and (max-width: 414px) {
+    .prototype-page .is-portrait,
+    .prototype-page #lilypad.is-portrait{
+        width: 45vw;
+        max-width: 45vw;
+    }
+}
+
+body.prototype-page{
+    padding-bottom: 5%;
+}
+
+body.prototype-page > div:last-of-type,
+body.prototype-page > div:last-of-type > :last-child{
+    margin-bottom: 0;
 }
 .bgm{
     font-size: 14px;

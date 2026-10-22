@@ -2,19 +2,58 @@
 import { homeNavigation } from '../data/site';
 ---
 
-<div id="mask"></div>
-<div id="header">
-  <div>
-    <ul id="navigation">
-      {
-        homeNavigation.map((item) => (
-          <li id={item.id}>
-            <span class:list={['title', item.id === 'indexButton' && 'btn btn-default']}>
-              <a id={item.titleId} href={item.href}>{item.label}</a>
-            </span>
-          </li>
-        ))
-      }
-    </ul>
+<div id="headerSticky">
+  <div id="mask"></div>
+  <div id="header">
+    <div>
+      <ul id="navigation">
+        {
+          homeNavigation.map((item) => (
+            <li id={item.id}>
+              <span class:list={['title', item.id === 'indexButton' && 'btn btn-default']}>
+                <a id={item.titleId} href={item.href}>{item.label}</a>
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </div>
 </div>
+
+<script>
+  const header = document.getElementById('headerSticky');
+  const nav = document.getElementById('navigation');
+
+  if (header && nav) {
+    let resumeTimer: number | undefined;
+
+    const suspend = () => {
+      window.clearTimeout(resumeTimer);
+      header.classList.add('no-header-transition');
+    };
+
+    const resume = () => {
+      window.clearTimeout(resumeTimer);
+      resumeTimer = window.setTimeout(() => {
+        header.classList.remove('no-header-transition');
+      }, 60);
+    };
+
+    nav.addEventListener('pointerover', suspend);
+    nav.addEventListener('pointerout', (event) => {
+      const related = event.relatedTarget as Node | null;
+      if (!related || !nav.contains(related)) {
+        resume();
+      }
+    });
+    nav.addEventListener(
+      'click',
+      () => {
+        suspend();
+        resume();
+      },
+      true,
+    );
+  }
+</script>

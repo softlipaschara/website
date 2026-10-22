@@ -26,7 +26,11 @@ const { project } = Astro.props as { project: CollectionEntry<'projects'> };
 const { Content } = await render(project);
 ---
 
-<BaseLayout title={project.data.title} description={project.data.summary}>
+<BaseLayout
+  title={project.data.title}
+  description={project.data.summary}
+  bodyClass={project.data.homeSection === 'prototype' ? 'prototype-page' : undefined}
+>
   <ProjectLayout
     cover={project.data.cover}
     backButtonVariant={project.data.backButton}
@@ -34,3 +38,39 @@ const { Content } = await render(project);
     <Content />
   </ProjectLayout>
 </BaseLayout>
+
+<script>
+  const media = document.querySelectorAll<HTMLElement>(
+    '.prototype-page .vimeoInk, .prototype-page .myWeb, .prototype-page #lilypad, .prototype-page .projectContent img, .prototype-page .projectContent video',
+  );
+
+  function markPortrait(element: HTMLElement, width: number, height: number): void {
+    if (width > 0 && height > width) {
+      element.classList.add('is-portrait');
+    }
+  }
+
+  media.forEach((element) => {
+    if (element instanceof HTMLImageElement) {
+      markPortrait(
+        element,
+        Number(element.getAttribute('width')),
+        Number(element.getAttribute('height')),
+      );
+      if (!element.complete || !element.naturalWidth) {
+        element.addEventListener(
+          'load',
+          () => markPortrait(element, element.naturalWidth, element.naturalHeight),
+          { once: true },
+        );
+      }
+    } else if (element instanceof HTMLVideoElement) {
+      const apply = () => markPortrait(element, element.videoWidth, element.videoHeight);
+      if (element.readyState >= 1) {
+        apply();
+      } else {
+        element.addEventListener('loadedmetadata', apply, { once: true });
+      }
+    }
+  });
+</script>

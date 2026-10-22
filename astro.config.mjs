@@ -6,6 +6,7 @@ export default defineConfig({
   build: { format: 'directory' },
   trailingSlash: 'always',
   integrations: [mdx()],
+  devToolbar: { enabled: false },
   prerenderConflictBehavior: 'error',
   // Legacy .html paths are emitted as exact flat files by src/pages/[...legacy].ts.
   // Astro's redirects option would create directories for these paths.

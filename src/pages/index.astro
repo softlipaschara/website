@@ -4,6 +4,7 @@ import BaseLayout from '../components/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import PrototypeTile from '../components/PrototypeTile.astro';
 import SiteHeader from '../components/SiteHeader.astro';
+import VideoPlayer from '../components/VideoPlayer.astro';
 import WhatsMoreLink from '../components/WhatsMoreLink.astro';
 import { prototypeTitlePlaceholders } from '../data/site';
 import { mediaUrl } from '../lib/media';
@@ -30,10 +31,13 @@ const whatsMore = withThumbnail
 
   <div id="index">
     <div id="video">
-      <img
-        src={mediaUrl('site/home/hero-poster/hero-poster.jpg')}
-        alt=""
-        style="width:100%"
+      <VideoPlayer
+        src="site/home/armbandprototype/armbandprototype"
+        poster="site/home/hero-poster/hero-poster.jpg"
+        autoplay
+        loop
+        muted
+        width="100%"
       />
     </div>
     <div class="itemCenter">

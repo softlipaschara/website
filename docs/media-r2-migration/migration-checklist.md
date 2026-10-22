@@ -1,7 +1,7 @@
 # Migration checklist
 
 Status: Phases 1-4 and the R2 upload are complete on 2026-10-22, including four
-recovered images and the Breeze video. Pages cutover is pending.
+recovered images and all recovered S3 videos. Pages cutover is pending.
 
 ## Routes
 
@@ -9,16 +9,16 @@ All 27 routes build from `src/pages/`:
 
 | Route | Source | Content | Notes |
 | --- | --- | --- | --- |
-| `/` | `index.html` | `src/pages/index.astro` | Three hash states preserved by `hide-content.ts`. |
+| `/` | `index.html` | `src/pages/index.astro` | Three hash states preserved by `hide-content.ts`; S3 hero video restored. |
 | `/about/` | `about/about.html` | `src/pages/about.astro` | Missing `self.jpg` kept as a broken image with alt text. |
 | `/contact/` | `contact/contact.html` | `src/pages/contact.astro` | `hvr-float` reproduced locally; Font Awesome removed as unused. |
 | `/design/` | `design/indexdesign.html` | `src/pages/design.astro` | Text-only page. |
 | `/paintings/` | `paintings/indexpainting.html` | `src/pages/paintings.astro` | Bootstrap carousel replaced by `Carousel`. Three of six images are unrecoverable. |
 | `/poems/` | `poems/indexpoem.html` | `src/pages/poems.astro` | Recoverable `tuzi.jpg`; commented poems removed. |
 | `/breathing-surface/` | `breathing-surface.html` | MDX | Vimeo 190151883 replaced. |
-| `/breeze/` | `breeze.html` | MDX | Vimeo 195434826 replaced; S3 video recovered and transcoded; Instagram video removed. |
+| `/breeze/` | `breeze.html` | MDX | Vimeo 195434826 replaced; S3 video recovered and transcoded; top cover replaced with a silent looping `videoForIndex.mp4`; Instagram video removed. |
 | `/canny-edge-detection/` | `canny-edge-detection.html` | MDX | Vimeo 262208745 replaced. |
-| `/coffee-composer/` | `coffee-composer.html` | MDX | Vimeo 329613216 replaced; missing media photo kept. |
+| `/coffee-composer/` | `coffee-composer.html` | MDX | Vimeo 329613216 replaced; media photo recovered. |
 | `/emotional-tail/` | `emotional-tail.html` | MDX | Commented Vimeo iframe removed. |
 | `/ink-animation/` | `ink-animation.html` | MDX | Vimeo 202025192 replaced. |
 | `/jie/` | `jie.html` | MDX | Vimeo 174794803 replaced. |
@@ -28,8 +28,8 @@ All 27 routes build from `src/pages/`:
 | `/printing/` | `printing.html` | MDX | Slick carousel replaced by `Carousel`. |
 | `/responsive-lighting/` | `responsive-lighting.html` | MDX | Vimeo 189073056 replaced. |
 | `/scale/` | `scale.html` | MDX | Vimeo 217140436 replaced. |
-| `/scribbling-speech/` | `scribbling-speech.html` | MDX | Vimeo 279840418 used for the S3 visualisation replacement; dead Tumblr/S3 demos poster-only. |
-| `/sensing-armband/` | `sensing-armband.html` | MDX | S3 hero poster-only; Vimeo 204383527 replaced. |
+| `/scribbling-speech/` | `scribbling-speech.html` | MDX | Original S3 demos restored; Vimeo 279840418 no longer used; dead Tumblr demos poster-only. |
+| `/sensing-armband/` | `sensing-armband.html` | MDX | S3 hero restored; Vimeo 204383527 replaced. |
 | `/soft-robotic/` | `soft-robotic.html` | MDX | No external media. |
 | `/termochromic/` | `termochromic.html` | MDX | Local hero video; Vimeo 222038876 replaced. |
 | `/the-body-languages-of-machine/` | `the-body-languages-of-machine.html` | MDX | Cover only. |
@@ -55,25 +55,23 @@ directories. Each stub has a meta refresh, a canonical link, and `noindex`.
 ## Media build
 
 - `npm run media:audit` last ran on the source machine: 235 references, 230
-  ready, 5 allowed-missing, 0 unexpected. The recovered images and Breeze video
-  raise the totals to 239 references, 235 ready, and 4 allowed-missing. The plan
-  was not regenerated on the old Mac because the Vimeo sources in `media-src`
-  are not present there.
+  ready, 5 allowed-missing, 0 unexpected. The recovered media raise the totals
+  to 245 references, 241 ready, and 4 allowed-missing. The plan was not
+  regenerated on the old Mac because the Vimeo sources in `media-src` are not
+  present there.
 - The original build produced 395 files (362.6 MiB) in `media-out/` and
-  `media-manifest.json`. Four recovered images and one recovered video were
-  added on the old Mac: three blog images, the Coffee Composer media photo, and
-  the Breeze video with 720p and 480p renditions. The manifest now has 401 files
-  (369.2 MiB). `npm run media:validate` confirms every referenced key is in the
-  manifest.
+  `media-manifest.json`. The recovered media added 20 files: four images; the
+  Breeze video and its silent cover; and six S3 video keys (five source files)
+  with 720p and 480p renditions. The manifest now has 415 files (414.4 MiB).
+  `npm run media:validate` confirms every referenced key is in the manifest.
 - `npm run media:localize` copies `media-out/` to `public/media/` for local
   preview. `public/media/` is gitignored and the prebuild guard blocks a
   production build while it exists.
 - `portfolio-media` and `media.xinyue.de` are active. The original upload
-  completed with 395 files and 362.65 MiB. Four recovered images (1.85 MiB) and
-  the two Breeze video renditions (4.72 MiB) were then uploaded from the old
-  Mac, bringing the bucket to 401 objects and 369.22 MiB. `npm run media:check`
-  returned HTTP 200 for all 401 keys. Sample responses have the expected
-  Content-Type and `Cache-Control: public, max-age=604800`.
+  completed with 395 files and 362.65 MiB. The recovered upload added 20 files
+  (51.71 MiB), bringing the bucket to 415 objects and 414.36 MiB.
+  `npm run media:check` returned HTTP 200 for all 415 keys. Sample responses
+  have the expected Content-Type and `Cache-Control: public, max-age=604800`.
 
 ## Responsive and parity verification
 
@@ -87,6 +85,10 @@ directories. Each stub has a meta refresh, a canonical link, and `noindex`.
 - The Breeze video was re-checked at 390 and 1200 px after restoration: 0
   overflows, 0 page errors. The player loaded the 1280x720 rendition
   (`readyState` 4, duration 48.6 s) with controls.
+- The home hero, Breeze top cover, Sensing Armband hero, and four Scribbling
+  Speech demos were checked in the browser and at 390/1200 px: 0 overflows, 0
+  page errors. The hero videos autoplay, loop, and are muted with no controls;
+  the Scribbling Speech demos keep controls and audio.
 - Screenshots at 1200 and 1440 were captured to `/tmp/portfolio-screenshots`
   and compared with the legacy local site.
 - The home page matches the legacy layout. Project text blocks, images, videos,
@@ -106,12 +108,12 @@ directories. Each stub has a meta refresh, a canonical link, and `noindex`.
 
 - Bucket: `portfolio-media`; custom domain: `media.xinyue.de`; ownership and SSL active.
 - Original upload: 395 objects, 362.65 MiB, 100%, 2m 5s.
-- Recovered upload: 4 images (1.85 MiB) and 2 Breeze renditions (4.72 MiB); the
-  bucket now holds 401 objects and 369.22 MiB.
-- Size check: the six recovered files matched their remote objects; the other
+- Recovered upload: 20 files (51.71 MiB); the bucket now holds 415 objects and
+  414.36 MiB.
+- Size check: the 20 recovered files matched their remote objects; the other
   395 objects were verified over HTTPS because they are not present locally on
   the old Mac.
-- HTTPS check: 401/401 keys returned HTTP 200.
+- HTTPS check: 415/415 keys returned HTTP 200.
 - Cache headers: `public, max-age=604800`; content types match the file extensions.
 - Production build (`dist/` with `https://media.xinyue.de` URLs) checked at 390
   and 1200 px: 0 overflows, 0 page errors.

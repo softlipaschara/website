@@ -5,9 +5,6 @@ summary: A lamp that responds to breath.
 tools:
   - Arduino
   - Rhino
-cover:
-  src: projects/breeze/hero/hero.png
-  alt: Breeze lamp
 thumbnail:
   src: site/home/breeze-thumb/breeze-thumb.png
   alt: Breeze lamp thumbnail
@@ -21,6 +18,19 @@ backButton: black
 import ResponsivePicture from '../../components/ResponsivePicture.astro';
 import VideoPlayer from '../../components/VideoPlayer.astro';
 import { mediaUrl } from '../../lib/media';
+
+<div class="containerCenter">
+  <VideoPlayer
+    src="projects/breeze/video-for-index/video-for-index"
+    poster="projects/breeze/hero/hero.png"
+    autoplay
+    loop
+    muted
+    width="100%"
+    class="insBorrow"
+    style="height:auto;"
+  />
+</div>
 
 <div class="containerCenter">
   <div class="breezeTitle">

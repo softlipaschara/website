@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-22T14:44:09.278Z",
+  "generatedAt": "2026-10-22T15:06:46.882Z",
   "mediaBase": "https://media.xinyue.de",
-  "entryCount": 401,
-  "totalBytes": 387155578,
+  "entryCount": 415,
+  "totalBytes": 434485688,
   "sources": [
     {
       "key": "projects/breathing-surface/hero/hero.jpg",
@@ -2196,6 +2196,76 @@
       "width": 1920,
       "height": 1080,
       "duration": 48.6
+    },
+    {
+      "key": "projects/breeze/video-for-index/video-for-index",
+      "kind": "video",
+      "page": "breeze.html",
+      "status": "ready",
+      "source": "../media-recovered/videoForIndex.mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 5.476444
+    },
+    {
+      "key": "site/home/armbandprototype/armbandprototype",
+      "kind": "video",
+      "page": "index.html",
+      "status": "ready",
+      "source": "../media-recovered/armbandprototype.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 18.458
+    },
+    {
+      "key": "projects/sensing-armband/armbandprototype/armbandprototype",
+      "kind": "video",
+      "page": "sensing-armband.html",
+      "status": "ready",
+      "source": "../media-recovered/armbandprototype.mp4",
+      "width": 1280,
+      "height": 720,
+      "duration": 18.458
+    },
+    {
+      "key": "projects/scribbling-speech/cat-story/cat-story",
+      "kind": "video",
+      "page": "scribbling-speech.html",
+      "status": "ready",
+      "source": "../media-recovered/cat_story.mov",
+      "width": 2560,
+      "height": 1600,
+      "duration": 30.2935
+    },
+    {
+      "key": "projects/scribbling-speech/moon-table-chinese/moon-table-chinese",
+      "kind": "video",
+      "page": "scribbling-speech.html",
+      "status": "ready",
+      "source": "../media-recovered/moon_table_chinese.mov",
+      "width": 2560,
+      "height": 1600,
+      "duration": 14.924167
+    },
+    {
+      "key": "projects/scribbling-speech/user-play-with-it/user-play-with-it",
+      "kind": "video",
+      "page": "scribbling-speech.html",
+      "status": "ready",
+      "source": "../media-recovered/user_play_with_it.mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 45.998
+    },
+    {
+      "key": "projects/scribbling-speech/talk-to-me-no-text/talk-to-me-no-text",
+      "kind": "video",
+      "page": "scribbling-speech.html",
+      "status": "ready",
+      "source": "../media-recovered/talk_to_me_no_text.mp4",
+      "width": 1920,
+      "height": 1080,
+      "duration": 157.269333
     }
   ],
   "missing": [
@@ -6438,6 +6508,174 @@
       "width": 854,
       "height": 480,
       "duration": 48.598
+    },
+    {
+      "key": "projects/breeze/video-for-index/video-for-index-720.mp4",
+      "variantOf": "projects/breeze/video-for-index/video-for-index",
+      "type": "video",
+      "format": "mp4",
+      "bytes": 399348,
+      "sha256": "eff647c61a15d2df6b39ffba9a6ed41c00ccf5e01200bce1c75f2a2adbded8fa",
+      "rendition": 720,
+      "width": 1280,
+      "height": 720,
+      "duration": 5.52
+    },
+    {
+      "key": "projects/breeze/video-for-index/video-for-index-480.mp4",
+      "variantOf": "projects/breeze/video-for-index/video-for-index",
+      "type": "video",
+      "format": "mp4",
+      "bytes": 160741,
+      "sha256": "263ffaa0b563a5a9e938704f9471b463db8d6275c61e7ab136ac156de3622855",
+      "rendition": 480,
+      "width": 854,
+      "height": 480,
+      "duration": 5.52
+    },
+    {
+      "key": "site/home/armbandprototype/armbandprototype-720.mp4",
+      "variantOf": "site/home/armbandprototype/armbandprototype",
+      "type": "video",
+      "format": "mp4",
+      "bytes": 4082874,
+      "sha256": "9ede4ed60e828f92d15a9600870ac4a9ee3470a8ae19bd671d5797b9425df075",
+      "rendition": 720,
+      "width": 1280,
+      "height": 720,
+      "duration": 18.454
+    },
+    {
+      "key": "site/home/armbandprototype/armbandprototype-480.mp4",
+      "variantOf": "site/home/armbandprototype/armbandprototype",
+      "type": "video",
+      "format": "mp4",
+      "bytes": 2164535,
+      "sha256": "b9461d50c2fa55f8c748b59fe449d30915441fb8fcff16637490e9f5f9f20961",
+      "rendition": 480,
+      "width": 854,
+      "height": 480,
+      "duration": 18.454
+    },
+    {
+      "key": "projects/sensing-armband/armbandprototype/armbandprototype-720.mp4",
+      "variantOf": "projects/sensing-armband/armbandprototype/armbandprototype",
+      "type": "video",
+      "format": "mp4",
+      "bytes": 4082874,
+      "sha256": "9ede4ed60e828f92d15a9600870ac4a9ee3470a8ae19bd671d5797b9425df075",
+      "rendition": 720,
+      "width": 1280,
+      "height": 720,
+      "duration": 18.454
+    },
+    {
+      "key": "projects/sensing-armband/armbandprototype/armbandprototype-480.mp4",
+      "variantOf": "projects/sensing-armband/armbandprototype/armbandprototype",
+      "type": "video",
+      "format": "mp4",
+      "bytes": 2164535,
+      "sha256": "b9461d50c2fa55f8c748b59fe449d30915441fb8fcff16637490e9f5f9f20961",
+      "rendition": 480,
+      "width": 854,
+      "height": 480,
+      "duration": 18.454
+    },
+    {
+      "key": "projects/scribbling-speech/cat-story/cat-story-720.mp4",
+      "variantOf": "projects/scribbling-speech/cat-story/cat-story",
+      "type": "video",
+      "format": "mp4",
+      "bytes": 1445694,
+      "sha256": "1f93a1462013f109810ba6128a588caf8571dff901bb51e1b191f17e1d3cd787",
+      "rendition": 720,
+      "width": 1152,
+      "height": 720,
+      "duration": 30.317
+    },
+    {
+      "key": "projects/scribbling-speech/cat-story/cat-story-480.mp4",
+      "variantOf": "projects/scribbling-speech/cat-story/cat-story",
+      "type": "video",
+      "format": "mp4",
+      "bytes": 1137522,
+      "sha256": "ce08c2db9390eee538944b79e2ffd9ef0c72e65ed8566006c3dd0f956455140f",
+      "rendition": 480,
+      "width": 768,
+      "height": 480,
+      "duration": 30.317
+    },
+    {
+      "key": "projects/scribbling-speech/moon-table-chinese/moon-table-chinese-720.mp4",
+      "variantOf": "projects/scribbling-speech/moon-table-chinese/moon-table-chinese",
+      "type": "video",
+      "format": "mp4",
+      "bytes": 435069,
+      "sha256": "c38eaadecb7fc7fa1bcb301d0c8f01721cf248894eccd331d2940ae492f5f0bd",
+      "rendition": 720,
+      "width": 1152,
+      "height": 720,
+      "duration": 14.935
+    },
+    {
+      "key": "projects/scribbling-speech/moon-table-chinese/moon-table-chinese-480.mp4",
+      "variantOf": "projects/scribbling-speech/moon-table-chinese/moon-table-chinese",
+      "type": "video",
+      "format": "mp4",
+      "bytes": 375981,
+      "sha256": "bb198b030926a32f942764379e93f1c6212317d3071b2203074c9523ecc95ff7",
+      "rendition": 480,
+      "width": 768,
+      "height": 480,
+      "duration": 14.935
+    },
+    {
+      "key": "projects/scribbling-speech/user-play-with-it/user-play-with-it-720.mp4",
+      "variantOf": "projects/scribbling-speech/user-play-with-it/user-play-with-it",
+      "type": "video",
+      "format": "mp4",
+      "bytes": 9606148,
+      "sha256": "38687376900e017da132cf6eb310785da5072fef85038bd6d76ddfde6bba284a",
+      "rendition": 720,
+      "width": 1280,
+      "height": 720,
+      "duration": 45.98
+    },
+    {
+      "key": "projects/scribbling-speech/user-play-with-it/user-play-with-it-480.mp4",
+      "variantOf": "projects/scribbling-speech/user-play-with-it/user-play-with-it",
+      "type": "video",
+      "format": "mp4",
+      "bytes": 4991210,
+      "sha256": "871868ab20c948607d74f4ba0415b1225e4ee1ddc8805715ddfa33f0866577a4",
+      "rendition": 480,
+      "width": 854,
+      "height": 480,
+      "duration": 45.98
+    },
+    {
+      "key": "projects/scribbling-speech/talk-to-me-no-text/talk-to-me-no-text-720.mp4",
+      "variantOf": "projects/scribbling-speech/talk-to-me-no-text/talk-to-me-no-text",
+      "type": "video",
+      "format": "mp4",
+      "bytes": 9605999,
+      "sha256": "8f2294558313a0089314a36d1b2385a37c7abdd6fef906e5bd8f8388290205ed",
+      "rendition": 720,
+      "width": 1280,
+      "height": 720,
+      "duration": 157.227
+    },
+    {
+      "key": "projects/scribbling-speech/talk-to-me-no-text/talk-to-me-no-text-480.mp4",
+      "variantOf": "projects/scribbling-speech/talk-to-me-no-text/talk-to-me-no-text",
+      "type": "video",
+      "format": "mp4",
+      "bytes": 6677580,
+      "sha256": "074204f71b0ca26a0d203b02ca0658f46f557cc4ff72e80bffc8fe125eac706c",
+      "rendition": 480,
+      "width": 854,
+      "height": 480,
+      "duration": 157.227
     }
   ]
 }

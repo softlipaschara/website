@@ -224,10 +224,17 @@ export function buildSourceIndex() {
 
   const recovered = [
     ['breeze.html', 'breezeLamp.mp4'],
+    ['breeze.html', 'videoForIndex.mp4'],
+    ['index.html', 'armbandprototype.mp4'],
     ['index.html', 'blog-1.png'],
     ['index.html', 'blog-2.jpg'],
     ['index.html', 'blog-3.jpg'],
     ['coffee-composer.html', 'media_photo_coffee.jpg'],
+    ['scribbling-speech.html', 'cat_story.mov'],
+    ['scribbling-speech.html', 'moon_table_chinese.mov'],
+    ['scribbling-speech.html', 'talk_to_me_no_text.mp4'],
+    ['scribbling-speech.html', 'user_play_with_it.mp4'],
+    ['sensing-armband.html', 'armbandprototype.mp4'],
     ['poems/indexpoem.html', 'tuzi.jpg'],
     ['paintings/indexpainting.html', 'tuzi1.jpg'],
     ['paintings/indexpainting.html', 'xiaobing.jpg'],
@@ -385,6 +392,23 @@ export function extractReferences() {
       continue;
     }
     const content = fs.readFileSync(filePath, 'utf8');
+    for (const match of content.matchAll(/<VideoPlayer\b[\s\S]*?\/>/g)) {
+      const tag = match[0];
+      const key = tag.match(/\bsrc="([^"]+)"/)?.[1];
+      const poster = tag.match(/\bposter="([^"]+)"/)?.[1];
+      if (key) {
+        add({
+          key,
+          page,
+          kind: 'video-base',
+          origin: 'VideoPlayer',
+          hasExplicitPoster: Boolean(poster),
+        });
+      }
+      if (poster) {
+        add({ key: poster, page, kind: 'image-original', origin: 'VideoPlayer poster' });
+      }
+    }
     for (const match of content.matchAll(/mediaUrl\(\s*['"]([^'"]+)['"]\s*\)/g)) {
       add({ key: match[1], page, kind: 'image-original', origin: 'mediaUrl' });
     }

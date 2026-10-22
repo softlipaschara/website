@@ -251,12 +251,13 @@ import { mediaUrl } from '../../lib/media';
 </div>
 <div class="containerCenter">
   <div class="videos_scribbling_speech">
-    {/* Source unavailable: the original S3 video returned HTTP 403. */}
-    <img
-      src={mediaUrl('projects/scribbling-speech/poster-cat-story/poster-cat-story.png')}
-      alt="Talking in English demo poster"
+    <VideoPlayer
+      src="projects/scribbling-speech/cat-story/cat-story"
+      poster="projects/scribbling-speech/poster-cat-story/poster-cat-story.png"
+      controls
       width="100%"
       style="border:1px solid; margin-top:-6%;"
+      preload="metadata"
     />
   </div>
 </div>
@@ -268,12 +269,13 @@ import { mediaUrl } from '../../lib/media';
 </div>
 <div class="containerCenter">
   <div class="videos_scribbling_speech">
-    {/* Source unavailable: the original S3 video returned HTTP 403. */}
-    <img
-      src={mediaUrl('projects/scribbling-speech/poster-chinese-video/poster-chinese-video.png')}
-      alt="Talking in Chinese demo poster"
+    <VideoPlayer
+      src="projects/scribbling-speech/moon-table-chinese/moon-table-chinese"
+      poster="projects/scribbling-speech/poster-chinese-video/poster-chinese-video.png"
+      controls
       width="100%"
       style="border:1px solid; margin-top:-6%;"
+      preload="metadata"
     />
   </div>
 </div>
@@ -285,12 +287,13 @@ import { mediaUrl } from '../../lib/media';
 </div>
 <div class="containerCenter">
   <div class="videos_scribbling_speech">
-    {/* Source unavailable: the original S3 video returned HTTP 403. */}
-    <img
-      src={mediaUrl('projects/scribbling-speech/user-interaction-poster/user-interaction-poster.png')}
-      alt="User interacting with Scribbling Speech poster"
+    <VideoPlayer
+      src="projects/scribbling-speech/user-play-with-it/user-play-with-it"
+      poster="projects/scribbling-speech/user-interaction-poster/user-interaction-poster.png"
+      controls
       width="100%"
       style="border:1px solid; margin-top:-6%;"
+      preload="metadata"
     />
   </div>
 </div>
@@ -302,14 +305,13 @@ import { mediaUrl } from '../../lib/media';
 </div>
 <div class="containerCenter">
   <div class="videos_scribbling_speech" style="margin-bottom:10%;">
-    {/* The original S3 video is unavailable; this is the recovered Vimeo visualisation. */}
     <VideoPlayer
-      src="projects/scribbling-speech/visualisation/visualisation"
+      src="projects/scribbling-speech/talk-to-me-no-text/talk-to-me-no-text"
       poster="projects/scribbling-speech/poster-visualisation-video/poster-visualisation-video.png"
       controls
       width="100%"
       style="border:1px solid; margin-top:-6%;"
-      preload="auto"
+      preload="metadata"
     />
   </div>
 </div>

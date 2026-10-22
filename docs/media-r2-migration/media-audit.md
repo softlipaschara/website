@@ -40,7 +40,8 @@ the repository and are copied to R2 under their manifest keys.
 ## Recovered on the old Mac (2026-10-22)
 
 The three blog images were still served by the Tumblr CDN. The Coffee Composer
-media photo and the Breeze video were found in the local project archive.
+media photo, the Breeze video, and the remaining S3 videos were found in the
+local project archive or the Wayback Machine.
 
 | Asset | Source | Dimensions | SHA-256 |
 | --- | --- | --- | --- |
@@ -49,6 +50,12 @@ media photo and the Breeze video were found in the local project archive.
 | `blog-3.jpg` | Tumblr `tumblr_p6mou53IBL1qkfs2lo1_1280.jpg` | 1280×960 | `4c9920a2f828a705a9cc58355e84bd2be2f9d85736914281446981ae0fbd55fb` |
 | `media_photo_coffee.jpg` | `~/Documents/ma semester 1/video material/coffee_composer_press.jpg` | 2000×1206 | `7395a3c159d429783ddde32b25f547aa4d788aaa1b117af1d881121dcc2266f1` |
 | `breezeLamp.mp4` | `~/Documents/Semester5/blowConcept/breeze_video/breeze_final.mp4`, byte-identical to the Wayback copy of the S3 original | 1920×1080, 48.6 s | `1a3775206baf4d0acc7bc7963c17aadc215359a1f9059226ea761796d74667c2` |
+| `videoForIndex.mp4` | `imgA/videoForIndex.mp4` (already in the repository) | 1920×1080, 5.5 s, no audio | `2ad608a2f2b0a9de158f80f293148f9ccbf8b9a70ad131d41fc2a9d3cca416af` |
+| `armbandprototype.mp4` | `~/Documents/Semester5/SensingArmband/armbandprototype.mp4`, byte-identical to Wayback | 1280×720, 18.5 s | `9a49eba1b9efa009d9ba8620c0b7a559445f3dd446ce280f61f96f4197985e3d` |
+| `cat_story.mov` | `~/Documents/ScribblingSpeech/cat_story.mov`, byte-identical to Wayback | 2560×1600, 30.3 s | `214b57d783b2495e939368749701948d9b0c7dcb3ebea0e62db3d507208c4a05` |
+| `moon_table_chinese.mov` | `~/Documents/semester8/drawings/moon_table_chinese.mov`, byte-identical to Wayback | 2560×1600, 14.9 s | `3ad078fe7a7a02ec81e956ae92cbe059e1363b6b24f19bf33b9f188bbd728d3b` |
+| `talk_to_me_no_text.mp4` | `~/Documents/semester8/drawings/moon_in_the_sky_no_text_AME/talk_to_me_no_text.mp4`, byte-identical to Wayback | 1920×1080, 157.3 s | `492104c21c96d216ba47cd79a55025f85ceb30647384cf6ceeb7492c494dac8f` |
+| `user_play_with_it.mp4` | Wayback Machine copy of the S3 object (no local copy) | 1920×1080, 46.0 s | `4f393d747bfc1e46409eb2de8a1e4d78be3841f5e3b6717e7fcfbcbee307f8bb` |
 
 ## External media decisions
 
@@ -71,24 +78,24 @@ Eleven iframes were live. Two were commented out in the legacy HTML:
 | 262208745 | `projects/canny-edge-detection/demo/demo` | Canny Edge Detection |
 | 329613216 | `projects/coffee-composer/video/video` | Coffee Composer |
 | 414940484 | `projects/word-to-world/demo/demo` | Word to World |
-| 279840418 | `projects/scribbling-speech/visualisation/visualisation` | Scribbling Speech (S3 replacement) |
+| 279840418 | `projects/scribbling-speech/visualisation/visualisation` | Scribbling Speech (unused after the original S3 video was recovered) |
 | 164829665 | unused | Emotional Tail (legacy iframe was commented) |
 
 ### S3
 
-Six of the seven `s3.eu-central-1.amazonaws.com/omzug.com` references still
-return HTTP 403. The Breeze video was recovered from the owner's local archive
-and matches the Wayback Machine copy of the original S3 object byte for byte.
+All seven `s3.eu-central-1.amazonaws.com/omzug.com` references were recovered
+from the owner's local archive or the Wayback Machine. Local copies match the
+archived originals byte for byte.
 
 | Page | Reference | Outcome |
 | --- | --- | --- |
-| `/` | `armbandprototype.mp4` (hero) | Replaced by `videoPoster.jpg` as a still image. |
+| `/` | `armbandprototype.mp4` (hero) | Recovered from `~/Documents/Semester5/SensingArmband/armbandprototype.mp4`; restored as the autoplay hero. |
 | `/breeze/` | `breezeLamp.mp4` | Recovered from `~/Documents/Semester5/blowConcept/breeze_video/breeze_final.mp4`; transcoded to 720p and 480p. |
-| `/sensing-armband/` | `armbandprototype.mp4` (hero) | Poster-only using the Vimeo thumbnail. |
-| `/scribbling-speech/` | `cat_story.mov` | Poster-only. |
-| `/scribbling-speech/` | `moon_table_chinese.mov` | Poster-only. |
-| `/scribbling-speech/` | `user_play_with_it.mp4` | Poster-only. |
-| `/scribbling-speech/` | `talk_to_me_no_text.mp4` | Replaced by Vimeo 279840418. |
+| `/sensing-armband/` | `armbandprototype.mp4` (hero) | Recovered from the same local file; restored as the autoplay hero. |
+| `/scribbling-speech/` | `cat_story.mov` | Recovered from `~/Documents/ScribblingSpeech/cat_story.mov`; restored. |
+| `/scribbling-speech/` | `moon_table_chinese.mov` | Recovered from `~/Documents/semester8/drawings/moon_table_chinese.mov`; restored. |
+| `/scribbling-speech/` | `user_play_with_it.mp4` | Recovered from the Wayback Machine copy; restored. |
+| `/scribbling-speech/` | `talk_to_me_no_text.mp4` | Recovered from `~/Documents/semester8/drawings/moon_in_the_sky_no_text_AME/talk_to_me_no_text.mp4`; restored in place of Vimeo 279840418. |
 
 ### Tumblr, Instagram, Xiami
 

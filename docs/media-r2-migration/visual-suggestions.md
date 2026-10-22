@@ -47,8 +47,10 @@ Ask the owner before reintroducing any of these.
   component avoids that collision.
 - The blog's Tumblr images were restored from the original CDN; the dead Xiami
   Flash player was removed.
-- The home hero and the Sensing Armband hero use poster images because their S3
-  sources are unavailable.
+- The home hero and the Sensing Armband hero use autoplay videos restored from
+  the original S3 files.
+- The Breeze top cover is a silent looping video (`videoForIndex.mp4`) with no
+  controls, as requested by the owner.
 - The About page now declares a viewport, so its mobile layout will differ from
   the legacy page.
 - Five site pages now have a viewport meta tag.

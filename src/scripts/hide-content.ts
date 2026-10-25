@@ -23,6 +23,8 @@ function setActiveClass(activeClass: string): void {
 const header = document.getElementById('headerSticky');
 const mask = document.getElementById('mask');
 const SCROLL_THRESHOLD = 24;
+// The compact header keeps its white bar while scrolling, like the home page.
+const compactHeader = window.matchMedia('(max-width: 768px)');
 let suppressShade = false;
 let shadeReadyAt = 0;
 
@@ -35,7 +37,10 @@ function updateHeaderShade(): void {
     return;
   }
   const isSubpage = mask.classList.contains('maskWhite');
-  header.classList.toggle('is-scrolled', isSubpage && window.scrollY > SCROLL_THRESHOLD);
+  header.classList.toggle(
+    'is-scrolled',
+    !compactHeader.matches && isSubpage && window.scrollY > SCROLL_THRESHOLD,
+  );
 }
 
 function showSection(section: Section): void {
@@ -107,3 +112,4 @@ window.addEventListener('keydown', (event) => {
   }
 });
 window.addEventListener('resize', updateHeaderShade);
+compactHeader.addEventListener('change', updateHeaderShade);

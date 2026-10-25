@@ -68,36 +68,41 @@ const whatsMore = withThumbnail
       <div class="containerCenter prototypes">
         <p>#Prototypes</p>
       </div>
-      <div>
+      <div class="prototypeDivider">
         <img class="grids" src={mediaUrl('site/home/grids/grids.png')} alt="" />
       </div>
-      <div class="prototypeGifs containerCenter">
-        {
-          prototypes.slice(0, 4).map((project) => (
-            <PrototypeTile
-              href={`/${project.id}/`}
-              label={project.data.homeLabel ?? project.data.title}
-              src={project.data.thumbnail!.src}
-              alt={project.data.thumbnail!.alt}
-            />
-          ))
-        }
-      </div>
-      <div>
-        <img class="grids" src={mediaUrl('site/home/grids/grids.png')} alt="" />
-      </div>
-      <div class="prototypeGifs containerCenter">
-        {
-          prototypes.slice(4, 8).map((project) => (
-            <PrototypeTile
-              href={`/${project.id}/`}
-              label={project.data.homeLabel ?? project.data.title}
-              src={project.data.thumbnail!.src}
-              alt={project.data.thumbnail!.alt}
-              tagStyle={project.id === 'canny-edge-detection' ? 'opacity: 1' : undefined}
-            />
-          ))
-        }
+      <div
+        class="prototypeGrid"
+        style={`--grid-background: url(${mediaUrl('site/home/grids/grids.png')})`}
+      >
+        <div class="prototypeGifs containerCenter">
+          {
+            prototypes.slice(0, 4).map((project) => (
+              <PrototypeTile
+                href={`/${project.id}/`}
+                label={project.data.homeLabel ?? project.data.title}
+                src={project.data.thumbnail!.src}
+                alt={project.data.thumbnail!.alt}
+              />
+            ))
+          }
+        </div>
+        <div class="prototypeDivider">
+          <img class="grids" src={mediaUrl('site/home/grids/grids.png')} alt="" />
+        </div>
+        <div class="prototypeGifs containerCenter">
+          {
+            prototypes.slice(4, 8).map((project) => (
+              <PrototypeTile
+                href={`/${project.id}/`}
+                label={project.data.homeLabel ?? project.data.title}
+                src={project.data.thumbnail!.src}
+                alt={project.data.thumbnail!.alt}
+                tagStyle={project.id === 'canny-edge-detection' ? 'opacity: 1' : undefined}
+              />
+            ))
+          }
+        </div>
       </div>
       <div class="prototypeTitleBlock">
         {
@@ -136,18 +141,14 @@ const whatsMore = withThumbnail
       <div class="anotherMe containerCenter">
         {
           whatsMore.map((project) => (
-            <WhatsMoreLink
-              href={`/${project.id}/`}
-              src={project.data.thumbnail!.src}
-              alt={project.data.thumbnail!.alt}
-            />
-          ))
-        }
-      </div>
-      <div class="prototypeTitleBlock">
-        {
-          whatsMore.map((project) => (
-            <p class="besidesTitle">{project.data.homeLabel ?? project.data.title}</p>
+            <div class="besidesItem">
+              <WhatsMoreLink
+                href={`/${project.id}/`}
+                src={project.data.thumbnail!.src}
+                alt={project.data.thumbnail!.alt}
+              />
+              <p class="besidesTitle">{project.data.homeLabel ?? project.data.title}</p>
+            </div>
           ))
         }
       </div>

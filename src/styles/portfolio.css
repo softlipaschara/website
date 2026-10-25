@@ -995,12 +995,25 @@ body.contact-active #bottom{
     color: black;
     align-self: center;
 }
+/* Each "What's More About Me" entry keeps its label next to its image so the
+   pairing survives the stacked mobile layout. The item width matches the
+   previous image/label column width at desktop sizes. */
+.besidesItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 295px;
+    margin-bottom: 50px;
+}
 .besidesTitle{
     font-size: 21px;
-    width:33.3%;
+    width:100%;
     text-align: center;
     /*line-height: 1.6;*/
     letter-spacing: 0.06em;
+    /* The old label block pulled itself up by 20px over the default 21px
+       paragraph margin; keep that 1px net gap so desktop spacing is unchanged. */
+    margin-top: 1px;
 }
 #bowImage{
     width:65%;
@@ -1269,8 +1282,58 @@ body.prototype-page > div:last-of-type > :last-child{
     .roundMasks{
         width:180px;
     }
+    .besidesItem{
+        width:242px;
+    }
     .prototypeGifs{
         margin-top: -31%;
+    }
+}
+/* Below 1200px four 295px tiles no longer fit on one row. Let all eight tiles
+   flow together as rows of three so no lone tile is left centered on its own. */
+@media all and (min-width: 441px) and (max-width: 1199px){
+    .prototypeGrid{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        /* One divider image would only cover the first row, so tile it behind
+           every prototype row instead. */
+        background-image: var(--grid-background);
+        background-repeat: repeat-y;
+        background-position: top center;
+        background-size: 100% auto;
+    }
+    .prototypeGrid > .prototypeGifs{
+        display: contents;
+    }
+    #prototypePart .prototypeDivider{
+        display: none;
+    }
+    .prototypeGrid .prototypeImage{
+        width: 33.333%;
+        box-sizing: border-box;
+        padding-left: 10px;
+        padding-right: 10px;
+        align-items: center;
+    }
+    .prototypeGrid .prototypeTag{
+        width: 100%;
+        text-align: center;
+    }
+}
+@media all and (min-width: 441px) and (max-width: 1024px){
+    .prototypeGrid .roundMasks{
+        width: 180px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+/* iPhone 15/16 widths (393–440px, incl. Plus/Pro Max): one prototype per row,
+   same as the phone layout below 415px. */
+@media all and (min-width: 415px) and (max-width: 440px){
+    .prototypeGifs .roundMasks{
+        width: 200px;
     }
 }
 @media all and (max-width: 768px){
@@ -1484,8 +1547,12 @@ body.prototype-page > div:last-of-type > :last-child{
     .prototypeTitle{
         display: none;
     }
-    .besidesTitle{
-        display: none;
+    #besidesPart{
+        width: 100%;
+    }
+    .anotherMe .besidesItem{
+        width: 100%;
+        margin-bottom: 30px;
     }
     .besides{
         margin-top: 0;
@@ -1531,6 +1598,13 @@ body.prototype-page > div:last-of-type > :last-child{
     }
     .logoText{
         margin:0 5%;
+    }
+}
+/* One-per-row "What's More" layout above phone widths: cap the images so they
+   do not stretch across the full row. */
+@media all and (min-width: 415px) and (max-width: 768px){
+    .anotherMe .roundMasks{
+        width: 40vw;
     }
 }
 @media all and (max-width: 414px){
@@ -1692,6 +1766,9 @@ body.prototype-page > div:last-of-type > :last-child{
     .roundMasks{
         width:200px;
         margin:3px 0;
+    }
+    .anotherMe .besidesItem{
+        width: 100%;
     }
     .prototypes{
         font-size: 30px;
